@@ -1,0 +1,21 @@
+<launch>
+  <!-- 加载仿真器 -->
+    <arg name="map_size_x_" value="42.0"/>
+    <arg name="map_size_y_" value="30.0"/>
+    <arg name="map_size_z_" value=" 5.0"/>
+    <arg name="odom_topic" value="global_odom" /> 
+  <include file="$(find simulate_uav)/launch/uav_i_simulate.launch">
+
+    <arg name="uav_id_" value="0"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x_)"/>
+    <arg name="map_size_y" value="$(arg map_size_y_)"/>
+    <arg name="map_size_z" value="$(arg map_size_z_)"/>
+
+    <arg name="init_x_" value="-20.0"/>
+    <arg name="init_y_" value="-9.0"/>
+    <arg name="init_z_" value="0.1"/>
+
+    <arg name="odometry_topic" value="$(arg odom_topic)" />
+  </include>
+</launch>

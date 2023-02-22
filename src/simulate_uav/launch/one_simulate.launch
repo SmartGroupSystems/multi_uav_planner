@@ -1,0 +1,100 @@
+<launch>
+<!--无人机id-->
+<arg name="uav_id"/>
+<!--地图大小-->
+  <arg name="map_size_x_"/>
+  <arg name="map_size_y_"/>
+  <arg name="map_size_z_"/>
+  <!--起点和终点-->
+  <arg name="init_x"/>
+  <arg name="init_y"/>
+  <arg name="init_z"/>
+  <arg name="_target_x"/>
+  <arg name="_target_y"/>
+  <arg name="_target_z"/>
+<!--无人机架数-->
+<arg name="obj_num" value="3" />
+<arg name="odom_topic"/>
+<!--漂移-->
+ <include file="$(find uav_detect)/launch/detect.launch">
+  <arg name="uav_id_" value="$(arg uav_id)"/>
+     <arg name="pixel_ratio_"    value="0.1"/>
+    <arg name="max_pose_error"   value="0.25"/>
+    <arg name="drone_width"   value="0.5"/>
+    <arg name="drone_height"    value="0.2" />
+ </include>
+
+<!--地图-->
+ <include file="$(find multi_mapping)/launch/multi_mapping.launch">
+  <arg name="uav_id_" value="$(arg uav_id)"/>
+ </include>
+
+<!--发布坐标-->
+ <include file="$(find multi_model_state)/launch/state.launch">
+    <arg name="uav_id_" value="$(arg uav_id)"/>
+    <arg name="init_x_" value="$(arg init_x)"/>
+    <arg name="init_y_" value="$(arg init_y)"/>
+    <arg name="init_z_" value="$(arg init_z)"/>
+ </include>
+
+    <!--路径搜索-->
+ <include file="$(find multi_grid_path_searcher)/launch/path_search.launch">
+    <arg name="uav_id_" value="$(arg uav_id)"/>
+    <arg name="target_x_" value="$(arg  _target_x)"/>
+    <arg name="target_y_" value="$(arg _target_y)"/>
+     <arg name="resolution" value="0.1"/>
+     <arg name="map_size_x"  value="map_size_x_" />
+      <arg name="map_size_y"  value="map_size_y_" />
+      <!-- <arg name="map_size_z"  value="map_size_z_" />  -->
+     <arg name="sight_radius" value=" 5.0"/>
+     <arg name = "interval" value=" 0.5"/>
+      <arg name="init_x_" value="$(arg init_x)"/>
+      <arg name="init_y_" value="$(arg init_y)"/>
+ </include>
+
+ <!--轨迹优化-->
+  <include file="$(find multi_bspline_opt)/launch/multi_bspline.launch">
+    <arg name="uav_id_" value="$(arg uav_id)"/>
+  <arg name="traj_order" 		value="3" /><!-- 轨迹阶数 -->
+  <!--<arg name="control_points_number"	value="30" />-->
+   <arg name="dimension" 		value="2" /><!-- 2维 -->
+   <arg name="TrajSampleRate" 		value="50" /><!-- 10, 20, 30 , ... ,-->
+<!--  <arg name="beta" 			value="2.0" />-->
+   <arg name="max_vel" 			value="1.8" />
+   <arg name="max_acc" 			value="1.6" /><!-- 最大速度与加速度 -->
+
+  <arg name="goal_x" 			value="9.0" />
+  <arg name="goal_y" 			value="-10.0" />
+  <arg name="lambda1" 			value="5.0" />
+  <arg name="lambda2" 			value="1.0" />
+  <arg name="lambda3" 			value="10.0" />    <!-- 光滑 可行 避障权重 -->
+    <arg name="lambda4" 			value="0.0" />   <!-- swarm 避障权重 -->
+  <arg name="lambda5" 			value="0.0" />
+  <arg name="lambda6" 			value="0.0" />
+  <arg name="esdf_collision" 		value="2.0" /> <!-- 小于此值则认为轨迹有碰撞 -->
+  <arg name="frame" 			value="world" />     <!-- 参考系 -->
+  <arg name="map_resolution" 		value="0.1" />
+  <arg name="start_x" 			value="-39.95" />
+  <arg name="start_y" 			value="39.95" />   <!-- 地图起始点 -->
+  <arg name="safe_distance" 		value="6.0" /> <!-- 安全距离 -->
+    <arg name="swarm_clearance" 		value="4.0" />
+  <arg name="dist_p" 			value="0.5" />       <!-- 均匀b样条每段长度：0.5 -->
+     <arg name="planning_horizen_" 		value="10.0" />
+ </include>
+  <!-- 加载仿真器 -->
+  <include file="$(find simulate_uav)/launch/uav_i_simulate.launch">
+
+    <arg name="uav_id_" value="$(arg uav_id)"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x_)"/>
+    <arg name="map_size_y" value="$(arg map_size_y_)"/>
+    <arg name="map_size_z" value="$(arg map_size_z_)"/>
+
+    <arg name="init_x_" value="$(arg init_x)"/>
+    <arg name="init_y_" value="$(arg init_y)"/>
+    <arg name="init_z_" value="$(arg init_z)"/>
+
+    <arg name="odometry_topic" value="$(arg odom_topic)" />
+  </include>
+
+</launch>

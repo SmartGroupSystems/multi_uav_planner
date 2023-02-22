@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libdepth_render_cuda.so -o /home/wenjing/ros/my_planner_rviz/devel/lib/libdepth_render_cuda.so CMakeFiles/depth_render_cuda.dir/src/depth_render_cuda_generated_depth_render.cu.o -Wl,-Bstatic -lcudart_static -Wl,-Bdynamic -lpthread -ldl -lrt 

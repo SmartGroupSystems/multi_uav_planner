@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/pose_utils/include/pose_utils.h
+iostream
+-
+armadillo
+/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/pose_utils/include/armadillo
+
+/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/pose_utils/src/pose_utils.cpp
+pose_utils.h
+/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/pose_utils/src/pose_utils.h
+

@@ -1,0 +1,32 @@
+  <launch>
+      <arg name="_map_size_x" value="42.0"/>
+    <arg name="_map_size_y" value="30.0"/>
+    <arg name="_map_size_z" value=" 5.0"/>
+   <arg name="odom_topic" value="global_odom" />
+
+  <!--使用mock_map生成随机地图-->
+  <node pkg="mockamap" type="mockamap_node" name="mockamap_node" output="screen">  
+      <remap from="/mock_map" to="/map_generator/global_cloud"/>
+      <param name="seed" type="int" value="127"/>
+      <param name="update_freq" type="double" value="1.0"/>
+
+      <!--  box edge length, unit meter-->
+      <param name="resolution" type="double" value="0.1"/>
+
+      <!-- map size unit meter-->
+      <param name="x_length" value="$(arg _map_size_x)"/>
+      <param name="y_length" value="$(arg _map_size_y)"/>
+      <param name="z_length" value="$(arg _map_size_z)"/>
+<!-- 
+    <param name="type" type="int" value="1"/>
+
+      <param name="complexity"    type="double" value="0.03"/>
+      <param name="fill"          type="double" value="0.05"/>
+      <param name="fractal"       type="int"    value="1"/>
+      <param name="attenuation"   type="double" value="0.1"/>  -->
+        <param name="type" type="int" value="2"/>
+       <param name="width_min"         type="double" value="0.6"/>
+      <param name="width_max"         type="double" value="1.0"/>
+     <param name="obstacle_number"   type="int"    value="150"/>
+  </node>
+  </launch>

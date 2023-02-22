@@ -1,0 +1,138 @@
+  <launch>
+      <arg name="_map_size_x" value="20.0"/>
+    <arg name="_map_size_y" value="20.0"/>
+    <arg name="_map_size_z" value=" 5.0"/>
+   <arg name="odom_topic" value="global_odom" />
+
+  <!--使用mock_map生成随机地图-->
+  <node pkg="mockamap" type="mockamap_node" name="mockamap_node" output="screen">  
+      <remap from="/mock_map" to="/map_generator/global_cloud"/>
+      <param name="seed" type="int" value="127"/>
+      <param name="update_freq" type="double" value="1.0"/>
+
+      <!--  box edge length, unit meter-->
+      <param name="resolution" type="double" value="0.1"/>
+
+      <!-- map size unit meter-->
+      <param name="x_length" value="$(arg _map_size_x)"/>
+      <param name="y_length" value="$(arg _map_size_y)"/>
+      <param name="z_length" value="$(arg _map_size_z)"/>
+<!-- 
+    <param name="type" type="int" value="1"/>
+
+      <param name="complexity"    type="double" value="0.03"/>
+      <param name="fill"          type="double" value="0.05"/>
+      <param name="fractal"       type="int"    value="1"/>
+      <param name="attenuation"   type="double" value="0.1"/>  -->
+        <param name="type" type="int" value="2"/>
+       <param name="width_min"         type="double" value="0.6"/>
+      <param name="width_max"         type="double" value="1.0"/>
+     <param name="obstacle_number"   type="int"    value="50"/>
+  </node>
+
+<!--加载仿真器-->
+   <include file="$(find simulate_uav)/launch/one_simulate.launch">
+        <arg name="uav_id" value="0"/>
+
+        <arg name="init_x" value="-10.0"/>
+        <arg name="init_y" value="-5.0"/>
+         <arg name="init_z" value="0.1"/>
+
+        <arg name="_target_x" value="6.0"/>
+        <arg name="_target_y" value="8.0"/>
+        <arg name="_target_z" value="0.1"/>
+
+        <arg name="map_size_x_" value="$(arg _map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg _map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg _map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+    </include>
+
+      <include file="$(find simulate_uav)/launch/one_simulate.launch">
+        <arg name="uav_id" value="1"/>
+
+        <arg name="init_x" value="-10.0"/>
+        <arg name="init_y" value="-2.0"/>
+         <arg name="init_z" value="0.1"/>
+
+        <arg name="_target_x" value="10.0"/>
+        <arg name="_target_y" value="2.0"/>
+        <arg name="_target_z" value="1"/>
+
+        <arg name="map_size_x_" value="$(arg _map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg _map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg _map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+    </include>
+
+
+     <include file="$(find simulate_uav)/launch/one_simulate.launch">
+        <arg name="uav_id" value="2"/>
+
+        <arg name="init_x" value="-10.0"/>
+        <arg name="init_y" value="5.0"/>
+         <arg name="init_z" value="0.1"/>
+
+        <arg name="_target_x" value="10.0"/>
+        <arg name="_target_y" value="-5.0"/>
+        <arg name="_target_z" value="1"/>
+
+        <arg name="map_size_x_" value="$(arg _map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg _map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg _map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+    </include>
+
+     <!-- <include file="$(find simulate_uav)/launch/one_simulate.launch">
+        <arg name="uav_id" value="3"/>
+
+        <arg name="init_x" value="-20.0"/>
+        <arg name="init_y" value="3.0"/>
+         <arg name="init_z" value="0.1"/>
+
+        <arg name="_target_x" value="10.0"/>
+        <arg name="_target_y" value="20.0"/>
+        <arg name="_target_z" value="1"/>
+
+        <arg name="map_size_x_" value="$(arg _map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg _map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg _map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+    </include> -->
+<!-- 
+      <include file="$(find simulate_uav)/launch/one_simulate.launch">
+        <arg name="uav_id" value="4"/>
+
+        <arg name="init_x" value="-20.0"/>
+        <arg name="init_y" value="7.0"/>
+         <arg name="init_z" value="0.1"/>
+
+        <arg name="_target_x" value="10.0"/>
+        <arg name="_target_y" value="-20.0"/>
+        <arg name="_target_z" value="1"/>
+
+        <arg name="map_size_x_" value="$(arg _map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg _map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg _map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+    </include> -->
+           <!-- <include file="$(find simulate_uav)/launch/one_simulate.launch">
+        <arg name="uav_id" value="2"/>
+
+        <arg name="init_x" value="-20.0"/>
+        <arg name="init_y" value="-7.0"/>
+        <arg name="init_z" value="0.1"/>
+
+        <arg name="target_x" value="20.0"/>
+        <arg name="target_y" value="9.0"/>
+        <arg name="target_z" value="1"/>
+
+        <arg name="map_size_x_" value="$(arg map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+    </include> -->
+
+  <include file="$(find simulate_uav)/launch/multi_rviz.launch"/>
+
+  </launch>
