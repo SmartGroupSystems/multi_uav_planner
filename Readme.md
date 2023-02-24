@@ -1,0 +1,5 @@
+##多机运行
+1.试验单架无人机运行multi_planner.sh
+2.运行多架无人机，运行simulate_uav里面的swarm_simulator.launch
+3.多机代码主要为multi开头的代码
+4.multi_mapping建图，multi_grid_path_searcher路径搜索，multi_bspline_opt为轨迹优化，simulate_uav为仿真运行相关

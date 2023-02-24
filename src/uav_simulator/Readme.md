@@ -1,0 +1,17 @@
+## 关于仿真器的解释
+
+### 相机相关的仿真
+位于local_sensing
+通过切换CmakeList里面的ENABLE CUDA来决定是cloud信息还是depth信息
+·相机的深度的图像来自文件pcl_render.cpp
+2）发布的消息：
+depth image
+color image
+camera_pose
+rendered_pcl
+可以通过launch文件重映射为别的话题名
+如果要使用pcl_render.cpp需要在CmakeList里把ENABLE CUDA设为TRUE
+需要接受global_cloud/local_cloud作为相机的输入（可以将mock_map的输出作为相机的输入）
+·相机点云信息可以通过pclcloud的cpp文件获得
+## 其它流程
+·在so3_control的control_bspline.cpp里接受B样条轨迹，并通过把位置、速度、加速度信息发布到/position_cmd, nodelet接受命令,将命令解算成力和orientation以及yaw等信息通过so3_coomand发送，发送给so3_quadroator。so3_quadroator将无人机位置、imu信息等发送给odom_visulization。odom_visulization可视化无人机

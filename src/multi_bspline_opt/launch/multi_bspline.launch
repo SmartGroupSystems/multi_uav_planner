@@ -1,0 +1,74 @@
+<launch>
+
+  <arg name="traj_order"  /><!-- 轨迹阶数 -->
+  <!--<arg name="control_points_number"	value="30" />-->
+  <arg name="dimension"  /><!-- 2维 -->
+  <arg name="TrajSampleRate" /><!-- 10, 20, 30 , ... ,-->
+<!--  <arg name="beta" 			value="2.0" />-->
+  <arg name="max_vel"  />
+  <arg name="max_acc" /><!-- 最大速度与加速度 -->
+
+  <arg name="goal_x"  />
+  <arg name="goal_y"  />
+  <arg name="lambda1"  />
+  <arg name="lambda2" />
+  <arg name="lambda3" />    <!-- 光滑 可行 避障权重 -->
+   <arg name="lambda4" />
+   <arg name="lambda5" />
+   <arg name="lambda6" />
+    <arg name="esdf_collision"/> <!-- 小于此值则认为轨迹有碰撞 -->
+  <arg name="frame"/>     <!-- 参考系 -->
+  <arg name="map_resolution" />
+  <arg name="start_x" />
+  <arg name="start_y" />   <!-- 地图起始点 -->
+  <arg name="safe_distance" /> <!-- 安全距离 -->
+  <arg name="swarm_clearance" /> 
+  <arg name="dist_p" />       <!-- 均匀b样条每段长度：0.5 -->
+   <arg name="uav_id_" />
+  <!-- <arg name ="planning_horizen_time"/> -->
+    <arg name ="planning_horizen_"/>
+  <node pkg="multi_bspline_opt" type="multi_flag_planner" name="uav$(arg uav_id_)_flag_planner" output="screen" required = "true">
+
+      <remap from="/ESDFmsgs"       to="/uav_$(arg uav_id_)_ESDFmsgs"/>
+      <remap from="/astar_node/grid_twist"             to="/uav_$(arg uav_id_)_astar_node/grid_twist"/> 
+      <remap from="/waypoint"            to="/uav_$(arg uav_id_)_waypoint"/> 
+     <remap from="/flag_detect"       to="/uav_$(arg uav_id_)/flag_detect"/>
+      <remap from="/bspline_traj"             to="/uav_$(arg uav_id_)_bspline_traj"/> 
+      <remap from="/back_time"            to="/uav_$(arg uav_id_)_back_time"/> 
+     <remap from="/traj_vis"             to="/uav_$(arg uav_id_)_traj_vis"/> 
+      <remap from="/traj_smooth"            to="/uav_$(arg uav_id_)_traj_smooth"/> 
+    <remap from="/esdfmap_slice"             to="/uav_$(arg uav_id_)_esdfmap_slice"/> 
+        <remap from="~others_odom"             to="/others_odom"/> 
+      <!-- <remap from="bspline_smooth"            to="/uav$(arga_star/target_arrived"/>  -->
+    <remap from="/col_check"            to="/uav_$(arg uav_id_)_col_check"/> 
+    <remap from="~odom"             to="/uav_$(arg uav_id_)_global_odom"/> 
+      <remap from="/astar_node/target_arrived"            to="/uav_$(arg uav_id_)_astar_node/target_arrived"/> 
+       <!-- <remap from="/broadcast_bspline_from_planner"            to="/broadcast_bspline_from_planner"/>  -->
+    <param name="planning/traj_order" value="$(arg traj_order)"/>
+   <!-- <param name="planning/control_points_number" value="$(arg control_points_number)" />-->
+    <param name="planning/dimension" value="$(arg dimension)" />
+    <param name="planning/TrajSampleRate" value="$(arg TrajSampleRate)" />
+    <!--<param name="planning/beta" value="$(arg beta)" />-->
+    <param name="planning/max_vel" value="$(arg max_vel)" />
+    <param name="planning/max_acc" value="$(arg max_acc)" />
+    <param name="planning/goal_x" value="$(arg goal_x)" />	
+    <param name="planning/goal_y" value="$(arg goal_y)" />
+    <param name="planning/lambda1" value="$(arg lambda1)" />
+    <param name="planning/lambda2" value="$(arg lambda2)" />
+    <param name="planning/lambda3" value="$(arg lambda3)" />
+     <param name="planning/lambda4" value="$(arg lambda4)" />
+      <param name="planning/lambda5" value="$(arg lambda5)" />
+       <param name="planning/lambda6" value="$(arg lambda6)" />
+    <param name="planning/frame" value="$(arg frame)" />
+    <param name="planning/map_resolution" value="$(arg map_resolution)" />
+    <param name="planning/start_x" value="$(arg start_x)" />
+    <param name="planning/start_y" value="$(arg start_y)" />
+    <param name="planning/safe_distance" value="$(arg safe_distance)" />
+    <param name="planning/swarm_clearance" value="$(arg swarm_clearance)" />
+    <param name="planning/esdf_collision" value="$(arg esdf_collision)" />
+    <param name="planning/dist_p" value="$(arg dist_p)" />
+	 <param name="planning/drone_id" value="$(arg uav_id_)" />
+    <param name="planning/planning_horizen_" value="$(arg planning_horizen_)" />
+  </node>
+
+</launch>

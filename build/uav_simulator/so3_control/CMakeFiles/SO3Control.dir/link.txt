@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -std=c++11 -O3 -Wall -g  -shared -Wl,-soname,libSO3Control.so -o /home/wenjing/ros/my_planner_rviz/devel/lib/libSO3Control.so CMakeFiles/SO3Control.dir/src/SO3Control.cpp.o  -L/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/cmake_utils/lib/mosek8 
