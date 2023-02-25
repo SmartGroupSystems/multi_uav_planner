@@ -12,8 +12,11 @@ float64 start_pos_x
 float64 start_pos_y
 float64 start_vel_x
 float64 start_vel_y
+<<<<<<< HEAD
 float64 start_acc_x
 float64 start_acc_y
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 float64 end_pos_x
 float64 end_pos_y
 # float64 yaw_rate

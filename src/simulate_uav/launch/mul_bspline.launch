@@ -28,6 +28,7 @@
   <arg name="dist_p" 			value="0.5" />       <!-- 均匀b样条每段长度：0.5 -->
      <arg name="planning_horizen_" 		value="10.0" />
  </include>
+<<<<<<< HEAD
   <include file="$(find multi_bspline_opt)/launch/multi_bspline.launch">
     <arg name="uav_id_" value="1"/>
   <arg name="traj_order" 		value="3" /><!-- 轨迹阶数 -->
@@ -56,4 +57,7 @@
   <arg name="dist_p" 			value="0.5" />       <!-- 均匀b样条每段长度：0.5 -->
      <arg name="planning_horizen_" 		value="10.0" />
  </include>
+=======
+
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 </launch>

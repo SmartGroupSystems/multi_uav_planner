@@ -28,17 +28,29 @@ The CXX compiler identification is GNU, found in "/home/wenjing/ros/my_planner_r
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_91d52"
 [1/2] Building C object CMakeFiles/cmTC_91d52.dir/testCCompiler.c.o
 [2/2] Linking C executable cmTC_91d52
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_39eb9"
+[1/2] Building C object CMakeFiles/cmTC_39eb9.dir/testCCompiler.c.o
+[2/2] Linking C executable cmTC_39eb9
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_a139c"
 [1/2] Building C object CMakeFiles/cmTC_a139c.dir/CMakeCCompilerABI.c.o
 [2/2] Linking C executable cmTC_a139c
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_2975f"
+[1/2] Building C object CMakeFiles/cmTC_2975f.dir/CMakeCCompilerABI.c.o
+[2/2] Linking C executable cmTC_2975f
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -50,18 +62,30 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/home/wenjing/TOOLS/cuda_10.1/lib64/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/home/wenjing/TOOLS/cuda_10.1/lib64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+<<<<<<< HEAD
 COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_a139c' '-mtune=generic' '-march=x86-64'
  /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNzwGC6.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a139c /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_a139c.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
 COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_a139c' '-mtune=generic' '-march=x86-64'
+=======
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_2975f' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccErnJ8F.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_2975f /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_2975f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_2975f' '-mtune=generic' '-march=x86-64'
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp]
   ignore line: []
+<<<<<<< HEAD
   ignore line: [Run Build Command:"/usr/bin/ninja" "cmTC_a139c"]
   ignore line: [[1/2] Building C object CMakeFiles/cmTC_a139c.dir/CMakeCCompilerABI.c.o]
   ignore line: [[2/2] Linking C executable cmTC_a139c]
+=======
+  ignore line: [Run Build Command:"/usr/bin/ninja" "cmTC_2975f"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_2975f.dir/CMakeCCompilerABI.c.o]
+  ignore line: [[2/2] Linking C executable cmTC_2975f]
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -73,13 +97,22 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/home/wenjing/TOOLS/cuda_10.1/lib64/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/home/wenjing/TOOLS/cuda_10.1/lib64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+<<<<<<< HEAD
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_a139c' '-mtune=generic' '-march=x86-64']
   link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNzwGC6.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a139c /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_a139c.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_2975f' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccErnJ8F.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_2975f /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_2975f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
+<<<<<<< HEAD
     arg [-plugin-opt=-fresolution=/tmp/ccNzwGC6.res] ==> ignore
+=======
+    arg [-plugin-opt=-fresolution=/tmp/ccErnJ8F.res] ==> ignore
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -98,7 +131,11 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
+<<<<<<< HEAD
     arg [cmTC_a139c] ==> ignore
+=======
+    arg [cmTC_2975f] ==> ignore
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -112,7 +149,11 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/home/wenjing/TOOLS/cuda_10.1/lib64] ==> dir [/home/wenjing/TOOLS/cuda_10.1/lib64]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
+<<<<<<< HEAD
     arg [CMakeFiles/cmTC_a139c.dir/CMakeCCompilerABI.c.o] ==> ignore
+=======
+    arg [CMakeFiles/cmTC_2975f.dir/CMakeCCompilerABI.c.o] ==> ignore
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -146,9 +187,15 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_6709d"
 [1/2] Building C object CMakeFiles/cmTC_6709d.dir/feature_tests.c.o
 [2/2] Linking C executable cmTC_6709d
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_eda05"
+[1/2] Building C object CMakeFiles/cmTC_eda05.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_eda05
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -160,9 +207,15 @@ Run Build Command:"/usr/bin/ninja" "cmTC_6709d"
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_515e4"
 [1/2] Building C object CMakeFiles/cmTC_515e4.dir/feature_tests.c.o
 [2/2] Linking C executable cmTC_515e4
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_e8f8a"
+[1/2] Building C object CMakeFiles/cmTC_e8f8a.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_e8f8a
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -174,9 +227,15 @@ Run Build Command:"/usr/bin/ninja" "cmTC_515e4"
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_70f6d"
 [1/2] Building C object CMakeFiles/cmTC_70f6d.dir/feature_tests.c.o
 [2/2] Linking C executable cmTC_70f6d
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_75c6f"
+[1/2] Building C object CMakeFiles/cmTC_75c6f.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_75c6f
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -186,17 +245,29 @@ Run Build Command:"/usr/bin/ninja" "cmTC_70f6d"
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_ce6e2"
 [1/2] Building CXX object CMakeFiles/cmTC_ce6e2.dir/testCXXCompiler.cxx.o
 [2/2] Linking CXX executable cmTC_ce6e2
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_8b671"
+[1/2] Building CXX object CMakeFiles/cmTC_8b671.dir/testCXXCompiler.cxx.o
+[2/2] Linking CXX executable cmTC_8b671
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_c5f4c"
 [1/2] Building CXX object CMakeFiles/cmTC_c5f4c.dir/CMakeCXXCompilerABI.cpp.o
 [2/2] Linking CXX executable cmTC_c5f4c
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_efc8a"
+[1/2] Building CXX object CMakeFiles/cmTC_efc8a.dir/CMakeCXXCompilerABI.cpp.o
+[2/2] Linking CXX executable cmTC_efc8a
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -208,18 +279,30 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/home/wenjing/TOOLS/cuda_10.1/lib64/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/home/wenjing/TOOLS/cuda_10.1/lib64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+<<<<<<< HEAD
 COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_c5f4c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
  /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cci9Vdw9.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c5f4c /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_c5f4c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
 COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_c5f4c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+=======
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_efc8a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3YsaiP.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_efc8a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_efc8a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_efc8a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp]
   ignore line: []
+<<<<<<< HEAD
   ignore line: [Run Build Command:"/usr/bin/ninja" "cmTC_c5f4c"]
   ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_c5f4c.dir/CMakeCXXCompilerABI.cpp.o]
   ignore line: [[2/2] Linking CXX executable cmTC_c5f4c]
+=======
+  ignore line: [Run Build Command:"/usr/bin/ninja" "cmTC_efc8a"]
+  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_efc8a.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [[2/2] Linking CXX executable cmTC_efc8a]
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -231,13 +314,22 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/home/wenjing/TOOLS/cuda_10.1/lib64/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/home/wenjing/TOOLS/cuda_10.1/lib64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+<<<<<<< HEAD
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_c5f4c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
   link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cci9Vdw9.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c5f4c /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_c5f4c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_efc8a' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3YsaiP.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_efc8a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/home/wenjing/TOOLS/cuda_10.1/lib64/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/home/wenjing/TOOLS/cuda_10.1/lib64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_efc8a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
+<<<<<<< HEAD
     arg [-plugin-opt=-fresolution=/tmp/cci9Vdw9.res] ==> ignore
+=======
+    arg [-plugin-opt=-fresolution=/tmp/cc3YsaiP.res] ==> ignore
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -256,7 +348,11 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
+<<<<<<< HEAD
     arg [cmTC_c5f4c] ==> ignore
+=======
+    arg [cmTC_efc8a] ==> ignore
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -270,7 +366,11 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/home/wenjing/TOOLS/cuda_10.1/lib64] ==> dir [/home/wenjing/TOOLS/cuda_10.1/lib64]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
+<<<<<<< HEAD
     arg [CMakeFiles/cmTC_c5f4c.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+=======
+    arg [CMakeFiles/cmTC_efc8a.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -300,9 +400,15 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_124ad"
 [1/2] Building CXX object CMakeFiles/cmTC_124ad.dir/feature_tests.cxx.o
 [2/2] Linking CXX executable cmTC_124ad
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_d8461"
+[1/2] Building CXX object CMakeFiles/cmTC_d8461.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_d8461
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -367,9 +473,15 @@ Run Build Command:"/usr/bin/ninja" "cmTC_124ad"
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_f466a"
 [1/2] Building CXX object CMakeFiles/cmTC_f466a.dir/feature_tests.cxx.o
 [2/2] Linking CXX executable cmTC_f466a
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_c2561"
+[1/2] Building CXX object CMakeFiles/cmTC_c2561.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_c2561
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -434,9 +546,15 @@ Run Build Command:"/usr/bin/ninja" "cmTC_f466a"
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_c16e2"
 [1/2] Building CXX object CMakeFiles/cmTC_c16e2.dir/feature_tests.cxx.o
 [2/2] Linking CXX executable cmTC_c16e2
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_bf6ee"
+[1/2] Building CXX object CMakeFiles/cmTC_bf6ee.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_bf6ee
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -501,9 +619,15 @@ Run Build Command:"/usr/bin/ninja" "cmTC_c16e2"
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_5564b"
 [1/2] Building CXX object CMakeFiles/cmTC_5564b.dir/feature_tests.cxx.o
 [2/2] Linking CXX executable cmTC_5564b
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_d686a"
+[1/2] Building CXX object CMakeFiles/cmTC_d686a.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_d686a
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -566,16 +690,28 @@ Run Build Command:"/usr/bin/ninja" "cmTC_5564b"
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_71e08"
 [1/2] Building C object CMakeFiles/cmTC_71e08.dir/CheckIncludeFile.c.o
 [2/2] Linking C executable cmTC_71e08
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_8bb19"
+[1/2] Building C object CMakeFiles/cmTC_8bb19.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_8bb19
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/ninja" "cmTC_50617"
 [1/2] Building C object CMakeFiles/cmTC_50617.dir/CheckFunctionExists.c.o
 [2/2] Linking C executable cmTC_50617
+=======
+Run Build Command:"/usr/bin/ninja" "cmTC_91f2e"
+[1/2] Building C object CMakeFiles/cmTC_91f2e.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_91f2e
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 

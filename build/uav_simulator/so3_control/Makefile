@@ -68,6 +68,31 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+<<<<<<< HEAD
+=======
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -101,6 +126,7 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+<<<<<<< HEAD
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -123,6 +149,8 @@ test/fast: test
 
 .PHONY : test/fast
 
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -168,6 +196,24 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+<<<<<<< HEAD
+=======
+uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/rule:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f CMakeFiles/Makefile2 uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/rule
+.PHONY : uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/rule
+
+# Convenience name for target.
+multi_control_bspline_global: uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/rule
+
+.PHONY : multi_control_bspline_global
+
+# fast build rule for target.
+multi_control_bspline_global/fast:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build.make uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build
+.PHONY : multi_control_bspline_global/fast
+
+# Convenience name for target.
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f CMakeFiles/Makefile2 uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
 .PHONY : uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
@@ -350,6 +396,36 @@ src/multi_control_bspline.cpp.s:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/build.make uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.s
 .PHONY : src/multi_control_bspline.cpp.s
 
+<<<<<<< HEAD
+=======
+src/multi_global.o: src/multi_global.cpp.o
+
+.PHONY : src/multi_global.o
+
+# target to build an object file
+src/multi_global.cpp.o:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build.make uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/src/multi_global.cpp.o
+.PHONY : src/multi_global.cpp.o
+
+src/multi_global.i: src/multi_global.cpp.i
+
+.PHONY : src/multi_global.i
+
+# target to preprocess a source file
+src/multi_global.cpp.i:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build.make uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/src/multi_global.cpp.i
+.PHONY : src/multi_global.cpp.i
+
+src/multi_global.s: src/multi_global.cpp.s
+
+.PHONY : src/multi_global.s
+
+# target to generate assembly for a file
+src/multi_global.cpp.s:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build.make uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/src/multi_global.cpp.s
+.PHONY : src/multi_global.cpp.s
+
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 src/so3_control_nodelet.o: src/so3_control_nodelet.cpp.o
 
 .PHONY : src/so3_control_nodelet.o
@@ -384,11 +460,20 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/local"
+<<<<<<< HEAD
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+=======
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... install"
+	@echo "... list_install_components"
+	@echo "... rebuild_cache"
+	@echo "... multi_control_bspline_global"
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 	@echo "... control_bspline"
 	@echo "... multi_control_bspline"
 	@echo "... control_example"
@@ -407,6 +492,12 @@ help:
 	@echo "... src/multi_control_bspline.o"
 	@echo "... src/multi_control_bspline.i"
 	@echo "... src/multi_control_bspline.s"
+<<<<<<< HEAD
+=======
+	@echo "... src/multi_global.o"
+	@echo "... src/multi_global.i"
+	@echo "... src/multi_global.s"
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 	@echo "... src/so3_control_nodelet.o"
 	@echo "... src/so3_control_nodelet.i"
 	@echo "... src/so3_control_nodelet.s"

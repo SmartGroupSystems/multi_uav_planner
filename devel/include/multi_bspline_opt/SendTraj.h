@@ -34,8 +34,11 @@ struct SendTraj_
     , start_pos_y(0.0)
     , start_vel_x(0.0)
     , start_vel_y(0.0)
+<<<<<<< HEAD
     , start_acc_x(0.0)
     , start_acc_y(0.0)
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     , end_pos_x(0.0)
     , end_pos_y(0.0)
     , control_pts()
@@ -51,8 +54,11 @@ struct SendTraj_
     , start_pos_y(0.0)
     , start_vel_x(0.0)
     , start_vel_y(0.0)
+<<<<<<< HEAD
     , start_acc_x(0.0)
     , start_acc_y(0.0)
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     , end_pos_x(0.0)
     , end_pos_y(0.0)
     , control_pts(_alloc)
@@ -89,12 +95,15 @@ struct SendTraj_
    typedef double _start_vel_y_type;
   _start_vel_y_type start_vel_y;
 
+<<<<<<< HEAD
    typedef double _start_acc_x_type;
   _start_acc_x_type start_acc_x;
 
    typedef double _start_acc_y_type;
   _start_acc_y_type start_acc_y;
 
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
    typedef double _end_pos_x_type;
   _end_pos_x_type end_pos_x;
 
@@ -145,8 +154,11 @@ bool operator==(const ::multi_bspline_opt::SendTraj_<ContainerAllocator1> & lhs,
     lhs.start_pos_y == rhs.start_pos_y &&
     lhs.start_vel_x == rhs.start_vel_x &&
     lhs.start_vel_y == rhs.start_vel_y &&
+<<<<<<< HEAD
     lhs.start_acc_x == rhs.start_acc_x &&
     lhs.start_acc_y == rhs.start_acc_y &&
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     lhs.end_pos_x == rhs.end_pos_x &&
     lhs.end_pos_y == rhs.end_pos_y &&
     lhs.control_pts == rhs.control_pts &&
@@ -207,12 +219,21 @@ struct MD5Sum< ::multi_bspline_opt::SendTraj_<ContainerAllocator> >
 {
   static const char* value()
   {
+<<<<<<< HEAD
     return "1db39cd31304eba253abaf4c9988cb49";
   }
 
   static const char* value(const ::multi_bspline_opt::SendTraj_<ContainerAllocator>&) { return value(); }
   static const uint64_t static_value1 = 0x1db39cd31304eba2ULL;
   static const uint64_t static_value2 = 0x53abaf4c9988cb49ULL;
+=======
+    return "cdb4d98dc8568f5ace0ee75482493f76";
+  }
+
+  static const char* value(const ::multi_bspline_opt::SendTraj_<ContainerAllocator>&) { return value(); }
+  static const uint64_t static_value1 = 0xcdb4d98dc8568f5aULL;
+  static const uint64_t static_value2 = 0xce0ee75482493f76ULL;
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 };
 
 template<class ContainerAllocator>
@@ -245,8 +266,11 @@ struct Definition< ::multi_bspline_opt::SendTraj_<ContainerAllocator> >
 "float64 start_pos_y\n"
 "float64 start_vel_x\n"
 "float64 start_vel_y\n"
+<<<<<<< HEAD
 "float64 start_acc_x\n"
 "float64 start_acc_y\n"
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 "float64 end_pos_x\n"
 "float64 end_pos_y\n"
 "# float64 yaw_rate\n"
@@ -286,8 +310,11 @@ namespace serialization
       stream.next(m.start_pos_y);
       stream.next(m.start_vel_x);
       stream.next(m.start_vel_y);
+<<<<<<< HEAD
       stream.next(m.start_acc_x);
       stream.next(m.start_acc_y);
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       stream.next(m.end_pos_x);
       stream.next(m.end_pos_y);
       stream.next(m.control_pts);
@@ -328,10 +355,13 @@ struct Printer< ::multi_bspline_opt::SendTraj_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.start_vel_x);
     s << indent << "start_vel_y: ";
     Printer<double>::stream(s, indent + "  ", v.start_vel_y);
+<<<<<<< HEAD
     s << indent << "start_acc_x: ";
     Printer<double>::stream(s, indent + "  ", v.start_acc_x);
     s << indent << "start_acc_y: ";
     Printer<double>::stream(s, indent + "  ", v.start_acc_y);
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     s << indent << "end_pos_x: ";
     Printer<double>::stream(s, indent + "  ", v.end_pos_x);
     s << indent << "end_pos_y: ";

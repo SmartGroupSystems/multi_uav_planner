@@ -21,6 +21,7 @@ ros/builtin_message_traits.h
 -
 ros/message_operations.h
 -
+<<<<<<< HEAD
 std_msgs/Header.h
 -
 geometry_msgs/PoseStamped.h
@@ -28,6 +29,13 @@ geometry_msgs/PoseStamped.h
 geometry_msgs/PoseStamped.h
 -
 geometry_msgs/PoseStamped.h
+=======
+geometry_msgs/Point.h
+-
+geometry_msgs/Point.h
+-
+geometry_msgs/Point.h
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 -
 
 /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/MultiBsplines.h
@@ -129,6 +137,11 @@ std_msgs/Int64.h
 -
 std_msgs/Float64.h
 -
+<<<<<<< HEAD
+=======
+multi_bspline_opt/obj_predict.h
+-
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 message_filters/subscriber.h
 -
 message_filters/synchronizer.h
@@ -141,14 +154,40 @@ boost/thread/thread.hpp
 -
 multi_bspline_opt/BsplineTraj.h
 -
+<<<<<<< HEAD
 multi_bspline_opt/EdtTransform.hpp
 -
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 multi_bspline_opt/MultiBsplines.h
 -
 multi_bspline_opt/SendTraj.h
 -
+<<<<<<< HEAD
 
 /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp
+=======
+multi_bspline_opt/EdtTransform.hpp
+-
+
+/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include/multi_bspline_opt/obj_predict.h
+Eigen/Eigen
+-
+algorithm
+-
+geometry_msgs/PoseStamped.h
+-
+iostream
+-
+list
+-
+ros/ros.h
+-
+visualization_msgs/Marker.h
+-
+
+/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/main.cpp
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 ros/ros.h
 -
 multi_bspline_opt/bspline_opt.h
@@ -1736,3 +1775,78 @@ time.h
 stddef.h
 -
 
+<<<<<<< HEAD
+=======
+/usr/include/x86_64-linux-gnu/bits/select.h
+bits/wordsize.h
+-
+
+/usr/include/x86_64-linux-gnu/bits/select2.h
+
+/usr/include/x86_64-linux-gnu/bits/types.h
+features.h
+-
+bits/wordsize.h
+-
+bits/typesizes.h
+-
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h
+bits/types/__sigset_t.h
+-
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h
+bits/types.h
+-
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h
+bits/types.h
+-
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h
+bits/types.h
+-
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h
+
+/usr/include/x86_64-linux-gnu/sys/select.h
+features.h
+-
+bits/types.h
+-
+bits/select.h
+-
+bits/types/sigset_t.h
+-
+bits/types/time_t.h
+-
+bits/types/struct_timeval.h
+-
+bits/types/struct_timespec.h
+-
+bits/select2.h
+-
+
+/usr/include/x86_64-linux-gnu/sys/time.h
+features.h
+-
+bits/types.h
+-
+bits/types/time_t.h
+-
+bits/types/struct_timeval.h
+-
+sys/select.h
+-
+
+/usr/include/x86_64-linux-gnu/sys/timeb.h
+features.h
+-
+bits/types/time_t.h
+-
+
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd

@@ -674,12 +674,19 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "dynamic_env_generator/CMakeFiles/CMakeDirectoryInformation.cmake"
   "uav_simulator/map_generator/CMakeFiles/CMakeDirectoryInformation.cmake"
   "mapping/CMakeFiles/CMakeDirectoryInformation.cmake"
+<<<<<<< HEAD
   "multi_bspline_opt/CMakeFiles/CMakeDirectoryInformation.cmake"
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   "multi_mapping/CMakeFiles/CMakeDirectoryInformation.cmake"
   "multi_model_state/CMakeFiles/CMakeDirectoryInformation.cmake"
   "uav_simulator/fake_drone/CMakeFiles/CMakeDirectoryInformation.cmake"
   "uav_simulator/Utils/pose_utils/CMakeFiles/CMakeDirectoryInformation.cmake"
   "simulate_uav/CMakeFiles/CMakeDirectoryInformation.cmake"
+<<<<<<< HEAD
+=======
+  "multi_bspline_opt/CMakeFiles/CMakeDirectoryInformation.cmake"
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   "grid_path_searcher/CMakeFiles/CMakeDirectoryInformation.cmake"
   "multi_grid_path_searcher/CMakeFiles/CMakeDirectoryInformation.cmake"
   "uav_simulator/Utils/odom_visualization/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -794,6 +801,18 @@ set(CMAKE_DEPEND_INFO_FILES
   "uav_simulator/map_generator/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "uav_simulator/map_generator/CMakeFiles/sensor_msgs_generate_messages_py.dir/DependInfo.cmake"
   "mapping/CMakeFiles/mapping.dir/DependInfo.cmake"
+<<<<<<< HEAD
+=======
+  "multi_mapping/CMakeFiles/multi_mapping.dir/DependInfo.cmake"
+  "multi_model_state/CMakeFiles/std_srvs_generate_messages_py.dir/DependInfo.cmake"
+  "multi_model_state/CMakeFiles/std_srvs_generate_messages_nodejs.dir/DependInfo.cmake"
+  "multi_model_state/CMakeFiles/std_srvs_generate_messages_lisp.dir/DependInfo.cmake"
+  "multi_model_state/CMakeFiles/std_srvs_generate_messages_eus.dir/DependInfo.cmake"
+  "multi_model_state/CMakeFiles/multi_model_state.dir/DependInfo.cmake"
+  "multi_model_state/CMakeFiles/std_srvs_generate_messages_cpp.dir/DependInfo.cmake"
+  "uav_simulator/fake_drone/CMakeFiles/poscmd_2_odom.dir/DependInfo.cmake"
+  "uav_simulator/Utils/pose_utils/CMakeFiles/pose_utils.dir/DependInfo.cmake"
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   "multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/DependInfo.cmake"
   "multi_bspline_opt/CMakeFiles/multi_bspline_opt_genpy.dir/DependInfo.cmake"
   "multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages.dir/DependInfo.cmake"
@@ -810,6 +829,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_py.dir/DependInfo.cmake"
   "multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_eus.dir/DependInfo.cmake"
   "multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_nodejs.dir/DependInfo.cmake"
+<<<<<<< HEAD
   "multi_mapping/CMakeFiles/multi_mapping.dir/DependInfo.cmake"
   "multi_model_state/CMakeFiles/std_srvs_generate_messages_py.dir/DependInfo.cmake"
   "multi_model_state/CMakeFiles/std_srvs_generate_messages_nodejs.dir/DependInfo.cmake"
@@ -819,6 +839,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "multi_model_state/CMakeFiles/std_srvs_generate_messages_cpp.dir/DependInfo.cmake"
   "uav_simulator/fake_drone/CMakeFiles/poscmd_2_odom.dir/DependInfo.cmake"
   "uav_simulator/Utils/pose_utils/CMakeFiles/pose_utils.dir/DependInfo.cmake"
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   "grid_path_searcher/CMakeFiles/test.dir/DependInfo.cmake"
   "grid_path_searcher/CMakeFiles/tf2_msgs_generate_messages_py.dir/DependInfo.cmake"
   "grid_path_searcher/CMakeFiles/astar_node.dir/DependInfo.cmake"
@@ -865,6 +887,10 @@ set(CMAKE_DEPEND_INFO_FILES
   "uav_simulator/local_sensing/CMakeFiles/local_sensing_node_gencfg.dir/DependInfo.cmake"
   "uav_simulator/local_sensing/CMakeFiles/pcl_render_node.dir/DependInfo.cmake"
   "uav_simulator/mockamap/CMakeFiles/mockamap_node.dir/DependInfo.cmake"
+<<<<<<< HEAD
+=======
+  "uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/DependInfo.cmake"
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   "uav_simulator/so3_control/CMakeFiles/control_bspline.dir/DependInfo.cmake"
   "uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/DependInfo.cmake"
   "uav_simulator/so3_control/CMakeFiles/control_example.dir/DependInfo.cmake"

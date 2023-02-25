@@ -1,6 +1,7 @@
 {
   "configurations": [
     {
+<<<<<<< HEAD
       "browse": {
         "databaseFilename": "${default}",
         "limitSymbolsToIncludedHeaders": false
@@ -26,6 +27,19 @@
       "compilerPath": "/usr/bin/gcc",
       "cStandard": "gnu11",
       "cppStandard": "c++14"
+=======
+      "name": "linux-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": [
+        ""
+      ]
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     }
   ],
   "version": 4

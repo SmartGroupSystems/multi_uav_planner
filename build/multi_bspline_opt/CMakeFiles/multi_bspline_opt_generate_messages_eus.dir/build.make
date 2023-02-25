@@ -61,11 +61,15 @@ multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_eus: /home/wenj
 
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/lib/geneus/gen_eus.py
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg
+<<<<<<< HEAD
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/share/geometry_msgs/msg/Pose.msg
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/share/geometry_msgs/msg/Quaternion.msg
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/share/geometry_msgs/msg/PoseStamped.msg
 /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+=======
+/home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg/BsplineTraj.l: /opt/ros/melodic/share/geometry_msgs/msg/Point.msg
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/wenjing/ros/my_planner_rviz/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from multi_bspline_opt/BsplineTraj.msg"
 	cd /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg -Imulti_bspline_opt:/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p multi_bspline_opt -o /home/wenjing/ros/my_planner_rviz/devel/share/roseus/ros/multi_bspline_opt/msg
 

@@ -17,6 +17,7 @@
       <arg name="init_x_" value="-20.0"/>
       <arg name="init_y_" value="-9.0"/>
  </include>
+<<<<<<< HEAD
   <include file="$(find multi_grid_path_searcher)/launch/path_search.launch">
     <arg name="uav_id_" value="1"/>
     <arg name="target_x_" value="10.0"/>
@@ -30,4 +31,6 @@
       <arg name="init_x_" value="-20.0"/>
       <arg name="init_y_" value="-7.0"/>
  </include>
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
  </launch>

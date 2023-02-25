@@ -72,7 +72,11 @@
    self)
   )
 
+<<<<<<< HEAD
 (setf (get multi_bspline_opt::MultiBsplines :md5sum-) "cdca54030719384ffd1c921d966beb6e")
+=======
+(setf (get multi_bspline_opt::MultiBsplines :md5sum-) "0a9ce0a6a663879c244f8d58ac09d0d8")
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 (setf (get multi_bspline_opt::MultiBsplines :datatype-) "multi_bspline_opt/MultiBsplines")
 (setf (get multi_bspline_opt::MultiBsplines :definition-)
       "int32 drone_id_from
@@ -94,8 +98,11 @@ float64 start_pos_x
 float64 start_pos_y
 float64 start_vel_x
 float64 start_vel_y
+<<<<<<< HEAD
 float64 start_acc_x
 float64 start_acc_y
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 float64 end_pos_x
 float64 end_pos_y
 # float64 yaw_rate
@@ -113,6 +120,10 @@ float64 z
 
 
 
+<<<<<<< HEAD
 (provide :multi_bspline_opt/MultiBsplines "cdca54030719384ffd1c921d966beb6e")
+=======
+(provide :multi_bspline_opt/MultiBsplines "0a9ce0a6a663879c244f8d58ac09d0d8")
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 

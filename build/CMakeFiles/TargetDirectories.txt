@@ -166,6 +166,7 @@
 /home/wenjing/ros/my_planner_rviz/build/mapping/CMakeFiles/edit_cache.dir
 /home/wenjing/ros/my_planner_rviz/build/mapping/CMakeFiles/test.dir
 /home/wenjing/ros/my_planner_rviz/build/mapping/CMakeFiles/mapping.dir
+<<<<<<< HEAD
 /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/install.dir
 /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir
 /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_genpy.dir
@@ -189,6 +190,8 @@
 /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/edit_cache.dir
 /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_eus.dir
 /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_nodejs.dir
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 /home/wenjing/ros/my_planner_rviz/build/multi_mapping/CMakeFiles/install/strip.dir
 /home/wenjing/ros/my_planner_rviz/build/multi_mapping/CMakeFiles/install/local.dir
 /home/wenjing/ros/my_planner_rviz/build/multi_mapping/CMakeFiles/install.dir
@@ -233,6 +236,32 @@
 /home/wenjing/ros/my_planner_rviz/build/simulate_uav/CMakeFiles/rebuild_cache.dir
 /home/wenjing/ros/my_planner_rviz/build/simulate_uav/CMakeFiles/edit_cache.dir
 /home/wenjing/ros/my_planner_rviz/build/simulate_uav/CMakeFiles/test.dir
+<<<<<<< HEAD
+=======
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/install.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_genpy.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/list_install_components.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_genlisp.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_flag_planner.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_BsplineTraj.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/test.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_SendTraj.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/install/local.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_MultiBsplines.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_cpp.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_gencpp.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_geneus.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/install/strip.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_lisp.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_gennodejs.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_py.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/rebuild_cache.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/edit_cache.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_eus.dir
+/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_nodejs.dir
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 /home/wenjing/ros/my_planner_rviz/build/grid_path_searcher/CMakeFiles/install/strip.dir
 /home/wenjing/ros/my_planner_rviz/build/grid_path_searcher/CMakeFiles/install/local.dir
 /home/wenjing/ros/my_planner_rviz/build/grid_path_searcher/CMakeFiles/install.dir
@@ -314,11 +343,20 @@
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/mockamap/CMakeFiles/test.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/mockamap/CMakeFiles/mockamap_node.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/install/local.dir
+<<<<<<< HEAD
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/install.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/list_install_components.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/rebuild_cache.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/edit_cache.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/test.dir
+=======
+/home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/edit_cache.dir
+/home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/test.dir
+/home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/install.dir
+/home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/list_install_components.dir
+/home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/rebuild_cache.dir
+/home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/control_bspline.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir
 /home/wenjing/ros/my_planner_rviz/build/uav_simulator/so3_control/CMakeFiles/control_example.dir

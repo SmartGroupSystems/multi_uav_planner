@@ -6,6 +6,7 @@ python3 = True if sys.hexversion > 0x03000000 else False
 import genpy
 import struct
 
+<<<<<<< HEAD
 import geometry_msgs.msg
 import std_msgs.msg
 
@@ -50,6 +51,30 @@ MSG: geometry_msgs/Pose
 # A representation of pose in free space, composed of position and orientation. 
 Point position
 Quaternion orientation
+=======
+import genpy
+import geometry_msgs.msg
+
+class BsplineTraj(genpy.Message):
+  _md5sum = "c277c0fe692a3c44cb39de5d41a0fe4c"
+  _type = "multi_bspline_opt/BsplineTraj"
+  _has_header = False  # flag to mark the presence of a Header object
+  _full_text = """# std_msgs/Header header
+
+int32 drone_id
+int64 traj_id
+time start_time
+float64 duration
+
+float64 yaw
+float64 yaw_rate
+
+geometry_msgs/Point[] position
+geometry_msgs/Point[] velocity
+geometry_msgs/Point[] acceleration
+
+uint32 current_seq
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 ================================================================================
 MSG: geometry_msgs/Point
@@ -57,6 +82,7 @@ MSG: geometry_msgs/Point
 float64 x
 float64 y
 float64 z
+<<<<<<< HEAD
 
 ================================================================================
 MSG: geometry_msgs/Quaternion
@@ -69,6 +95,11 @@ float64 w
 """
   __slots__ = ['header','position','velocity','acceleration','yaw','yaw_rate','current_seq']
   _slot_types = ['std_msgs/Header','geometry_msgs/PoseStamped[]','geometry_msgs/PoseStamped[]','geometry_msgs/PoseStamped[]','float32','float32','uint32']
+=======
+"""
+  __slots__ = ['drone_id','traj_id','start_time','duration','yaw','yaw_rate','position','velocity','acceleration','current_seq']
+  _slot_types = ['int32','int64','time','float64','float64','float64','geometry_msgs/Point[]','geometry_msgs/Point[]','geometry_msgs/Point[]','uint32']
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
   def __init__(self, *args, **kwds):
     """
@@ -78,7 +109,11 @@ float64 w
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
+<<<<<<< HEAD
        header,position,velocity,acceleration,yaw,yaw_rate,current_seq
+=======
+       drone_id,traj_id,start_time,duration,yaw,yaw_rate,position,velocity,acceleration,current_seq
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -87,14 +122,30 @@ float64 w
     if args or kwds:
       super(BsplineTraj, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
+<<<<<<< HEAD
       if self.header is None:
         self.header = std_msgs.msg.Header()
+=======
+      if self.drone_id is None:
+        self.drone_id = 0
+      if self.traj_id is None:
+        self.traj_id = 0
+      if self.start_time is None:
+        self.start_time = genpy.Time()
+      if self.duration is None:
+        self.duration = 0.
+      if self.yaw is None:
+        self.yaw = 0.
+      if self.yaw_rate is None:
+        self.yaw_rate = 0.
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       if self.position is None:
         self.position = []
       if self.velocity is None:
         self.velocity = []
       if self.acceleration is None:
         self.acceleration = []
+<<<<<<< HEAD
       if self.yaw is None:
         self.yaw = 0.
       if self.yaw_rate is None:
@@ -108,6 +159,20 @@ float64 w
       self.acceleration = []
       self.yaw = 0.
       self.yaw_rate = 0.
+=======
+      if self.current_seq is None:
+        self.current_seq = 0
+    else:
+      self.drone_id = 0
+      self.traj_id = 0
+      self.start_time = genpy.Time()
+      self.duration = 0.
+      self.yaw = 0.
+      self.yaw_rate = 0.
+      self.position = []
+      self.velocity = []
+      self.acceleration = []
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       self.current_seq = 0
 
   def _get_types(self):
@@ -123,6 +188,7 @@ float64 w
     """
     try:
       _x = self
+<<<<<<< HEAD
       buff.write(_get_struct_3I().pack(_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs))
       _x = self.header.frame_id
       length = len(_x)
@@ -198,6 +264,26 @@ float64 w
         buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
       _x = self
       buff.write(_get_struct_2fI().pack(_x.yaw, _x.yaw_rate, _x.current_seq))
+=======
+      buff.write(_get_struct_iq2I3d().pack(_x.drone_id, _x.traj_id, _x.start_time.secs, _x.start_time.nsecs, _x.duration, _x.yaw, _x.yaw_rate))
+      length = len(self.position)
+      buff.write(_struct_I.pack(length))
+      for val1 in self.position:
+        _x = val1
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+      length = len(self.velocity)
+      buff.write(_struct_I.pack(length))
+      for val1 in self.velocity:
+        _x = val1
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+      length = len(self.acceleration)
+      buff.write(_struct_I.pack(length))
+      for val1 in self.acceleration:
+        _x = val1
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+      _x = self.current_seq
+      buff.write(_get_struct_I().pack(_x))
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -209,8 +295,13 @@ float64 w
     if python3:
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
+<<<<<<< HEAD
       if self.header is None:
         self.header = std_msgs.msg.Header()
+=======
+      if self.start_time is None:
+        self.start_time = genpy.Time()
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       if self.position is None:
         self.position = None
       if self.velocity is None:
@@ -220,6 +311,7 @@ float64 w
       end = 0
       _x = self
       start = end
+<<<<<<< HEAD
       end += 12
       (_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
       start = end
@@ -231,11 +323,16 @@ float64 w
         self.header.frame_id = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.header.frame_id = str[start:end]
+=======
+      end += 44
+      (_x.drone_id, _x.traj_id, _x.start_time.secs, _x.start_time.nsecs, _x.duration, _x.yaw, _x.yaw_rate,) = _get_struct_iq2I3d().unpack(str[start:end])
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       self.position = []
       for i in range(0, length):
+<<<<<<< HEAD
         val1 = geometry_msgs.msg.PoseStamped()
         _v16 = val1.header
         start = end
@@ -266,12 +363,20 @@ float64 w
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+=======
+        val1 = geometry_msgs.msg.Point()
+        _x = val1
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         self.position.append(val1)
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       self.velocity = []
       for i in range(0, length):
+<<<<<<< HEAD
         val1 = geometry_msgs.msg.PoseStamped()
         _v21 = val1.header
         start = end
@@ -302,12 +407,20 @@ float64 w
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+=======
+        val1 = geometry_msgs.msg.Point()
+        _x = val1
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         self.velocity.append(val1)
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       self.acceleration = []
       for i in range(0, length):
+<<<<<<< HEAD
         val1 = geometry_msgs.msg.PoseStamped()
         _v26 = val1.header
         start = end
@@ -343,6 +456,18 @@ float64 w
       start = end
       end += 12
       (_x.yaw, _x.yaw_rate, _x.current_seq,) = _get_struct_2fI().unpack(str[start:end])
+=======
+        val1 = geometry_msgs.msg.Point()
+        _x = val1
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        self.acceleration.append(val1)
+      start = end
+      end += 4
+      (self.current_seq,) = _get_struct_I().unpack(str[start:end])
+      self.start_time.canon()
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -356,6 +481,7 @@ float64 w
     """
     try:
       _x = self
+<<<<<<< HEAD
       buff.write(_get_struct_3I().pack(_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs))
       _x = self.header.frame_id
       length = len(_x)
@@ -431,6 +557,26 @@ float64 w
         buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
       _x = self
       buff.write(_get_struct_2fI().pack(_x.yaw, _x.yaw_rate, _x.current_seq))
+=======
+      buff.write(_get_struct_iq2I3d().pack(_x.drone_id, _x.traj_id, _x.start_time.secs, _x.start_time.nsecs, _x.duration, _x.yaw, _x.yaw_rate))
+      length = len(self.position)
+      buff.write(_struct_I.pack(length))
+      for val1 in self.position:
+        _x = val1
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+      length = len(self.velocity)
+      buff.write(_struct_I.pack(length))
+      for val1 in self.velocity:
+        _x = val1
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+      length = len(self.acceleration)
+      buff.write(_struct_I.pack(length))
+      for val1 in self.acceleration:
+        _x = val1
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+      _x = self.current_seq
+      buff.write(_get_struct_I().pack(_x))
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -443,8 +589,13 @@ float64 w
     if python3:
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
+<<<<<<< HEAD
       if self.header is None:
         self.header = std_msgs.msg.Header()
+=======
+      if self.start_time is None:
+        self.start_time = genpy.Time()
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       if self.position is None:
         self.position = None
       if self.velocity is None:
@@ -454,6 +605,7 @@ float64 w
       end = 0
       _x = self
       start = end
+<<<<<<< HEAD
       end += 12
       (_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
       start = end
@@ -465,11 +617,16 @@ float64 w
         self.header.frame_id = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.header.frame_id = str[start:end]
+=======
+      end += 44
+      (_x.drone_id, _x.traj_id, _x.start_time.secs, _x.start_time.nsecs, _x.duration, _x.yaw, _x.yaw_rate,) = _get_struct_iq2I3d().unpack(str[start:end])
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       self.position = []
       for i in range(0, length):
+<<<<<<< HEAD
         val1 = geometry_msgs.msg.PoseStamped()
         _v46 = val1.header
         start = end
@@ -500,12 +657,20 @@ float64 w
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+=======
+        val1 = geometry_msgs.msg.Point()
+        _x = val1
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         self.position.append(val1)
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       self.velocity = []
       for i in range(0, length):
+<<<<<<< HEAD
         val1 = geometry_msgs.msg.PoseStamped()
         _v51 = val1.header
         start = end
@@ -536,12 +701,20 @@ float64 w
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+=======
+        val1 = geometry_msgs.msg.Point()
+        _x = val1
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         self.velocity.append(val1)
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       self.acceleration = []
       for i in range(0, length):
+<<<<<<< HEAD
         val1 = geometry_msgs.msg.PoseStamped()
         _v56 = val1.header
         start = end
@@ -577,6 +750,18 @@ float64 w
       start = end
       end += 12
       (_x.yaw, _x.yaw_rate, _x.current_seq,) = _get_struct_2fI().unpack(str[start:end])
+=======
+        val1 = geometry_msgs.msg.Point()
+        _x = val1
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        self.acceleration.append(val1)
+      start = end
+      end += 4
+      (self.current_seq,) = _get_struct_I().unpack(str[start:end])
+      self.start_time.canon()
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -585,6 +770,7 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+<<<<<<< HEAD
 _struct_2I = None
 def _get_struct_2I():
     global _struct_2I
@@ -603,15 +789,26 @@ def _get_struct_3I():
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 _struct_3d = None
 def _get_struct_3d():
     global _struct_3d
     if _struct_3d is None:
         _struct_3d = struct.Struct("<3d")
     return _struct_3d
+<<<<<<< HEAD
 _struct_4d = None
 def _get_struct_4d():
     global _struct_4d
     if _struct_4d is None:
         _struct_4d = struct.Struct("<4d")
     return _struct_4d
+=======
+_struct_iq2I3d = None
+def _get_struct_iq2I3d():
+    global _struct_iq2I3d
+    if _struct_iq2I3d is None:
+        _struct_iq2I3d = struct.Struct("<iq2I3d")
+    return _struct_iq2I3d
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd

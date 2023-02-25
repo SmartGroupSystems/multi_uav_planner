@@ -82,7 +82,11 @@ class MultiBsplines {
 
   static md5sum() {
     //Returns md5sum for a message object
+<<<<<<< HEAD
     return 'cdca54030719384ffd1c921d966beb6e';
+=======
+    return '0a9ce0a6a663879c244f8d58ac09d0d8';
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   }
 
   static messageDefinition() {
@@ -107,8 +111,11 @@ class MultiBsplines {
     float64 start_pos_y
     float64 start_vel_x
     float64 start_vel_y
+<<<<<<< HEAD
     float64 start_acc_x
     float64 start_acc_y
+=======
+>>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     float64 end_pos_x
     float64 end_pos_y
     # float64 yaw_rate
