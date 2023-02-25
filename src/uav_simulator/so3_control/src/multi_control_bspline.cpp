@@ -5,11 +5,8 @@
 #include <mavros_msgs/PositionTarget.h>
 #include <nav_msgs/Path.h>
 #include <multi_bspline_opt/BsplineTraj.h>
-<<<<<<< HEAD
-=======
 #include <multi_bspline_opt/SendTraj.h>
 #include <multi_bspline_opt/MultiBsplines.h>
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 #include <ros/ros.h>
 using namespace std;
 // bspline
@@ -17,11 +14,7 @@ bool first_bs = true;
 #define PI acos(-1)
 #define INF 999.9
 bool arrived = false;
-<<<<<<< HEAD
-#define T_RATE 40.0
-=======
 #define T_RATE 50.0
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 double set_height;
 double roll, pitch, yaw;//定义存储r\p\y的容器
 double last_yaw;
@@ -60,12 +53,8 @@ ros::Subscriber pts_sub,
 
 void run()
 {
-<<<<<<< HEAD
-  if(BTraj.size() != 0)
-=======
 
   if(BTraj.size()!=0)
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         {
             bs_traj BT_ptr = *(BTraj.begin());
             if(BT_ptr.seq_ == connect_seq || BT_ptr.seq_ == (connect_seq+1))
@@ -97,14 +86,6 @@ void run()
             
 
         /*   PVA   */
-<<<<<<< HEAD
-        /*
-        Bitmask toindicate which dimensions should be ignored (1 means ignore,0 means not ignore; Bit 10 must set to 0)
-        Bit 1:x, bit 2:y, bit 3:z, bit 4:vx, bit 5:vy, bit 6:vz, bit 7:ax, bit 8:ay, bit 9:az, bit 10:is_force_sp, bit 11:yaw, bit 12:yaw_rate
-        Bit 10 should set to 0, means is not force sp
-        */
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             // POSE
             pva_msg.position.x = BT_ptr.pos_[0];
             pva_msg.position.y = BT_ptr.pos_[1];
@@ -127,13 +108,6 @@ void run()
             int seq_interval = T_RATE*2/5;
             int last_traj_seq      = (*(BTraj.end()-1)).seq_;
             int first_traj_seq     = (*(BTraj.begin())).seq_;
-<<<<<<< HEAD
-            int remain_traj_length = last_traj_seq- first_traj_seq;
-
-            int to_bs_seq = (remain_traj_length>seq_interval) ? first_traj_seq + seq_interval : last_traj_seq;
-            int to_bs_seq_index = to_bs_seq - first_traj_seq;
-            if(BTraj.size()<=to_bs_seq_index) return;
-=======
             // cout<<"last:"<< (*(BTraj.end()-1)).seq_<<"  "<<"first:"<<(*(BTraj.begin())).seq_<<endl;
             int remain_traj_length = last_traj_seq- first_traj_seq;
 
@@ -147,7 +121,6 @@ void run()
                ROS_WARN("to_bs_seq_index:%d",to_bs_seq_index);
               return;
             }
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             BT_ptr = BTraj[to_bs_seq_index];
             // POSE
             bs_msg.position.x = BT_ptr.pos_[0];
@@ -162,26 +135,6 @@ void run()
             bs_msg.acceleration_or_force.y = BT_ptr.acc_[1];
             bs_msg.acceleration_or_force.z = 0;
             bs_msg.yaw = (float)(to_bs_seq);
-<<<<<<< HEAD
-            bs_pub.publish(bs_msg);      
-             pva_msg.header.stamp = ros::Time::now();
-            cmd_pub.publish(pva_msg);        
-            debug_pub.publish(debug_msg);
-
-        // VIS
-        geometry_msgs::PoseStamped vis_msg;
-        vis_msg.pose.position = pva_msg.position;
-        vis_path.poses.push_back(vis_msg);
-        vis_path_pub.publish(vis_path);
-        }
-        else
-        {
-            cout <<"[cmd] Arrived!"<< endl;
-        }
-        /*   PUB_CONTROL   */
-        // TIME
- 
-=======
             // cout<<"yaw:"<< bs_msg.yaw<<endl;
             bs_pub.publish(bs_msg);
             pva_msg.header.stamp = ros::Time::now();
@@ -204,7 +157,6 @@ void run()
         /*   PUB_CONTROL   */
         // TIME
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 }
 
@@ -221,17 +173,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     for (size_t i = 0; i < msg->position.size(); i++)
     {    
         bs_traj BT_ptr;
-<<<<<<< HEAD
-        BT_ptr.pos_ << msg->position[i].pose.position.x, 
-                       msg->position[i].pose.position.y;
-        BT_ptr.vel_ << msg->velocity[i].pose.position.x, 
-                       msg->velocity[i].pose.position.y;
-        BT_ptr.acc_ << msg->acceleration[i].pose.position.x, 
-                       msg->acceleration[i].pose.position.y;
-        BT_ptr.seq_ = i;
-        BTraj.push_back(BT_ptr);
-    }
-=======
         BT_ptr.pos_ << msg->position[i].x,
                        msg->position[i].y;
         BT_ptr.vel_ << msg->velocity[i].x, 
@@ -242,7 +183,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
         BTraj.push_back(BT_ptr);
     }
     // msg->current_seq = 0;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     first_bs = false;
   }
   else
@@ -250,19 +190,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     // 轨迹拼接
     int new_traj_start_seq = msg->current_seq ;
     int delta_seq = new_traj_start_seq - BTraj[0].seq_;
-<<<<<<< HEAD
-    cout << "delta_seq: " << delta_seq <<endl;
-    if(delta_seq<0)// 如果当前发过来的轨迹太旧
-    {
-      ROS_WARN("The delay is too large < %i > points away, < %f > ms ago, check the parameter Settings."
-                ,-delta_seq, -delta_seq*delta_T*1000);
-        ROS_ERROR("USLESS.");
-    }
-    else if(delta_seq>BTraj.size())// 如果这个新轨迹的起点超过了当前剩余曲线的终点
-    {
-      ROS_WARN("The scope of replanning is too large, check the parameter Settings.");
-      ROS_ERROR("Wait, something really big has happened...");
-=======
     // cout << "msg_seq: " << msg->current_seq <<endl;
     cout<<"delta_seq_:"<<delta_seq<<endl;
     if(delta_seq<0)// 如果当前发过来的轨迹太旧
@@ -277,7 +204,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
       // ROS_WARN("The scope of replanning is too large, check the parameter Settings.");
       ROS_ERROR("Wait, something really big has happened...");
       return;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     }
     else// 终于没事了
     {
@@ -292,12 +218,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
       }
       else
       {
-<<<<<<< HEAD
-        cout << "啊？"<<endl;
-        add_seq_ = (BTraj.size()-1);
-      }
-      auto end_ptr_   = BTraj.begin() + add_seq_;
-=======
         // cout << "啊？"<<endl;
         add_seq_ = (BTraj.size()-1);
       }
@@ -311,7 +231,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
       //       }
       //   }
            auto end_ptr_   = BTraj.begin() + add_seq_;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       if(add_seq_ > 0)
       BTraj_remain.assign(start_ptr_,end_ptr_);// 存储剩余的可用路径
       int old_traj_end_seq = end_ptr_->seq_;
@@ -319,33 +238,16 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
       for (size_t i = 0; i < msg->position.size(); i++)
       {    
           bs_traj BT_ptr;
-<<<<<<< HEAD
-          BT_ptr.pos_ << msg->position[i].pose.position.x, 
-                         msg->position[i].pose.position.y;
-          BT_ptr.vel_ << msg->velocity[i].pose.position.x, 
-                         msg->velocity[i].pose.position.y;
-          BT_ptr.acc_ << msg->acceleration[i].pose.position.x, 
-                         msg->acceleration[i].pose.position.y;
-=======
         BT_ptr.pos_ << msg->position[i].x,
                        msg->position[i].y;
         BT_ptr.vel_ << msg->velocity[i].x, 
                        msg->velocity[i].y;
         BT_ptr.acc_ << msg->acceleration[i].x, 
                        msg->acceleration[i].y;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
           BT_ptr.seq_ = i + new_traj_start_seq;
           BTraj_remain.push_back(BT_ptr);
       }
       BTraj = BTraj_remain;
-<<<<<<< HEAD
-      cout << "Successfully connect the trajectory at < "<<old_traj_end_seq
-                                           <<" > ++++ < "<<new_traj_start_seq<<" >."<<endl;
-                
-    }
-  }
-  ROS_INFO("New seq begin at: < %i >, end at: < %i >.",(*(BTraj.begin())).seq_,(*(BTraj.end()-1)).seq_);
-=======
       // BTraj = BTraj_remain;
       // cout << "Successfully connect the trajectory at < "<<old_traj_end_seq
       //                                      <<" > ++++ < "<<new_traj_start_seq<<" >."<<endl;
@@ -353,7 +255,6 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     }
   }
   // ROS_INFO("New seq begin at: < %i >, end at: < %i >.",(*(BTraj.begin())).seq_,(*(BTraj.end()-1)).seq_);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 }
 void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
 {
@@ -364,12 +265,8 @@ void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     {
       // 軌跡拼接
         int  to_bs_seq = msg->current_seq;
-<<<<<<< HEAD
-        cout <<"to_bs_seq: "<< to_bs_seq <<endl;
-=======
         // cout <<"to_bs_seq: "<< to_bs_seq <<endl;
         //把Btraj擦除到只剩下to_bs_seq及其之前的点
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         while ((*(BTraj.end()-1)).seq_ >= to_bs_seq)
         {
             BTraj.erase(BTraj.end()-1);
@@ -392,11 +289,7 @@ void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
         }
         cout <<(*(BTraj.end()-1)).pos_<<endl;
         cout<<"--------------"<<endl;
-<<<<<<< HEAD
-        cout <<msg->position[0].pose.position.x<<"\n"<< msg->position[0].pose.position.y <<endl;
-=======
         cout <<msg->position[0].x<<"\n"<< msg->position[0].y <<endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     }
     first_bs = false;
     if(!affine_traj)
@@ -408,15 +301,9 @@ void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     for (size_t i = 0; i < msg->position.size(); i++)
     {    
         bs_traj BT_ptr;
-<<<<<<< HEAD
-        BT_ptr.pos_ << msg->position[i].pose.position.x    , msg->position[i].pose.position.y;
-        BT_ptr.vel_ << msg->velocity[i].pose.position.x    , msg->velocity[i].pose.position.y;
-        BT_ptr.acc_ << msg->acceleration[i].pose.position.x, msg->acceleration[i].pose.position.y;
-=======
         BT_ptr.pos_ << msg->position[i].x    , msg->position[i].y;
         BT_ptr.vel_ << msg->velocity[i].x    , msg->velocity[i].y;
         BT_ptr.acc_ << msg->acceleration[i].x, msg->acceleration[i].y;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         BT_ptr.seq_ = i + remain_last_seq;
         BTraj.push_back(BT_ptr);
     }
@@ -550,28 +437,14 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "bspline_example");
     ros::NodeHandle nh("~");
-<<<<<<< HEAD
-=======
     pts_sub   = nh.subscribe<geometry_msgs::PoseStamped>( "/move_base_simple/goal", 10, &rcvWaypointsCallback );
     cmd_sub   = nh.subscribe<multi_bspline_opt::BsplineTraj>("/bspline_traj",1, &traj_cb); 
     
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     cmd_pub      = nh.advertise<quadrotor_msgs::PositionCommand>("/position_cmd", 10);
     bs_pub       = nh.advertise<mavros_msgs::PositionTarget>("/mavbs/setpoint_raw/local" , 1);
     debug_pub    = nh.advertise<geometry_msgs::PoseStamped>("/debug",1);
     vis_path_pub = nh.advertise<nav_msgs::Path>("/pubed_path",1);
     
-<<<<<<< HEAD
-    pts_sub   = nh.subscribe<geometry_msgs::PoseStamped>( "/move_base_simple/goal", 10, &rcvWaypointsCallback );
-    cmd_sub   = nh.subscribe<multi_bspline_opt::BsplineTraj>("/bspline_traj",1, &traj_cb);
-    pos_sub   = nh.subscribe<geometry_msgs::PoseStamped>("/odom_visualization/pose",1,&pose_subCallback);
-    ros::Rate rate(T_RATE);
-while(ros::ok())
-    {
-      run();
-      ros::spinOnce();
-      rate.sleep();
-=======
 
     // pos_sub   = nh.subscribe<geometry_msgs::PoseStamped>("/odom_visualization/pose",1,&pose_subCallback);
     ros::Rate rate(T_RATE);
@@ -582,7 +455,6 @@ while(ros::ok())
      run();
  
       
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     }
     return 0;
 }

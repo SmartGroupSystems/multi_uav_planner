@@ -6,8 +6,6 @@
 
 #IncludeRegexTransform: 
 
-<<<<<<< HEAD
-=======
 /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/BsplineTraj.h
 string
 -
@@ -2724,4 +2722,3 @@ lapacke_mangling.h
 
 /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd

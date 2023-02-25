@@ -17,13 +17,6 @@
           START_VEL_X
           START_VEL_Y-VAL
           START_VEL_Y
-<<<<<<< HEAD
-          START_ACC_X-VAL
-          START_ACC_X
-          START_ACC_Y-VAL
-          START_ACC_Y
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
           END_POS_X-VAL
           END_POS_X
           END_POS_Y-VAL

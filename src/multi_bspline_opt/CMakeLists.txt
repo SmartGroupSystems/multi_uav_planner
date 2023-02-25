@@ -1,11 +1,6 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(multi_bspline_opt)
 
-<<<<<<< HEAD
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-=======
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -15,37 +10,12 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   roscpp
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   std_msgs
   visualization_msgs
   message_generation
   nlopt
   message_filters
 )
-<<<<<<< HEAD
-
-find_package(Eigen3 REQUIRED)
-
-#add_dependencies(bspline_race ${${PROJECT_NAME}_EXPORTED_TARGETS})
-
-add_message_files(
-  FILES
-  BsplineTraj.msg  
-  MultiBsplines.msg
-  SendTraj.msg
-)
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  geometry_msgs
-)
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES multi_bspline_opt
-  CATKIN_DEPENDS roscpp rospy std_msgs visualization_msgs message_runtime
-  #DEPENDS system_lib
-)
-=======
 find_package(Eigen3 REQUIRED)
 find_package(PCL 1.7 REQUIRED)
 ## System dependencies are found with CMake's conventions
@@ -242,26 +212,11 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 include_directories(
   include ${catkin_INCLUDE_DIRS}
   ${Eigen3_INCLUDE_DIRS} 
  
 )
-<<<<<<< HEAD
-add_library( multi_bspline_opt 
-   src/bspline_opt.cpp 
-   )
-   
-add_executable( multi_flag_planner 
-    src/test_planning.cpp
- )
-target_link_libraries(multi_flag_planner 
-multi_bspline_opt 
- ${catkin_LIBRARIES} 
-)
-
-=======
 add_library( multi_bspline_opt
    src/bspline_opt.cpp 
    )
@@ -273,4 +228,3 @@ target_link_libraries(multi_flag_planner
  multi_bspline_opt
  ${catkin_LIBRARIES} 
 )
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd

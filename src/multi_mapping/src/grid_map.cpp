@@ -10,11 +10,7 @@ void GridMap::initMap(ros::NodeHandle &nh)
   /* get parameter */
   
   node_.param<double>("grid_map/resolution", mp_.resolution_, 0.1);
-<<<<<<< HEAD
-//  std::cout<<"resolution:" << mp_.resolution_ << std::endl;
-=======
  std::cout<<"resolution:" << mp_.resolution_ << std::endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   node_.param<double>("grid_map/map_size_x", mp_.x_size, 40.0);
   node_.param<double>("grid_map/map_size_y", mp_.y_size, 40.0);
   node_.param<double>("grid_map/map_size_z", mp_.z_size, 10.0);
@@ -65,19 +61,11 @@ void GridMap::initMap(ros::NodeHandle &nh)
   mp_.min_occupancy_log_ = logit(mp_.p_occ_);
   mp_.unknown_flag_ = 0.01;
 
-<<<<<<< HEAD
-  // cout << "hit: " << mp_.prob_hit_log_ << endl;
-  // cout << "miss: " << mp_.prob_miss_log_ << endl;
-  // cout << "min log: " << mp_.clamp_min_log_ << endl;
-  // cout << "max: " << mp_.clamp_max_log_ << endl;
-  // cout << "thresh log: " << mp_.min_occupancy_log_ << endl;
-=======
   cout << "hit: " << mp_.prob_hit_log_ << endl;
   cout << "miss: " << mp_.prob_miss_log_ << endl;
   cout << "min log: " << mp_.clamp_min_log_ << endl;
   cout << "max: " << mp_.clamp_max_log_ << endl;
   cout << "thresh log: " << mp_.min_occupancy_log_ << endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
   for (int i = 0; i < 3; ++i)
     mp_.map_voxel_num_(i) = ceil(mp_.map_size_(i) / mp_.resolution_);
@@ -119,11 +107,7 @@ void GridMap::initMap(ros::NodeHandle &nh)
   }
   else if (mp_.pose_type_ == 2)
   {
-<<<<<<< HEAD
-// std::cout<<"odom mode" << std::endl;
-=======
 std::cout<<"odom mode" << std::endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     odom_sub_.reset(new message_filters::Subscriber<nav_msgs::Odometry>(node_, "odom", 100));
 
     sync_image_odom_.reset(new message_filters::Synchronizer<SyncPolicyImageOdom>(
@@ -245,13 +229,8 @@ void GridMap::projectDepthImage()
 
         proj_pt = camera_r * proj_pt + md_.camera_pos_;
 
-<<<<<<< HEAD
-        // if (u == 320 && v == 240)
-          // std::cout << "depth: " << depth << std::endl;
-=======
         if (u == 320 && v == 240)
           std::cout << "depth: " << depth << std::endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         md_.proj_points_[md_.proj_points_cnt++] = proj_pt;
       }
     }
@@ -755,11 +734,7 @@ void GridMap::cloudCallback(const sensor_msgs::PointCloud2ConstPtr &img)
 
   if (!md_.has_odom_)
   {
-<<<<<<< HEAD
-    // std::cout << "no odom!" << std::endl;
-=======
     std::cout << "no odom!" << std::endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     return;
   }
 
@@ -963,13 +938,8 @@ void GridMap::publishMapInflate(bool all_info)
   pcl::toROSMsg(cloud, cloud_msg);
   map_inf_pub_.publish(cloud_msg);
   
-<<<<<<< HEAD
-	// std::cout << "----------------------x_size:" << occupancy_data[0] << std::endl;
-	// std::cout << "----------------------y_size:" << occupancy_data[1] << std::endl;
-=======
 	std::cout << "----------------------x_size:" << occupancy_data[0] << std::endl;
 	std::cout << "----------------------y_size:" << occupancy_data[1] << std::endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   std_msgs::Float64MultiArray msg;
   msg.data = occupancy_data;
   msg_puber.publish(msg);
@@ -1035,11 +1005,7 @@ void GridMap::getRegion(Eigen::Vector3d &ori, Eigen::Vector3d &size)
 void GridMap::depthOdomCallback(const sensor_msgs::ImageConstPtr &img,
                                 const nav_msgs::OdometryConstPtr &odom)
 {
-<<<<<<< HEAD
-	// std::cout << "depthOdom get!" << std::endl;
-=======
 	std::cout << "depthOdom get!" << std::endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   /* get pose */
   Eigen::Quaterniond body_q = Eigen::Quaterniond(odom->pose.pose.orientation.w,
                                                  odom->pose.pose.orientation.x,

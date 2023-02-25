@@ -137,19 +137,12 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/wenjing/ros/my_planner_rviz/build/dynamic_env_generator/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/uav_simulator/map_generator/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/mapping/cmake_install.cmake")
-<<<<<<< HEAD
-  include("/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/cmake_install.cmake")
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   include("/home/wenjing/ros/my_planner_rviz/build/multi_mapping/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/multi_model_state/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/uav_simulator/fake_drone/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/uav_simulator/Utils/pose_utils/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/simulate_uav/cmake_install.cmake")
-<<<<<<< HEAD
-=======
   include("/home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt/cmake_install.cmake")
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   include("/home/wenjing/ros/my_planner_rviz/build/grid_path_searcher/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/multi_grid_path_searcher/cmake_install.cmake")
   include("/home/wenjing/ros/my_planner_rviz/build/uav_simulator/Utils/odom_visualization/cmake_install.cmake")

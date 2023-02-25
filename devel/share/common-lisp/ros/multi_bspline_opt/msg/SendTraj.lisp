@@ -52,19 +52,6 @@
     :initarg :start_vel_y
     :type cl:float
     :initform 0.0)
-<<<<<<< HEAD
-   (start_acc_x
-    :reader start_acc_x
-    :initarg :start_acc_x
-    :type cl:float
-    :initform 0.0)
-   (start_acc_y
-    :reader start_acc_y
-    :initarg :start_acc_y
-    :type cl:float
-    :initform 0.0)
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
    (end_pos_x
     :reader end_pos_x
     :initarg :end_pos_x
@@ -140,19 +127,6 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader multi_bspline_opt-msg:start_vel_y-val is deprecated.  Use multi_bspline_opt-msg:start_vel_y instead.")
   (start_vel_y m))
 
-<<<<<<< HEAD
-(cl:ensure-generic-function 'start_acc_x-val :lambda-list '(m))
-(cl:defmethod start_acc_x-val ((m <SendTraj>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader multi_bspline_opt-msg:start_acc_x-val is deprecated.  Use multi_bspline_opt-msg:start_acc_x instead.")
-  (start_acc_x m))
-
-(cl:ensure-generic-function 'start_acc_y-val :lambda-list '(m))
-(cl:defmethod start_acc_y-val ((m <SendTraj>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader multi_bspline_opt-msg:start_acc_y-val is deprecated.  Use multi_bspline_opt-msg:start_acc_y instead.")
-  (start_acc_y m))
-
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 (cl:ensure-generic-function 'end_pos_x-val :lambda-list '(m))
 (cl:defmethod end_pos_x-val ((m <SendTraj>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader multi_bspline_opt-msg:end_pos_x-val is deprecated.  Use multi_bspline_opt-msg:end_pos_x instead.")
@@ -248,27 +222,6 @@
     (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
-<<<<<<< HEAD
-  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'start_acc_x))))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
-  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'start_acc_y))))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'end_pos_x))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
@@ -399,29 +352,6 @@
       (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
-<<<<<<< HEAD
-    (cl:setf (cl:slot-value msg 'start_acc_x) (roslisp-utils:decode-double-float-bits bits)))
-    (cl:let ((bits 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
-    (cl:setf (cl:slot-value msg 'start_acc_y) (roslisp-utils:decode-double-float-bits bits)))
-    (cl:let ((bits 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     (cl:setf (cl:slot-value msg 'end_pos_x) (roslisp-utils:decode-double-float-bits bits)))
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
@@ -471,18 +401,6 @@
   "multi_bspline_opt/SendTraj")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<SendTraj>)))
   "Returns md5sum for a message object of type '<SendTraj>"
-<<<<<<< HEAD
-  "1db39cd31304eba253abaf4c9988cb49")
-(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'SendTraj)))
-  "Returns md5sum for a message object of type 'SendTraj"
-  "1db39cd31304eba253abaf4c9988cb49")
-(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<SendTraj>)))
-  "Returns full string definition for message of type '<SendTraj>"
-  (cl:format cl:nil "int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 start_acc_x~%float64 start_acc_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
-(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'SendTraj)))
-  "Returns full string definition for message of type 'SendTraj"
-  (cl:format cl:nil "int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 start_acc_x~%float64 start_acc_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
-=======
   "cdb4d98dc8568f5ace0ee75482493f76")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'SendTraj)))
   "Returns md5sum for a message object of type 'SendTraj"
@@ -493,7 +411,6 @@
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'SendTraj)))
   "Returns full string definition for message of type 'SendTraj"
   (cl:format cl:nil "int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <SendTraj>))
   (cl:+ 0
      4
@@ -507,11 +424,6 @@
      8
      8
      8
-<<<<<<< HEAD
-     8
-     8
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'control_pts) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ (roslisp-msg-protocol:serialization-length ele))))
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'knots) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 8)))
 ))
@@ -527,11 +439,6 @@
     (cl:cons ':start_pos_y (start_pos_y msg))
     (cl:cons ':start_vel_x (start_vel_x msg))
     (cl:cons ':start_vel_y (start_vel_y msg))
-<<<<<<< HEAD
-    (cl:cons ':start_acc_x (start_acc_x msg))
-    (cl:cons ':start_acc_y (start_acc_y msg))
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     (cl:cons ':end_pos_x (end_pos_x msg))
     (cl:cons ':end_pos_y (end_pos_y msg))
     (cl:cons ':control_pts (control_pts msg))

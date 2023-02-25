@@ -11,19 +11,12 @@ subdirs("uav_simulator/Utils/cmake_utils")
 subdirs("dynamic_env_generator")
 subdirs("uav_simulator/map_generator")
 subdirs("mapping")
-<<<<<<< HEAD
-subdirs("multi_bspline_opt")
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 subdirs("multi_mapping")
 subdirs("multi_model_state")
 subdirs("uav_simulator/fake_drone")
 subdirs("uav_simulator/Utils/pose_utils")
 subdirs("simulate_uav")
-<<<<<<< HEAD
-=======
 subdirs("multi_bspline_opt")
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 subdirs("grid_path_searcher")
 subdirs("multi_grid_path_searcher")
 subdirs("uav_simulator/Utils/odom_visualization")

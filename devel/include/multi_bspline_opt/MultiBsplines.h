@@ -129,21 +129,12 @@ struct MD5Sum< ::multi_bspline_opt::MultiBsplines_<ContainerAllocator> >
 {
   static const char* value()
   {
-<<<<<<< HEAD
-    return "cdca54030719384ffd1c921d966beb6e";
-  }
-
-  static const char* value(const ::multi_bspline_opt::MultiBsplines_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xcdca54030719384fULL;
-  static const uint64_t static_value2 = 0xfd1c921d966beb6eULL;
-=======
     return "0a9ce0a6a663879c244f8d58ac09d0d8";
   }
 
   static const char* value(const ::multi_bspline_opt::MultiBsplines_<ContainerAllocator>&) { return value(); }
   static const uint64_t static_value1 = 0x0a9ce0a6a663879cULL;
   static const uint64_t static_value2 = 0x244f8d58ac09d0d8ULL;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 };
 
 template<class ContainerAllocator>
@@ -181,11 +172,6 @@ struct Definition< ::multi_bspline_opt::MultiBsplines_<ContainerAllocator> >
 "float64 start_pos_y\n"
 "float64 start_vel_x\n"
 "float64 start_vel_y\n"
-<<<<<<< HEAD
-"float64 start_acc_x\n"
-"float64 start_acc_y\n"
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 "float64 end_pos_x\n"
 "float64 end_pos_y\n"
 "# float64 yaw_rate\n"

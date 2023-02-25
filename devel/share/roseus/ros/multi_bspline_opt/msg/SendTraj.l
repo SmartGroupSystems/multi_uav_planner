@@ -16,11 +16,7 @@
 
 (defclass multi_bspline_opt::SendTraj
   :super ros::object
-<<<<<<< HEAD
-  :slots (_drone_id _traj_id _order _cps_num_ _start_time _start_pos_x _start_pos_y _start_vel_x _start_vel_y _start_acc_x _start_acc_y _end_pos_x _end_pos_y _control_pts _knots ))
-=======
   :slots (_drone_id _traj_id _order _cps_num_ _start_time _start_pos_x _start_pos_y _start_vel_x _start_vel_y _end_pos_x _end_pos_y _control_pts _knots ))
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 (defmethod multi_bspline_opt::SendTraj
   (:init
@@ -34,11 +30,6 @@
     ((:start_pos_y __start_pos_y) 0.0)
     ((:start_vel_x __start_vel_x) 0.0)
     ((:start_vel_y __start_vel_y) 0.0)
-<<<<<<< HEAD
-    ((:start_acc_x __start_acc_x) 0.0)
-    ((:start_acc_y __start_acc_y) 0.0)
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     ((:end_pos_x __end_pos_x) 0.0)
     ((:end_pos_y __end_pos_y) 0.0)
     ((:control_pts __control_pts) (let (r) (dotimes (i 0) (push (instance geometry_msgs::Point :init) r)) r))
@@ -54,11 +45,6 @@
    (setq _start_pos_y (float __start_pos_y))
    (setq _start_vel_x (float __start_vel_x))
    (setq _start_vel_y (float __start_vel_y))
-<<<<<<< HEAD
-   (setq _start_acc_x (float __start_acc_x))
-   (setq _start_acc_y (float __start_acc_y))
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
    (setq _end_pos_x (float __end_pos_x))
    (setq _end_pos_y (float __end_pos_y))
    (setq _control_pts __control_pts)
@@ -91,15 +77,6 @@
   (:start_vel_y
    (&optional __start_vel_y)
    (if __start_vel_y (setq _start_vel_y __start_vel_y)) _start_vel_y)
-<<<<<<< HEAD
-  (:start_acc_x
-   (&optional __start_acc_x)
-   (if __start_acc_x (setq _start_acc_x __start_acc_x)) _start_acc_x)
-  (:start_acc_y
-   (&optional __start_acc_y)
-   (if __start_acc_y (setq _start_acc_y __start_acc_y)) _start_acc_y)
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   (:end_pos_x
    (&optional __end_pos_x)
    (if __end_pos_x (setq _end_pos_x __end_pos_x)) _end_pos_x)
@@ -137,13 +114,6 @@
     8
     ;; float64 _start_vel_y
     8
-<<<<<<< HEAD
-    ;; float64 _start_acc_x
-    8
-    ;; float64 _start_acc_y
-    8
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     ;; float64 _end_pos_x
     8
     ;; float64 _end_pos_y
@@ -185,13 +155,6 @@
        (sys::poke _start_vel_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _start_vel_y
        (sys::poke _start_vel_y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-<<<<<<< HEAD
-     ;; float64 _start_acc_x
-       (sys::poke _start_acc_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _start_acc_y
-       (sys::poke _start_acc_y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
      ;; float64 _end_pos_x
        (sys::poke _end_pos_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _end_pos_y
@@ -238,13 +201,6 @@
      (setq _start_vel_x (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _start_vel_y
      (setq _start_vel_y (sys::peek buf ptr- :double)) (incf ptr- 8)
-<<<<<<< HEAD
-   ;; float64 _start_acc_x
-     (setq _start_acc_x (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _start_acc_y
-     (setq _start_acc_y (sys::peek buf ptr- :double)) (incf ptr- 8)
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
    ;; float64 _end_pos_x
      (setq _end_pos_x (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _end_pos_y
@@ -267,11 +223,7 @@
    self)
   )
 
-<<<<<<< HEAD
-(setf (get multi_bspline_opt::SendTraj :md5sum-) "1db39cd31304eba253abaf4c9988cb49")
-=======
 (setf (get multi_bspline_opt::SendTraj :md5sum-) "cdb4d98dc8568f5ace0ee75482493f76")
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 (setf (get multi_bspline_opt::SendTraj :datatype-) "multi_bspline_opt/SendTraj")
 (setf (get multi_bspline_opt::SendTraj :definition-)
       "int32 drone_id
@@ -288,11 +240,6 @@ float64 start_pos_x
 float64 start_pos_y
 float64 start_vel_x
 float64 start_vel_y
-<<<<<<< HEAD
-float64 start_acc_x
-float64 start_acc_y
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 float64 end_pos_x
 float64 end_pos_y
 # float64 yaw_rate
@@ -310,10 +257,6 @@ float64 z
 
 
 
-<<<<<<< HEAD
-(provide :multi_bspline_opt/SendTraj "1db39cd31304eba253abaf4c9988cb49")
-=======
 (provide :multi_bspline_opt/SendTraj "cdb4d98dc8568f5ace0ee75482493f76")
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 

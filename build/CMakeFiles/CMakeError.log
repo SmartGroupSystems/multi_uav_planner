@@ -1,24 +1,6 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_443da/fast"
-/usr/bin/make -f CMakeFiles/cmTC_443da.dir/build.make CMakeFiles/cmTC_443da.dir/build
-make[1]: 进入目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_443da.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_443da.dir/CheckSymbolExists.c.o   -c /home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_443da
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_443da.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_443da.dir/CheckSymbolExists.c.o  -o cmTC_443da 
-CMakeFiles/cmTC_443da.dir/CheckSymbolExists.c.o：在函数‘main’中：
-CheckSymbolExists.c:(.text+0x1b)：对‘pthread_create’未定义的引用
-collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_443da.dir/build.make:97: recipe for target 'cmTC_443da' failed
-make[1]: *** [cmTC_443da] Error 1
-make[1]: 离开目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
-Makefile:126: recipe for target 'cmTC_443da/fast' failed
-make: *** [cmTC_443da/fast] Error 2
-=======
 Run Build Command:"/usr/bin/make" "cmTC_7b700/fast"
 /usr/bin/make -f CMakeFiles/cmTC_7b700.dir/build.make CMakeFiles/cmTC_7b700.dir/build
 make[1]: 进入目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
@@ -35,7 +17,6 @@ make[1]: *** [cmTC_7b700] Error 1
 make[1]: 离开目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
 Makefile:126: recipe for target 'cmTC_7b700/fast' failed
 make: *** [cmTC_7b700/fast] Error 2
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 File /home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -55,23 +36,6 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp
 
-<<<<<<< HEAD
-Run Build Command:"/usr/bin/make" "cmTC_5db18/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5db18.dir/build.make CMakeFiles/cmTC_5db18.dir/build
-make[1]: 进入目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_5db18.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_5db18.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_5db18
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5db18.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_5db18.dir/CheckFunctionExists.c.o  -o cmTC_5db18 -lpthreads 
-/usr/bin/ld: 找不到 -lpthreads
-collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_5db18.dir/build.make:97: recipe for target 'cmTC_5db18' failed
-make[1]: *** [cmTC_5db18] Error 1
-make[1]: 离开目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
-Makefile:126: recipe for target 'cmTC_5db18/fast' failed
-make: *** [cmTC_5db18/fast] Error 2
-=======
 Run Build Command:"/usr/bin/make" "cmTC_b8264/fast"
 /usr/bin/make -f CMakeFiles/cmTC_b8264.dir/build.make CMakeFiles/cmTC_b8264.dir/build
 make[1]: 进入目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
@@ -87,6 +51,5 @@ make[1]: *** [cmTC_b8264] Error 1
 make[1]: 离开目录“/home/wenjing/ros/my_planner_rviz/build/CMakeFiles/CMakeTmp”
 Makefile:126: recipe for target 'cmTC_b8264/fast' failed
 make: *** [cmTC_b8264/fast] Error 2
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
