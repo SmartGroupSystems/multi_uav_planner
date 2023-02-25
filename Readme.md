@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
 ## 说明
 
 ##### ！！建议下载without_timer分支里的代码，它删去了B样条函数里的定时器并且修复了代价函数的一些bug，仿真效果更好一些。main分支里的代码还存在一些bug。
@@ -41,6 +44,7 @@
 1. 轨迹衔接不流畅
 
 2. 多机避障不太灵敏
+<<<<<<< HEAD
 =======
 ##多机运行
 1.试验单架无人机运行multi_planner.sh
@@ -48,3 +52,5 @@
 3.多机代码主要为multi开头的代码
 4.multi_mapping建图，multi_grid_path_searcher路径搜索，multi_bspline_opt为轨迹优化，simulate_uav为仿真运行相关
 >>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
+=======
+>>>>>>> origin/main
