@@ -434,34 +434,6 @@ src/bspline_opt.cpp.s:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/build.make multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.s
 .PHONY : src/bspline_opt.cpp.s
 
-<<<<<<< HEAD
-src/test_planning.o: src/test_planning.cpp.o
-
-.PHONY : src/test_planning.o
-
-# target to build an object file
-src/test_planning.cpp.o:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o
-.PHONY : src/test_planning.cpp.o
-
-src/test_planning.i: src/test_planning.cpp.i
-
-.PHONY : src/test_planning.i
-
-# target to preprocess a source file
-src/test_planning.cpp.i:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.i
-.PHONY : src/test_planning.cpp.i
-
-src/test_planning.s: src/test_planning.cpp.s
-
-.PHONY : src/test_planning.s
-
-# target to generate assembly for a file
-src/test_planning.cpp.s:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.s
-.PHONY : src/test_planning.cpp.s
-=======
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -488,7 +460,6 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 # Help Target
 help:
@@ -522,15 +493,9 @@ help:
 	@echo "... src/bspline_opt.o"
 	@echo "... src/bspline_opt.i"
 	@echo "... src/bspline_opt.s"
-<<<<<<< HEAD
-	@echo "... src/test_planning.o"
-	@echo "... src/test_planning.i"
-	@echo "... src/test_planning.s"
-=======
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 .PHONY : help
 
 

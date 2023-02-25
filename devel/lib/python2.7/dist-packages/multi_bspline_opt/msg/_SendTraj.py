@@ -10,11 +10,7 @@ import genpy
 import geometry_msgs.msg
 
 class SendTraj(genpy.Message):
-<<<<<<< HEAD
-  _md5sum = "1db39cd31304eba253abaf4c9988cb49"
-=======
   _md5sum = "cdb4d98dc8568f5ace0ee75482493f76"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   _type = "multi_bspline_opt/SendTraj"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int32 drone_id
@@ -31,11 +27,6 @@ float64 start_pos_x
 float64 start_pos_y
 float64 start_vel_x
 float64 start_vel_y
-<<<<<<< HEAD
-float64 start_acc_x
-float64 start_acc_y
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 float64 end_pos_x
 float64 end_pos_y
 # float64 yaw_rate
@@ -49,13 +40,8 @@ float64 x
 float64 y
 float64 z
 """
-<<<<<<< HEAD
-  __slots__ = ['drone_id','traj_id','order','cps_num_','start_time','start_pos_x','start_pos_y','start_vel_x','start_vel_y','start_acc_x','start_acc_y','end_pos_x','end_pos_y','control_pts','knots']
-  _slot_types = ['int32','int64','int32','int32','time','float64','float64','float64','float64','float64','float64','float64','float64','geometry_msgs/Point[]','float64[]']
-=======
   __slots__ = ['drone_id','traj_id','order','cps_num_','start_time','start_pos_x','start_pos_y','start_vel_x','start_vel_y','end_pos_x','end_pos_y','control_pts','knots']
   _slot_types = ['int32','int64','int32','int32','time','float64','float64','float64','float64','float64','float64','geometry_msgs/Point[]','float64[]']
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
   def __init__(self, *args, **kwds):
     """
@@ -65,11 +51,7 @@ float64 z
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-<<<<<<< HEAD
-       drone_id,traj_id,order,cps_num_,start_time,start_pos_x,start_pos_y,start_vel_x,start_vel_y,start_acc_x,start_acc_y,end_pos_x,end_pos_y,control_pts,knots
-=======
        drone_id,traj_id,order,cps_num_,start_time,start_pos_x,start_pos_y,start_vel_x,start_vel_y,end_pos_x,end_pos_y,control_pts,knots
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -96,13 +78,6 @@ float64 z
         self.start_vel_x = 0.
       if self.start_vel_y is None:
         self.start_vel_y = 0.
-<<<<<<< HEAD
-      if self.start_acc_x is None:
-        self.start_acc_x = 0.
-      if self.start_acc_y is None:
-        self.start_acc_y = 0.
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       if self.end_pos_x is None:
         self.end_pos_x = 0.
       if self.end_pos_y is None:
@@ -121,11 +96,6 @@ float64 z
       self.start_pos_y = 0.
       self.start_vel_x = 0.
       self.start_vel_y = 0.
-<<<<<<< HEAD
-      self.start_acc_x = 0.
-      self.start_acc_y = 0.
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       self.end_pos_x = 0.
       self.end_pos_y = 0.
       self.control_pts = []
@@ -144,11 +114,7 @@ float64 z
     """
     try:
       _x = self
-<<<<<<< HEAD
-      buff.write(_get_struct_iq2i2I8d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
-=======
       buff.write(_get_struct_iq2i2I6d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y))
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       length = len(self.control_pts)
       buff.write(_struct_I.pack(length))
       for val1 in self.control_pts:
@@ -176,13 +142,8 @@ float64 z
       end = 0
       _x = self
       start = end
-<<<<<<< HEAD
-      end += 92
-      (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_iq2i2I8d().unpack(str[start:end])
-=======
       end += 76
       (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_iq2i2I6d().unpack(str[start:end])
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -216,11 +177,7 @@ float64 z
     """
     try:
       _x = self
-<<<<<<< HEAD
-      buff.write(_get_struct_iq2i2I8d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
-=======
       buff.write(_get_struct_iq2i2I6d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y))
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       length = len(self.control_pts)
       buff.write(_struct_I.pack(length))
       for val1 in self.control_pts:
@@ -249,13 +206,8 @@ float64 z
       end = 0
       _x = self
       start = end
-<<<<<<< HEAD
-      end += 92
-      (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_iq2i2I8d().unpack(str[start:end])
-=======
       end += 76
       (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_iq2i2I6d().unpack(str[start:end])
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -290,18 +242,9 @@ def _get_struct_3d():
     if _struct_3d is None:
         _struct_3d = struct.Struct("<3d")
     return _struct_3d
-<<<<<<< HEAD
-_struct_iq2i2I8d = None
-def _get_struct_iq2i2I8d():
-    global _struct_iq2i2I8d
-    if _struct_iq2i2I8d is None:
-        _struct_iq2i2I8d = struct.Struct("<iq2i2I8d")
-    return _struct_iq2i2I8d
-=======
 _struct_iq2i2I6d = None
 def _get_struct_iq2i2I6d():
     global _struct_iq2i2I6d
     if _struct_iq2i2I6d is None:
         _struct_iq2i2I6d = struct.Struct("<iq2i2I6d")
     return _struct_iq2i2I6d
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd

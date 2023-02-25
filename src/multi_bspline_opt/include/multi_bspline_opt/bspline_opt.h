@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-#ifndef  _MULTI_BSPLINE_OPT_H
-#define  _MULTI_BSPLINE_OPT_H
-=======
 #ifndef  _BSPLINE_OPT_H
 #define  _BSPLINE_OPT_H
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 //Eigen
 #include<eigen3/Eigen/Eigen>
@@ -40,10 +35,7 @@
 #include <std_srvs/Trigger.h>
 #include <std_msgs/Int64.h>
 #include <std_msgs/Float64.h>
-<<<<<<< HEAD
-=======
 #include<multi_bspline_opt/obj_predict.h>
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 //ros多线程
 #include <message_filters/subscriber.h>
 #include <message_filters/synchronizer.h>
@@ -56,16 +48,10 @@
 
 //自定义
 #include<multi_bspline_opt/BsplineTraj.h>
-<<<<<<< HEAD
-#include<multi_bspline_opt/EdtTransform.hpp>
-#include<multi_bspline_opt/MultiBsplines.h>
-#include<multi_bspline_opt/SendTraj.h>
-=======
 #include<multi_bspline_opt/MultiBsplines.h>
 #include<multi_bspline_opt/SendTraj.h>
 #include<multi_bspline_opt/EdtTransform.hpp>
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 using namespace std;
 
@@ -78,10 +64,7 @@ namespace my_planner
            Eigen::VectorXd u_ ; // knot vectors
            double beta_;// time scale t(real time) * beta = u
            int D_;// Dimension of control points
-<<<<<<< HEAD
-=======
            
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
         public://变量
             Eigen::MatrixXd control_points_;
@@ -103,29 +86,18 @@ namespace my_planner
             void setControlPoints(const Eigen::MatrixXd &ctrl_points);
             void setIniTerMatrix();
             Eigen::MatrixXd getTrajectory(const Eigen::VectorXd &t);
-<<<<<<< HEAD
-            Eigen::Vector2d singleDeboor(const double &u_probe);
-            Eigen::VectorXd getKnot() { return this->u_; }
-            void getAvailableSrange();
-            double getAvailableTrange();
-=======
             Eigen::VectorXd getKnot() { return this->u_; }
             Eigen::MatrixXd getControlPoint() { return control_points_; }
             Eigen::Vector2d singleDeboor(const double &u_probe);
             void getAvailableSrange();
             double getAvailableTrange();
             // void getAvailableTrange();
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             void getInterval();
             void getT(const int &trajSampleRate);//轨迹采样点的时间序列
             UniformBspline getDerivative();//返回b样条的导数类
             Eigen::VectorXd getBoundConstraintb();//得到边界
     };
-<<<<<<< HEAD
-//SWARM
-=======
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 //swarm
 struct OneTrajDataOfSwarm
   {
@@ -141,10 +113,7 @@ struct OneTrajDataOfSwarm
     // vector<Eigen::Vector2d> vel_;
   };
   typedef std::vector<OneTrajDataOfSwarm> SwarmTrajData;
-<<<<<<< HEAD
-=======
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     class bspline_optimizer
     {
         public:
@@ -154,27 +123,15 @@ struct OneTrajDataOfSwarm
             double bspline_interval_;//节点向量时间间隔
             double beta_;
             UniformBspline u_;
-<<<<<<< HEAD
-
-            //从状态机读入的参数
-            double lambda1_,lambda2_,lambda3_,lambda4_;// smooth cost, ESDF cost, feasibility cost
-=======
              double planning_horizen_;
 
             //从状态机读入的参数
             double lambda1_,lambda2_,lambda3_, lambda4_,lambda5_,lambda6_;// smooth cost, ESDF cost, feasibility cost
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             double max_vel_;//最大速度
             double max_acc_;//最大加速度
 
             //从A star得到的路径点
             std::vector<Eigen::Vector2d> path_;
-<<<<<<< HEAD
-            
-             //集群参数
-           #define INIT_min_ellip_dist_ 123456789.0123456789
-            double min_ellip_dist_;
-=======
            
            //集群参数
            #define INIT_min_ellip_dist_ 123456789.0123456789
@@ -183,7 +140,6 @@ struct OneTrajDataOfSwarm
             vector<Eigen::Vector4d> drone_world_pos;
              Eigen::Vector2d drone_pos_world;
             
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             //ESDF
             Eigen::MatrixXd esdf_map_;
             double map_resolution_;//地图分辨率
@@ -195,33 +151,11 @@ struct OneTrajDataOfSwarm
             int iter_num_;       // iteration of the solver
             int variable_num;//变量个数
             std::vector<double> best_variable_;  //nlopt最终输出
-<<<<<<< HEAD
-            double safe_distance_, swarm_clearance_;//安全距离
-=======
             double safe_distance_,swarm_clearance_;//安全距离
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             
             double min_cost_;       //
             int    algorithm1_ = 15;             // optimization algorithms for quadratic cost
             int    algorithm2_ = 11;             // optimization algorithms for general cost
-<<<<<<< HEAD
-        
-        //多机
-        private:
-            SwarmTrajData *swarm_trajs_{NULL};
-            int drone_id_;
-        public://函数
-            bspline_optimizer() {}
-            bspline_optimizer(const std::vector<Eigen::Vector2d> &path, const int&Dim,  const int&p);
-            bspline_optimizer(const int&Dim,const int &p,const double &dist);
-            ~bspline_optimizer();
-
-      
-            void setSwarmTrajs(SwarmTrajData *swarm_trajs_ptr);
-            void setDroneId(const int drone_id) { drone_id_ = drone_id; }  
-            void setOptParam(const double lambda1,const double lambda2,const double lambda3,const double lambda4,
-                                                    const double safe_dist,const double swarm_clearance_);
-=======
         private:
             SwarmTrajData *swarm_trajs_{NULL}; // Can not use shared_ptr and no need to free
             int drone_id_;
@@ -239,7 +173,6 @@ struct OneTrajDataOfSwarm
             //从状态机读入
             void setOptParam(const double lambda1,const double lambda2,const double lambda3,const double lambda4,const double lambda5,const double lambda6,
                                                     const double safe_dist, const double swarm_clearance);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             void setMapParam(const double &origin_x,const double &origin_y, const double &map_resolution,
                                                     const double &start_x, const double &start_y);
             void setVelAcc(const double vel, const double acc);
@@ -257,16 +190,11 @@ struct OneTrajDataOfSwarm
                                                         Eigen::MatrixXd &gradient);
             void calcEsdfCost(const Eigen::MatrixXd &q, double &cost,
                                                         Eigen::MatrixXd &gradient);   
-<<<<<<< HEAD
-            double calcDistance(const Eigen::MatrixXd &q);
-            void  calcSwarmCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient);
-=======
             void calcMovingObjCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient); 
             void  calcSwarmCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient);                                          
             void calcTerminalCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient);
             void calcDroneCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient);
             double calcDistance(const Eigen::MatrixXd &q);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             Eigen::Vector2d calcGrad(const Eigen::MatrixXd &q);   
             void getSurroundPts(const Eigen::Vector2d& pos, Eigen::Vector2d pts[2][2], Eigen::Vector2d& diff);
             void getSurroundDistance(Eigen::Vector2d pts[2][2], double dists[2][2]);
@@ -310,10 +238,7 @@ struct OneTrajDataOfSwarm
             Eigen::MatrixXd initial_state,terminal_state;//初始，结束P V A
             double start_x_, start_y_;// A star找到的起点
             double goal_x_,goal_y_;//A star找到的终点
-<<<<<<< HEAD
-=======
             double delta_x, delta_y, delta_z; //earth和map
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             int map_size_x,map_size_y,map_size;//esdf x y
             Eigen::MatrixXd esdf_map_;//esdf地图
             Eigen::MatrixXd grid_map_;//grid map
@@ -321,11 +246,7 @@ struct OneTrajDataOfSwarm
             double map_resolution_;//地图分辨率
             double origin_x_, origin_y_;
             double startPoint_x,startPoint_y;//找到地图左上角的点，x负，y正
-<<<<<<< HEAD
-            double safe_distance_,swarm_clearance_;//安全距离
-=======
             double safe_distance_, swarm_clearance_;//安全距离
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             double esdf_collision;
             Eigen::MatrixXd p_,v_,a_;//轨迹buffer
 
@@ -335,17 +256,6 @@ struct OneTrajDataOfSwarm
             Eigen::Vector2d current_aim = Eigen::Vector2d::Zero();
             Eigen::Vector2d current_vel = Eigen::Vector2d::Zero();
             Eigen::Vector2d current_acc = Eigen::Vector2d::Zero();
-<<<<<<< HEAD
-            //同步器
-            typedef message_filters::sync_policies::ApproximateTime<geometry_msgs::TwistStamped, 
-                                                                    geometry_msgs::PoseStamped, 
-                                                                    sensor_msgs::Imu> syncPolicy;
-            message_filters::Subscriber<geometry_msgs::TwistStamped>* subscriber_vel;
-            message_filters::Subscriber<geometry_msgs::PoseStamped>* subscriber_pos;
-            message_filters::Subscriber<sensor_msgs::Imu>* subscriber_acc;
-            message_filters::Synchronizer<syncPolicy>* sync;
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
             //状态相关
@@ -355,19 +265,11 @@ struct OneTrajDataOfSwarm
                 SAFE = 1
             };  //碰撞状态
 
-<<<<<<< HEAD
-            enum PLANNER_STATE
-           {
-                 FLYING,
-                 SEQUENTIAL_START
-            };
-=======
         enum PLANNER_STATE
     {
       FLYING,
       SEQUENTIAL_START
     };
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
             PLANNER_STATE now_state_;
             int continously_called_times_{0};  //状态连续几次
@@ -385,22 +287,6 @@ struct OneTrajDataOfSwarm
             std::shared_ptr<UniformBspline> u1;
             std::shared_ptr<bspline_optimizer> opt;
             std::shared_ptr<bspline_optimizer> opt1;
-<<<<<<< HEAD
-            //nlopt 相关
-            double lambda1_,lambda2_,lambda3_,lambda4_,lambda3_saved;
-
-            //多无人机
-             double planning_horizen_, planning_horizen_time_;
-             multi_bspline_opt::MultiBsplines multi_bspline_msgs_buf_;
-              bool have_recv_pre_agent_;  //是否收到之前无人机轨迹
-             SwarmTrajData swarm_trajs_buf_;
-             bool have_odom_;
-            //ros
-            ros::Subscriber goal_suber;//订阅RVIZ导航点，备用
-            ros::Subscriber path_suber;//订阅A star路径点
-            ros::Subscriber map_suber;//订阅esdf map
-            ros::Subscriber odom_suber;//订阅无人机位置
-=======
             std::vector<Eigen::Vector2d> astar_path_;
             //nlopt 相关
             double lambda1_,lambda2_,lambda3_,lambda3_saved, lambda4_,  lambda5_;
@@ -421,7 +307,6 @@ struct OneTrajDataOfSwarm
             ros::Subscriber goal_suber;//订阅RVIZ导航点，备用
             ros::Subscriber path_suber;//订阅A star路径点
             ros::Subscriber map_suber;//订阅esdf map
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             ros::Publisher Traj_vis;//轨迹可视化发布
             ros::Publisher Traj_vis1;//轨迹可视化发布
             ros::Publisher Traj_puber;//发布轨迹
@@ -436,27 +321,16 @@ struct OneTrajDataOfSwarm
             ros::Subscriber waypoint_suber;
             ros::Subscriber fsm_suber;
             ros::Subscriber arrived_suber;
-<<<<<<< HEAD
-=======
             ros::Subscriber subscriber_pos;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
             //多无人机
             ros::Subscriber  swarm_trajs_sub_;  //订阅上一个无人机的轨迹集合
             ros::Subscriber  broadcast_bspline_sub_;
-<<<<<<< HEAD
-            // ros::Subscriber   droneX_odom_sub_;
-            ros::Publisher swarm_trajs_pub_;
-            ros::Publisher  broadcast_bspline_pub_ ;
-            ros::Timer traj_timer_ ;
-            Eigen::Vector2d drone_pos_world; //无人机位置
-=======
             ros::Subscriber   droneX_odom_sub_;
             ros::Publisher swarm_trajs_pub_;
             ros::Publisher  broadcast_bspline_pub_ ;
 
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             //ros msg
             nav_msgs::Path traj_vis;//轨迹可视化
             nav_msgs::Path traj_vis_;//轨迹可视化
@@ -464,12 +338,8 @@ struct OneTrajDataOfSwarm
             multi_bspline_opt::BsplineTraj traj;//执行轨迹
             multi_bspline_opt::BsplineTraj traj_;//执行轨迹
             multi_bspline_opt::SendTraj traj_pub;//发给其它无人机
-<<<<<<< HEAD
-            std::vector<Eigen::Vector2d> astar_path_;
-=======
             // multi_bspline_opt:SendTraj traj_pub_others;//发给其它无人机
             // std::vector<Eigen::Vector2d> astar_path_;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
             /* 色表 */
             vector<int> R = { 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
@@ -498,27 +368,6 @@ struct OneTrajDataOfSwarm
             void uav_goal_subCallback(const geometry_msgs::PoseStampedConstPtr &goal_msg);
             void esdf_map_subCallback(const std_msgs::Float64MultiArrayConstPtr &map_msg);
             std::vector<float>  calculate_color(double esdf_value, double max_dist, double min_dist, std::vector<int> R_values, std::vector<int> G_values, std::vector<int> B_values);
-<<<<<<< HEAD
-            void astar_getCallback(const nav_msgs::PathConstPtr &path);
-            void map_slice_output(const Eigen::MatrixXd &esdf_matrix);
-            bool fsm_callback(std_srvs::Trigger::Request & req,std_srvs::Trigger::Response & res);
-            void current_state_callback(const geometry_msgs::TwistStampedConstPtr & vel_msg,
-                                        const geometry_msgs::PoseStampedConstPtr &pos_msg,
-                                        const sensor_msgs::ImuConstPtr &imu_msg);
-            void OdomCallback(const nav_msgs::Odometry &pos_msg);                            
-            void aim_callback(const geometry_msgs::PoseStamped::ConstPtr & aim_msg);
-            void fullaim_callback(const mavros_msgs::PositionTarget::ConstPtr & aim_msg);
-            bool  astar_subCallback(const std::vector<Eigen::Vector2d> &astar_path_);
-             void stateFSMCallback(); 
-             void StateChange( PLANNER_STATE new_state, string pos_call);
-
-            void smooth_subCallback(const nav_msgs::Path::ConstPtr & msg);
-            void fsm_subCallback(const std_msgs::Int64::ConstPtr & msg);
-            void arrive_callback(const std_msgs::Int64::ConstPtr & msg);
-           void BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::ConstPtr &msg) ;
-           void PublishSwarm(bool startup_pub);
-           void swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr &msg);
-=======
             bool astar_subCallback(const std::vector<Eigen::Vector2d> &path);
             void astar_getCallback(const nav_msgs::PathConstPtr &path);
             void BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::ConstPtr &msg);
@@ -537,7 +386,6 @@ struct OneTrajDataOfSwarm
             void smooth_subCallback(const nav_msgs::Path::ConstPtr & msg);
             void fsm_subCallback(const std_msgs::Int64::ConstPtr & msg);
             void arrive_callback(const std_msgs::Int64::ConstPtr & msg);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
             Eigen::MatrixXd getSmoothTraj(const geometry_msgs::PoseStamped &start,
                                                                             const geometry_msgs::PoseStamped &end);
             Eigen::Vector2i posToIndex(const Eigen::MatrixXd &pos)
@@ -551,8 +399,4 @@ struct OneTrajDataOfSwarm
     };
 
 }
-<<<<<<< HEAD
 #endif
-=======
-#endif
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd

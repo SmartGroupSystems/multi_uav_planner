@@ -19,11 +19,7 @@ add_custom_target(multi_bspline_opt_generate_messages ALL)
 
 get_filename_component(_filename "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg" NAME_WE)
 add_custom_target(_multi_bspline_opt_generate_messages_check_deps_${_filename}
-<<<<<<< HEAD
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "multi_bspline_opt" "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg" "geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:std_msgs/Header"
-=======
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "multi_bspline_opt" "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg" "geometry_msgs/Point"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 )
 
 get_filename_component(_filename "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/SendTraj.msg" NAME_WE)
@@ -45,11 +41,7 @@ add_custom_target(_multi_bspline_opt_generate_messages_check_deps_${_filename}
 _generate_msg_cpp(multi_bspline_opt
   "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg"
   "${MSG_I_FLAGS}"
-<<<<<<< HEAD
-  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-=======
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/multi_bspline_opt
 )
 _generate_msg_cpp(multi_bspline_opt
@@ -98,11 +90,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS multi_bspline_opt_generate_messages
 _generate_msg_eus(multi_bspline_opt
   "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg"
   "${MSG_I_FLAGS}"
-<<<<<<< HEAD
-  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-=======
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/multi_bspline_opt
 )
 _generate_msg_eus(multi_bspline_opt
@@ -151,11 +139,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS multi_bspline_opt_generate_messages
 _generate_msg_lisp(multi_bspline_opt
   "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg"
   "${MSG_I_FLAGS}"
-<<<<<<< HEAD
-  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-=======
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/multi_bspline_opt
 )
 _generate_msg_lisp(multi_bspline_opt
@@ -204,11 +188,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS multi_bspline_opt_generate_messages
 _generate_msg_nodejs(multi_bspline_opt
   "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg"
   "${MSG_I_FLAGS}"
-<<<<<<< HEAD
-  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-=======
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/multi_bspline_opt
 )
 _generate_msg_nodejs(multi_bspline_opt
@@ -257,11 +237,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS multi_bspline_opt_generate_messages
 _generate_msg_py(multi_bspline_opt
   "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg"
   "${MSG_I_FLAGS}"
-<<<<<<< HEAD
-  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
-=======
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/multi_bspline_opt
 )
 _generate_msg_py(multi_bspline_opt

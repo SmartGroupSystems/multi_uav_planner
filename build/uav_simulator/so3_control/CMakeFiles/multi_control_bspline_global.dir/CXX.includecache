@@ -21,21 +21,11 @@ ros/builtin_message_traits.h
 -
 ros/message_operations.h
 -
-<<<<<<< HEAD
-std_msgs/Header.h
--
-geometry_msgs/PoseStamped.h
--
-geometry_msgs/PoseStamped.h
--
-geometry_msgs/PoseStamped.h
-=======
 geometry_msgs/Point.h
 -
 geometry_msgs/Point.h
 -
 geometry_msgs/Point.h
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 -
 
 /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/MultiBsplines.h

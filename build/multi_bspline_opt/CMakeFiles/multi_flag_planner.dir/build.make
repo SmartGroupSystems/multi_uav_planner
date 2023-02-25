@@ -57,30 +57,6 @@ include multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/progress.make
 # Include the compile flags for this target's objects.
 include multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/flags.make
 
-<<<<<<< HEAD
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/flags.make
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wenjing/ros/my_planner_rviz/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o"
-	cd /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o -c /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp
-
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.i"
-	cd /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp > CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.i
-
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.s"
-	cd /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp -o CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.s
-
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.requires:
-
-.PHONY : multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.requires
-
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.provides: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.requires
-	$(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.provides.build
-.PHONY : multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.provides
-
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.provides.build: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o
-=======
 multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/flags.make
 multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wenjing/ros/my_planner_rviz/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o"
@@ -103,25 +79,15 @@ multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o.provides: mul
 .PHONY : multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o.provides
 
 multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o.provides.build: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 
 # Object files for target multi_flag_planner
 multi_flag_planner_OBJECTS = \
-<<<<<<< HEAD
-"CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o"
-=======
 "CMakeFiles/multi_flag_planner.dir/src/main.cpp.o"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 # External object files for target multi_flag_planner
 multi_flag_planner_EXTERNAL_OBJECTS =
 
-<<<<<<< HEAD
-/home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o
-/home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make
-/home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /home/wenjing/ros/my_planner_rviz/devel/lib/libmulti_bspline_opt.so
-=======
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /home/wenjing/ros/my_planner_rviz/devel/lib/libmulti_bspline_opt.so
@@ -129,7 +95,6 @@ multi_flag_planner_EXTERNAL_OBJECTS =
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /opt/ros/melodic/lib/libnlopt_cxx.so
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /opt/ros/melodic/lib/libmessage_filters.so
 /home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner: /opt/ros/melodic/lib/libroscpp.so
@@ -159,11 +124,7 @@ multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build: /home/wenjing/ros/my_
 
 .PHONY : multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build
 
-<<<<<<< HEAD
-multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/requires: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o.requires
-=======
 multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/requires: multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o.requires
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 .PHONY : multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/requires
 

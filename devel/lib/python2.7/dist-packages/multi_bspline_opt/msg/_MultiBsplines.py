@@ -11,11 +11,7 @@ import geometry_msgs.msg
 import multi_bspline_opt.msg
 
 class MultiBsplines(genpy.Message):
-<<<<<<< HEAD
-  _md5sum = "cdca54030719384ffd1c921d966beb6e"
-=======
   _md5sum = "0a9ce0a6a663879c244f8d58ac09d0d8"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   _type = "multi_bspline_opt/MultiBsplines"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int32 drone_id_from
@@ -37,11 +33,6 @@ float64 start_pos_x
 float64 start_pos_y
 float64 start_vel_x
 float64 start_vel_y
-<<<<<<< HEAD
-float64 start_acc_x
-float64 start_acc_y
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 float64 end_pos_x
 float64 end_pos_y
 # float64 yaw_rate
@@ -106,11 +97,7 @@ float64 z
         _x = _v1
         buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
         _x = val1
-<<<<<<< HEAD
-        buff.write(_get_struct_8d().pack(_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
-=======
         buff.write(_get_struct_6d().pack(_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y))
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         length = len(val1.control_pts)
         buff.write(_struct_I.pack(length))
         for val2 in val1.control_pts:
@@ -154,13 +141,8 @@ float64 z
         (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
         _x = val1
         start = end
-<<<<<<< HEAD
-        end += 64
-        (_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_8d().unpack(str[start:end])
-=======
         end += 48
         (_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_6d().unpack(str[start:end])
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -204,11 +186,7 @@ float64 z
         _x = _v3
         buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
         _x = val1
-<<<<<<< HEAD
-        buff.write(_get_struct_8d().pack(_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
-=======
         buff.write(_get_struct_6d().pack(_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y))
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         length = len(val1.control_pts)
         buff.write(_struct_I.pack(length))
         for val2 in val1.control_pts:
@@ -253,13 +231,8 @@ float64 z
         (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
         _x = val1
         start = end
-<<<<<<< HEAD
-        end += 64
-        (_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_8d().unpack(str[start:end])
-=======
         end += 48
         (_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_6d().unpack(str[start:end])
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -300,21 +273,12 @@ def _get_struct_3d():
     if _struct_3d is None:
         _struct_3d = struct.Struct("<3d")
     return _struct_3d
-<<<<<<< HEAD
-_struct_8d = None
-def _get_struct_8d():
-    global _struct_8d
-    if _struct_8d is None:
-        _struct_8d = struct.Struct("<8d")
-    return _struct_8d
-=======
 _struct_6d = None
 def _get_struct_6d():
     global _struct_6d
     if _struct_6d is None:
         _struct_6d = struct.Struct("<6d")
     return _struct_6d
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 _struct_i = None
 def _get_struct_i():
     global _struct_i

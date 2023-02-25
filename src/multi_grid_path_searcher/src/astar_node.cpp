@@ -180,11 +180,7 @@ void rcvPointCloudCallBack(const sensor_msgs::PointCloud2::ConstPtr & pointcloud
 
     _has_map = true;
     // ROS_INFO_DELAYED_THROTTLE(1,"[Astar] Pointcloud received.");
-<<<<<<< HEAD
-    // ROS_INFO("[Astar] Pointcloud received.");
-=======
     ROS_INFO("[Astar] Pointcloud received.");
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     std_msgs::Int64 arr_msg;
 
     if(!_has_target)
@@ -267,11 +263,7 @@ void rcvWaypointsCallback(const geometry_msgs::PoseStamped::ConstPtr & wp)
         ROS_WARN("[Astar] No map! ");
         // return;
     }
-<<<<<<< HEAD
-    // cout<<"[Astar] Planning target received."<<endl;
-=======
     cout<<"[Astar] Planning target received."<<endl;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     // Vector2d _target_pt;
     _target_pt << target_x,
                   target_y;

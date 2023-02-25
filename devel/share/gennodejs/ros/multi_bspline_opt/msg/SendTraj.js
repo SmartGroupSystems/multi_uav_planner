@@ -28,11 +28,6 @@ class SendTraj {
       this.start_pos_y = null;
       this.start_vel_x = null;
       this.start_vel_y = null;
-<<<<<<< HEAD
-      this.start_acc_x = null;
-      this.start_acc_y = null;
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       this.end_pos_x = null;
       this.end_pos_y = null;
       this.control_pts = null;
@@ -93,21 +88,6 @@ class SendTraj {
       else {
         this.start_vel_y = 0.0;
       }
-<<<<<<< HEAD
-      if (initObj.hasOwnProperty('start_acc_x')) {
-        this.start_acc_x = initObj.start_acc_x
-      }
-      else {
-        this.start_acc_x = 0.0;
-      }
-      if (initObj.hasOwnProperty('start_acc_y')) {
-        this.start_acc_y = initObj.start_acc_y
-      }
-      else {
-        this.start_acc_y = 0.0;
-      }
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       if (initObj.hasOwnProperty('end_pos_x')) {
         this.end_pos_x = initObj.end_pos_x
       }
@@ -155,13 +135,6 @@ class SendTraj {
     bufferOffset = _serializer.float64(obj.start_vel_x, buffer, bufferOffset);
     // Serialize message field [start_vel_y]
     bufferOffset = _serializer.float64(obj.start_vel_y, buffer, bufferOffset);
-<<<<<<< HEAD
-    // Serialize message field [start_acc_x]
-    bufferOffset = _serializer.float64(obj.start_acc_x, buffer, bufferOffset);
-    // Serialize message field [start_acc_y]
-    bufferOffset = _serializer.float64(obj.start_acc_y, buffer, bufferOffset);
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     // Serialize message field [end_pos_x]
     bufferOffset = _serializer.float64(obj.end_pos_x, buffer, bufferOffset);
     // Serialize message field [end_pos_y]
@@ -199,13 +172,6 @@ class SendTraj {
     data.start_vel_x = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [start_vel_y]
     data.start_vel_y = _deserializer.float64(buffer, bufferOffset);
-<<<<<<< HEAD
-    // Deserialize message field [start_acc_x]
-    data.start_acc_x = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [start_acc_y]
-    data.start_acc_y = _deserializer.float64(buffer, bufferOffset);
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     // Deserialize message field [end_pos_x]
     data.end_pos_x = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [end_pos_y]
@@ -226,11 +192,7 @@ class SendTraj {
     let length = 0;
     length += 24 * object.control_pts.length;
     length += 8 * object.knots.length;
-<<<<<<< HEAD
-    return length + 100;
-=======
     return length + 84;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   }
 
   static datatype() {
@@ -240,11 +202,7 @@ class SendTraj {
 
   static md5sum() {
     //Returns md5sum for a message object
-<<<<<<< HEAD
-    return '1db39cd31304eba253abaf4c9988cb49';
-=======
     return 'cdb4d98dc8568f5ace0ee75482493f76';
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   }
 
   static messageDefinition() {
@@ -264,11 +222,6 @@ class SendTraj {
     float64 start_pos_y
     float64 start_vel_x
     float64 start_vel_y
-<<<<<<< HEAD
-    float64 start_acc_x
-    float64 start_acc_y
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     float64 end_pos_x
     float64 end_pos_y
     # float64 yaw_rate
@@ -354,23 +307,6 @@ class SendTraj {
       resolved.start_vel_y = 0.0
     }
 
-<<<<<<< HEAD
-    if (msg.start_acc_x !== undefined) {
-      resolved.start_acc_x = msg.start_acc_x;
-    }
-    else {
-      resolved.start_acc_x = 0.0
-    }
-
-    if (msg.start_acc_y !== undefined) {
-      resolved.start_acc_y = msg.start_acc_y;
-    }
-    else {
-      resolved.start_acc_y = 0.0
-    }
-
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     if (msg.end_pos_x !== undefined) {
       resolved.end_pos_x = msg.end_pos_x;
     }

@@ -99,11 +99,7 @@ if(NOT "/home/wenjing/ros/my_planner_rviz/devel/include;/home/wenjing/ros/my_pla
   elseif(NOT " " STREQUAL " ")
     set(_report "Check the website '' for information and consider reporting the problem.")
   else()
-<<<<<<< HEAD
-    set(_report "Report the problem to the maintainer 'lrc <lrc@todo.todo>' and request to fix the problem.")
-=======
     set(_report "Report the problem to the maintainer 'wenjing <wenjing@todo.todo>' and request to fix the problem.")
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   endif()
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
@@ -189,11 +185,7 @@ foreach(t ${multi_bspline_opt_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-<<<<<<< HEAD
-set(depends "roscpp;rospy;std_msgs;visualization_msgs;message_runtime")
-=======
 set(depends "message_runtime")
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

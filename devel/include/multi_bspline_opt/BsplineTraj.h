@@ -15,16 +15,9 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
-<<<<<<< HEAD
-#include <std_msgs/Header.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <geometry_msgs/PoseStamped.h>
-=======
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Point.h>
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 
 namespace multi_bspline_opt
 {
@@ -34,23 +27,6 @@ struct BsplineTraj_
   typedef BsplineTraj_<ContainerAllocator> Type;
 
   BsplineTraj_()
-<<<<<<< HEAD
-    : header()
-    , position()
-    , velocity()
-    , acceleration()
-    , yaw(0.0)
-    , yaw_rate(0.0)
-    , current_seq(0)  {
-    }
-  BsplineTraj_(const ContainerAllocator& _alloc)
-    : header(_alloc)
-    , position(_alloc)
-    , velocity(_alloc)
-    , acceleration(_alloc)
-    , yaw(0.0)
-    , yaw_rate(0.0)
-=======
     : drone_id(0)
     , traj_id(0)
     , start_time()
@@ -72,33 +48,12 @@ struct BsplineTraj_
     , position(_alloc)
     , velocity(_alloc)
     , acceleration(_alloc)
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     , current_seq(0)  {
   (void)_alloc;
     }
 
 
 
-<<<<<<< HEAD
-   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
-  _header_type header;
-
-   typedef std::vector< ::geometry_msgs::PoseStamped_<ContainerAllocator> , typename std::allocator_traits<ContainerAllocator>::template rebind_alloc< ::geometry_msgs::PoseStamped_<ContainerAllocator> >> _position_type;
-  _position_type position;
-
-   typedef std::vector< ::geometry_msgs::PoseStamped_<ContainerAllocator> , typename std::allocator_traits<ContainerAllocator>::template rebind_alloc< ::geometry_msgs::PoseStamped_<ContainerAllocator> >> _velocity_type;
-  _velocity_type velocity;
-
-   typedef std::vector< ::geometry_msgs::PoseStamped_<ContainerAllocator> , typename std::allocator_traits<ContainerAllocator>::template rebind_alloc< ::geometry_msgs::PoseStamped_<ContainerAllocator> >> _acceleration_type;
-  _acceleration_type acceleration;
-
-   typedef float _yaw_type;
-  _yaw_type yaw;
-
-   typedef float _yaw_rate_type;
-  _yaw_rate_type yaw_rate;
-
-=======
    typedef int32_t _drone_id_type;
   _drone_id_type drone_id;
 
@@ -126,7 +81,6 @@ struct BsplineTraj_
    typedef std::vector< ::geometry_msgs::Point_<ContainerAllocator> , typename std::allocator_traits<ContainerAllocator>::template rebind_alloc< ::geometry_msgs::Point_<ContainerAllocator> >> _acceleration_type;
   _acceleration_type acceleration;
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
    typedef uint32_t _current_seq_type;
   _current_seq_type current_seq;
 
@@ -159,14 +113,6 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::multi_bspline_opt::BsplineTraj_<ContainerAllocator1> & lhs, const ::multi_bspline_opt::BsplineTraj_<ContainerAllocator2> & rhs)
 {
-<<<<<<< HEAD
-  return lhs.header == rhs.header &&
-    lhs.position == rhs.position &&
-    lhs.velocity == rhs.velocity &&
-    lhs.acceleration == rhs.acceleration &&
-    lhs.yaw == rhs.yaw &&
-    lhs.yaw_rate == rhs.yaw_rate &&
-=======
   return lhs.drone_id == rhs.drone_id &&
     lhs.traj_id == rhs.traj_id &&
     lhs.start_time == rhs.start_time &&
@@ -176,7 +122,6 @@ bool operator==(const ::multi_bspline_opt::BsplineTraj_<ContainerAllocator1> & l
     lhs.position == rhs.position &&
     lhs.velocity == rhs.velocity &&
     lhs.acceleration == rhs.acceleration &&
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     lhs.current_seq == rhs.current_seq;
 }
 
@@ -220,20 +165,12 @@ struct IsMessage< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
-<<<<<<< HEAD
-  : TrueType
-=======
   : FalseType
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> const>
-<<<<<<< HEAD
-  : TrueType
-=======
   : FalseType
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
   { };
 
 
@@ -242,21 +179,12 @@ struct MD5Sum< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
 {
   static const char* value()
   {
-<<<<<<< HEAD
-    return "47fe784cc6ad92a6cd7d1488e4d545d9";
-  }
-
-  static const char* value(const ::multi_bspline_opt::BsplineTraj_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x47fe784cc6ad92a6ULL;
-  static const uint64_t static_value2 = 0xcd7d1488e4d545d9ULL;
-=======
     return "c277c0fe692a3c44cb39de5d41a0fe4c";
   }
 
   static const char* value(const ::multi_bspline_opt::BsplineTraj_<ContainerAllocator>&) { return value(); }
   static const uint64_t static_value1 = 0xc277c0fe692a3c44ULL;
   static const uint64_t static_value2 = 0xcb39de5d41a0fe4cULL;
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 };
 
 template<class ContainerAllocator>
@@ -275,45 +203,6 @@ struct Definition< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
 {
   static const char* value()
   {
-<<<<<<< HEAD
-    return "std_msgs/Header header\n"
-"\n"
-"geometry_msgs/PoseStamped[] position\n"
-"geometry_msgs/PoseStamped[] velocity\n"
-"geometry_msgs/PoseStamped[] acceleration\n"
-"\n"
-"float32 yaw\n"
-"float32 yaw_rate\n"
-"uint32 current_seq\n"
-"\n"
-"================================================================================\n"
-"MSG: std_msgs/Header\n"
-"# Standard metadata for higher-level stamped data types.\n"
-"# This is generally used to communicate timestamped data \n"
-"# in a particular coordinate frame.\n"
-"# \n"
-"# sequence ID: consecutively increasing ID \n"
-"uint32 seq\n"
-"#Two-integer timestamp that is expressed as:\n"
-"# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n"
-"# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n"
-"# time-handling sugar is provided by the client library\n"
-"time stamp\n"
-"#Frame this data is associated with\n"
-"string frame_id\n"
-"\n"
-"================================================================================\n"
-"MSG: geometry_msgs/PoseStamped\n"
-"# A Pose with reference coordinate frame and timestamp\n"
-"Header header\n"
-"Pose pose\n"
-"\n"
-"================================================================================\n"
-"MSG: geometry_msgs/Pose\n"
-"# A representation of pose in free space, composed of position and orientation. \n"
-"Point position\n"
-"Quaternion orientation\n"
-=======
     return "# std_msgs/Header header\n"
 "\n"
 "int32 drone_id\n"
@@ -329,7 +218,6 @@ struct Definition< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
 "geometry_msgs/Point[] acceleration\n"
 "\n"
 "uint32 current_seq\n"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 "\n"
 "================================================================================\n"
 "MSG: geometry_msgs/Point\n"
@@ -337,18 +225,6 @@ struct Definition< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
 "float64 x\n"
 "float64 y\n"
 "float64 z\n"
-<<<<<<< HEAD
-"\n"
-"================================================================================\n"
-"MSG: geometry_msgs/Quaternion\n"
-"# This represents an orientation in free space in quaternion form.\n"
-"\n"
-"float64 x\n"
-"float64 y\n"
-"float64 z\n"
-"float64 w\n"
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 ;
   }
 
@@ -367,14 +243,6 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-<<<<<<< HEAD
-      stream.next(m.header);
-      stream.next(m.position);
-      stream.next(m.velocity);
-      stream.next(m.acceleration);
-      stream.next(m.yaw);
-      stream.next(m.yaw_rate);
-=======
       stream.next(m.drone_id);
       stream.next(m.traj_id);
       stream.next(m.start_time);
@@ -384,7 +252,6 @@ namespace serialization
       stream.next(m.position);
       stream.next(m.velocity);
       stream.next(m.acceleration);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
       stream.next(m.current_seq);
     }
 
@@ -404,11 +271,6 @@ struct Printer< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::multi_bspline_opt::BsplineTraj_<ContainerAllocator>& v)
   {
-<<<<<<< HEAD
-    s << indent << "header: ";
-    s << std::endl;
-    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
-=======
     s << indent << "drone_id: ";
     Printer<int32_t>::stream(s, indent + "  ", v.drone_id);
     s << indent << "traj_id: ";
@@ -421,18 +283,13 @@ struct Printer< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.yaw);
     s << indent << "yaw_rate: ";
     Printer<double>::stream(s, indent + "  ", v.yaw_rate);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     s << indent << "position[]" << std::endl;
     for (size_t i = 0; i < v.position.size(); ++i)
     {
       s << indent << "  position[" << i << "]: ";
       s << std::endl;
       s << indent;
-<<<<<<< HEAD
-      Printer< ::geometry_msgs::PoseStamped_<ContainerAllocator> >::stream(s, indent + "    ", v.position[i]);
-=======
       Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "    ", v.position[i]);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     }
     s << indent << "velocity[]" << std::endl;
     for (size_t i = 0; i < v.velocity.size(); ++i)
@@ -440,11 +297,7 @@ struct Printer< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
       s << indent << "  velocity[" << i << "]: ";
       s << std::endl;
       s << indent;
-<<<<<<< HEAD
-      Printer< ::geometry_msgs::PoseStamped_<ContainerAllocator> >::stream(s, indent + "    ", v.velocity[i]);
-=======
       Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "    ", v.velocity[i]);
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     }
     s << indent << "acceleration[]" << std::endl;
     for (size_t i = 0; i < v.acceleration.size(); ++i)
@@ -452,17 +305,8 @@ struct Printer< ::multi_bspline_opt::BsplineTraj_<ContainerAllocator> >
       s << indent << "  acceleration[" << i << "]: ";
       s << std::endl;
       s << indent;
-<<<<<<< HEAD
-      Printer< ::geometry_msgs::PoseStamped_<ContainerAllocator> >::stream(s, indent + "    ", v.acceleration[i]);
-    }
-    s << indent << "yaw: ";
-    Printer<float>::stream(s, indent + "  ", v.yaw);
-    s << indent << "yaw_rate: ";
-    Printer<float>::stream(s, indent + "  ", v.yaw_rate);
-=======
       Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "    ", v.acceleration[i]);
     }
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
     s << indent << "current_seq: ";
     Printer<uint32_t>::stream(s, indent + "  ", v.current_seq);
   }

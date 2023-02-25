@@ -1,24 +1,14 @@
 [
 {
   "directory": "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build",
-<<<<<<< HEAD
-  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"multi_bspline_opt\\\" -Dmulti_bspline_opt_EXPORTS -Idevel/include -I../include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/nlopt/cmake/../../../include/nlopt  -g -fPIC   -o CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o -c /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/bspline_opt.cpp",
-  "file": "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/bspline_opt.cpp"
-=======
   "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"multi_bspline_opt\\\" -DvtkFiltersFlowPaths_AUTOINIT=\"1(vtkFiltersParallelFlowPaths)\" -DvtkIOExodus_AUTOINIT=\"1(vtkIOParallelExodus)\" -DvtkIOGeometry_AUTOINIT=\"1(vtkIOMPIParallel)\" -DvtkIOImage_AUTOINIT=\"1(vtkIOMPIImage)\" -DvtkIOParallel_AUTOINIT=\"1(vtkIOMPIParallel)\" -DvtkIOSQL_AUTOINIT=\"2(vtkIOMySQL,vtkIOPostgreSQL)\" -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL)\" -DvtkRenderingFreeType_AUTOINIT=\"2(vtkRenderingFreeTypeFontConfig,vtkRenderingMatplotlib)\" -DvtkRenderingLIC_AUTOINIT=\"1(vtkRenderingParallelLIC)\" -DvtkRenderingVolume_AUTOINIT=\"1(vtkRenderingVolumeOpenGL)\" -Idevel/include -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I../include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/nlopt/cmake/../../../include/nlopt -I/usr/include/opencv    -g   -o CMakeFiles/multi_flag_planner.dir/src/main.cpp.o -c /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/main.cpp",
   "file": "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/main.cpp"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 },
 
 {
   "directory": "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/build",
-<<<<<<< HEAD
-  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"multi_bspline_opt\\\" -Idevel/include -I../include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/nlopt/cmake/../../../include/nlopt  -g   -o CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o -c /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp",
-  "file": "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp"
-=======
   "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"multi_bspline_opt\\\" -Dmulti_bspline_opt_EXPORTS -DvtkFiltersFlowPaths_AUTOINIT=\"1(vtkFiltersParallelFlowPaths)\" -DvtkIOExodus_AUTOINIT=\"1(vtkIOParallelExodus)\" -DvtkIOGeometry_AUTOINIT=\"1(vtkIOMPIParallel)\" -DvtkIOImage_AUTOINIT=\"1(vtkIOMPIImage)\" -DvtkIOParallel_AUTOINIT=\"1(vtkIOMPIParallel)\" -DvtkIOSQL_AUTOINIT=\"2(vtkIOMySQL,vtkIOPostgreSQL)\" -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL)\" -DvtkRenderingFreeType_AUTOINIT=\"2(vtkRenderingFreeTypeFontConfig,vtkRenderingMatplotlib)\" -DvtkRenderingLIC_AUTOINIT=\"1(vtkRenderingParallelLIC)\" -DvtkRenderingVolume_AUTOINIT=\"1(vtkRenderingVolumeOpenGL)\" -Idevel/include -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I../include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/nlopt/cmake/../../../include/nlopt -I/usr/include/opencv    -g -fPIC   -o CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o -c /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/bspline_opt.cpp",
   "file": "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/bspline_opt.cpp"
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 },
 
 {

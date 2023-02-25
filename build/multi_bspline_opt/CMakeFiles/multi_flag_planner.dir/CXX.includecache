@@ -21,21 +21,11 @@ ros/builtin_message_traits.h
 -
 ros/message_operations.h
 -
-<<<<<<< HEAD
-std_msgs/Header.h
--
-geometry_msgs/PoseStamped.h
--
-geometry_msgs/PoseStamped.h
--
-geometry_msgs/PoseStamped.h
-=======
 geometry_msgs/Point.h
 -
 geometry_msgs/Point.h
 -
 geometry_msgs/Point.h
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 -
 
 /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/MultiBsplines.h
@@ -137,11 +127,8 @@ std_msgs/Int64.h
 -
 std_msgs/Float64.h
 -
-<<<<<<< HEAD
-=======
 multi_bspline_opt/obj_predict.h
 -
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 message_filters/subscriber.h
 -
 message_filters/synchronizer.h
@@ -154,19 +141,10 @@ boost/thread/thread.hpp
 -
 multi_bspline_opt/BsplineTraj.h
 -
-<<<<<<< HEAD
-multi_bspline_opt/EdtTransform.hpp
--
-=======
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 multi_bspline_opt/MultiBsplines.h
 -
 multi_bspline_opt/SendTraj.h
 -
-<<<<<<< HEAD
-
-/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/test_planning.cpp
-=======
 multi_bspline_opt/EdtTransform.hpp
 -
 
@@ -187,7 +165,6 @@ visualization_msgs/Marker.h
 -
 
 /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/main.cpp
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
 ros/ros.h
 -
 multi_bspline_opt/bspline_opt.h
@@ -1775,8 +1752,6 @@ time.h
 stddef.h
 -
 
-<<<<<<< HEAD
-=======
 /usr/include/x86_64-linux-gnu/bits/select.h
 bits/wordsize.h
 -
@@ -1849,4 +1824,3 @@ features.h
 bits/types/time_t.h
 -
 
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
