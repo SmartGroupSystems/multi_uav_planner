@@ -12,7 +12,7 @@ sleep 2 ;
 RUN_AFTER_BASHRC="source devel/setup.bash;roslaunch grid_path_searcher astar_node.launch" gnome-terminal --title="Astar" --tab & 
 sleep 2 ;
 RUN_AFTER_BASHRC="source devel/setup.bash;roslaunch bspline_race traj_testing.launch" gnome-terminal --title="Bspline" --tab &
-sleep 2;
+sleep 1;
 RUN_AFTER_BASHRC="source devel/setup.bash;rosrun so3_control control_bspline" gnome-terminal --title="controller" --tab;
 RUN_AFTER_BASHRC="source devel/setup.bash;rosrun plotjuggler plotjuggler show.xml" gnome-terminal --title="plot" --tab;
 wait
