@@ -1263,27 +1263,6 @@ void  bspline_optimizer::calcDroneCost(const Eigen::MatrixXd &q, double &cost, E
 //发布swarm轨迹(绝对里程计坐标)
         string pub_topic_name = string("/uav") + std::to_string(drone_id_) + string("_planning_swarm_trajs");
         swarm_trajs_pub_ = nh.advertise<multi_bspline_opt::MultiBsplines>(pub_topic_name.c_str(), 10);
-<<<<<<< HEAD
-
-        //   traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
-    }
-void plan_manager::arrive_callback(const std_msgs::Int64::ConstPtr & msg)
-{
-    if(msg->data>0)
-    {
-        lambda3_ = lambda3_saved;
-    }
-    // cout<<lambda3_<<endl;
-}
-void plan_manager::fsm_subCallback(const std_msgs::Int64::ConstPtr & msg)
-{
-    if(msg->data == 3)
-        enable_flag = true;
-    else 
-        enable_flag = false;
-}
-
-=======
         //定时发布轨迹
          traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
 
@@ -1323,7 +1302,6 @@ void plan_manager::rcvDroneOdomCallbackBase(const nav_msgs::Odometry& odom, int 
   
   // if the drone is in sensor range
 }
->>>>>>> 660a75c39eb17347837c1177d3d0593b121c5bbd
  void plan_manager::StateChange( PLANNER_STATE new_state, string pos_call)
  {
     //如果状态没有变
