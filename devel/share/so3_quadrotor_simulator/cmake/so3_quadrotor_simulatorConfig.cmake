@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/ros/catkin_overlay_ws/devel/lib;/home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/catkin_ws/devel/lib;/opt/ros/melodic/lib;/home/wenjing/ros/controller/flag_planner/devel/lib;/home/wenjing/ros/ascup_ws_simulation/devel/lib)
+    foreach(path /home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/ros/catkin_overlay_ws/devel/lib;/home/wenjing/catkin_ws/devel/lib;/opt/ros/melodic/lib;/home/wenjing/ros/controller/flag_planner/devel/lib;/home/wenjing/ros/ascup_ws_simulation/devel/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

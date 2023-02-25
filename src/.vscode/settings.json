@@ -4,6 +4,18 @@
         "/opt/ros/melodic/lib/python2.7/dist-packages"
     ],
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "thread": "cpp",
+        "complex": "cpp",
+        "bitset": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp",
+        "utility": "cpp",
+        "core": "cpp",
+        "iostream": "cpp"
     }
 }

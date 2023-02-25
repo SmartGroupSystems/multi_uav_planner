@@ -323,13 +323,16 @@ namespace my_planner
   {
     cost = 0.0;
     // ROS_ERROR(" RECIEVED SWARM!");
+    // return;
      if (swarm_trajs_== NULL ||swarm_trajs_->size()==0)
      {
-        ROS_ERROR("NOT RECIEVED SWARM!");
+        // ROS_ERROR("NOT RECIEVED SWARM!");
       return;
      }
-     ROS_ERROR(" RECIEVED SWARM!");
+    //  return;
+    //  ROS_ERROR(" RECIEVED SWARM!");
     int end_idx = q.cols() - p_order_ - (double)(q.cols() - 2 * p_order_) * 1.0 / 3.0; // Only check the first 2/3 points
+    // cout<<"end_idx:"<<end_idx<<endl;
     const double CLEARANCE = swarm_clearance_ * 2;
     double t_now = ros::Time::now().toSec();
     constexpr double a = 2.0, b = 1.0, inv_a2 = 1 / a / a, inv_b2 = 1 / b / b;
@@ -340,27 +343,34 @@ namespace my_planner
 
       for (size_t id = 0; id < swarm_trajs_->size(); id++)
       {
-        if ( swarm_trajs_->at(id).drone_id == drone_id_)
+        if ( swarm_trajs_->at(id).drone_id != (int)id||swarm_trajs_->at(id).drone_id == drone_id_)
         {
-          ROS_ERROR("  ID ERROR!");
+        //   ROS_ERROR("  ID ERROR!");
           continue;
-        }
-
+        } 
+        // cout<<"swarm_trajs_"<<endl;
         double traj_i_satrt_time = swarm_trajs_->at(id).start_time_.toSec();
-        if (glb_time < traj_i_satrt_time + swarm_trajs_->at(id).duration_-0.05 )
+        //  cout<<"traj_i_satrt_time:"<<traj_i_satrt_time<<endl;
+        //  cout<<"duration:"<<swarm_trajs_->at(id).duration_<<endl;
+        //  cout<<"glb_time:"<<glb_time<<endl;
+        if (glb_time < traj_i_satrt_time + swarm_trajs_->at(id).duration_ )
         {
           // int number;
           // number =floor(( glb_time - traj_i_satrt_time) ) * 50;
           // number =min(swarm_trajs_->at(id).traj_.size, max(number , 0) );
           // Eigen::Vector2d swarm_prid = swarm_trajs_->at(id).traj_[number];
-          ROS_ERROR("START COMPUTE!");
+        //   cout<<"start swarm!"<<endl;
+          
            Eigen::Vector2d swarm_prid = swarm_trajs_->at(id).position_traj_.singleDeboor(glb_time - traj_i_satrt_time);
+        //    ROS_ERROR("START COMPUTE!");
+           
         //   Eigen::Vector2d swarm_prid  = swarm_prid1.head(2);
-          Eigen::Vector2d dist_vec = control_points_.col(i) - swarm_prid;
+          Eigen::Vector2d uav_control_vec =  control_points_.row(i);
+          Eigen::Vector2d dist_vec = uav_control_vec- swarm_prid;
           double ellip_dist = sqrt( (dist_vec(0) * dist_vec(0) + dist_vec(1) * dist_vec(1)) * inv_b2);
           double dist_err = CLEARANCE - ellip_dist;
-
-          Eigen::Vector2d dist_grad =control_points_.col(i) - swarm_prid;
+// cout<<"col："<<control_points_.rows()<<endl;
+          Eigen::Vector2d dist_grad =uav_control_vec - swarm_prid;
           Eigen::Vector2d Coeff;
           Coeff(0) = -2 * (CLEARANCE / ellip_dist - 1) * inv_b2;
           Coeff(1) = Coeff(0);
@@ -1379,12 +1389,13 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
     if ((int)id == drone_id_)
       return;
     //如果轨迹和现在时间差太大，返回
-    // if (abs((ros::Time::now() - msg->start_time).toSec()) > 1.5)
-    // {
-    //   ROS_ERROR("Time difference is too large! Local - Remote Agent %d = %fs",
-    //             msg->drone_id, (ros::Time::now() - msg->start_time).toSec());
-    //   return;
-    // }    
+    // cout<<"start_time_msg:"<<msg->start_time.toSec()<<endl;
+    if (abs((ros::Time::now() - msg->start_time).toSec()) > 3.0)
+    {
+      ROS_ERROR("Time difference is too large! Local - Remote Agent %d = %fs",
+     msg->drone_id, (ros::Time::now() - msg->start_time).toSec());
+      return;
+    }    
 
 //初始化
     if (swarm_trajs_buf_.size() <= id)
@@ -1405,13 +1416,16 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
     Eigen::Vector2d cp2(msg->control_pts[2+msg->order].x, msg->control_pts[2+msg->order].y);
     Eigen::Vector2d swarm_start_pt = (cp0 + 4 * cp1 + cp2) / 6;
     //如果无人机和当前无人机距离太远，则忽略
-    if ((swarm_start_pt - drone_pos_world).norm() > plan_manager::planning_horizen_ * 4.0f / 3.0f)
+    // cout<<"swarm_start_pt:"<<swarm_start_pt<<"drone_pos_world:"<<drone_pos_world<<endl;
+    // cout<<"distance:"<<(swarm_start_pt - drone_pos_world).norm() <<endl;
+    // cout<<"safe："<<planning_horizen_<<endl;
+    if ((swarm_start_pt - drone_pos_world).norm() > planning_horizen_ *4.0f/3.0f )
     {
        swarm_trajs_buf_[id].drone_id = -1;
        ROS_ERROR("TOO FAR!");
        return; 
     }
-
+    //    return;
     //swarm_trajs_buf_里存储odom坐标系坐标
     swarm_trajs_buf_[id].drone_id = id;
     Eigen::MatrixXd pos_pts( msg->control_pts.size(),2);
@@ -1428,25 +1442,31 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
 
 //将轨迹存储
     // swarm_trajs_buf_[id].drone_id = id;
-   
+    
     if (msg->order % 2)
     {
       double cutback = (double)msg->order / 2 + 1.5;
       swarm_trajs_buf_[id].duration_ = msg->knots[msg->knots.size() - ceil(cutback)];
+      
     }
     else
     {
       double cutback = (double)msg->order / 2 + 1.5;
       swarm_trajs_buf_[id].duration_ = (msg->knots[msg->knots.size() - floor(cutback)] + msg->knots[msg->knots.size() - ceil(cutback)]) / 2;
     }
-    Eigen::MatrixXd init;
+    // cout<<"swarm_trajs_buf_[id].duration_"<<swarm_trajs_buf_[id].duration_<<endl;
+   cout<<"error flag777"<<endl; 
+   Eigen::MatrixXd init;
     Eigen::MatrixXd end;
+    init.resize(3,2);
+    end.resize(3,2);
     init<<msg->start_pos_x, msg->start_pos_y,
                msg->start_vel_x, msg->start_vel_y,
                msg->start_acc_x, msg->start_acc_y;
     end<<msg->end_pos_x, msg->end_pos_y,
                0.0, 0.0,
                0.0,   0.0;
+    cout<<"error flag6661"<<endl;    
     UniformBspline pos_traj(p_order_,msg->cps_num_,beta, Dim_, init, end);
     pos_traj.setControlPoints(pos_pts);
     pos_traj.getT(TrajSampleRate);
@@ -1458,14 +1478,7 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
        swarm_trajs_buf_[id].start_pos_ = start;
 
        swarm_trajs_buf_[id].start_time_ = msg->start_time;
-    //  swarm_trajs_buf_[id].duration_ = msg->duration;
-    // planner_manager_->swarm_trajs_buf_[id].start_time_ = ros::Time::now(); // Un-reliable time sync
 
-    /* Check Collision */
-    // if (planner_manager_->checkCollision(id))
-    // {
-    //   changeFSMExecState(REPLAN_TRAJ, "TRAJ_CHECK");
-    // }
 }
 /*****************************************
  * smooth_path
@@ -1486,13 +1499,14 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
             //  ROS_ERROR("swarmTrajsCallback(): no odom!, return.");
               return;
           }
+     cout<<"traj"<<(int)msg->traj.size()<<"id from"<< msg->drone_id_from<<endl; 
 
     if ((int)msg->traj.size() != msg->drone_id_from + 1) // drone_id must start from 0
     {
       // ROS_ERROR("Wrong trajectory size! msg->traj.size()=%d, msg->drone_id_from+1=%d", (int)msg->traj.size(), msg->drone_id_from + 1);
       return;
     }
-
+   
     // if (msg->traj[0].order != 3) // only support B-spline order equals 3.
     // {
     //   ROS_ERROR("Only support B-spline order equals 3.");
@@ -1501,7 +1515,7 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
 
     swarm_trajs_buf_.clear();
     swarm_trajs_buf_.resize(msg->traj.size());
-
+    
     for (size_t i = 0; i < msg->traj.size(); i++)
     {
     Eigen::Vector2d cp0(msg->traj[i].control_pts[0+msg->traj[i].order].x, msg->traj[i].control_pts[0+msg->traj[i].order].y);
@@ -1513,18 +1527,21 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
     {
        swarm_trajs_buf_[i].drone_id = -1;
       continue; 
-    }
+    } 
+
     swarm_trajs_buf_[i].drone_id = i;
+        // cout<<"error flag22"<<endl;
     Eigen::MatrixXd pos_pts( msg->traj[i].control_pts.size(),2);
     Eigen::VectorXd knots(msg->traj[i].knots.size());
-
-
+    // cout<<"error flag23"<<endl;
       for (size_t j = 0; j < msg->traj[i].control_pts.size(); ++j)
       {
+    
         pos_pts( j,0) = msg->traj[i].control_pts[j].x;
         pos_pts(j,1) = msg->traj[i].control_pts[j].y;
 
-      }
+      } 
+
    if (msg->traj[i].order % 2)
     {
       double cutback = (double)msg->traj[i].order / 2 + 1.5;
@@ -1534,15 +1551,25 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
     {
       double cutback = (double)msg->traj[i].order / 2 + 1.5;
       swarm_trajs_buf_[i].duration_ = (msg->traj[i].knots[msg->traj[i].knots.size() - floor(cutback)] + msg->traj[i].knots[msg->traj[i].knots.size() - ceil(cutback)]) / 2;
-    }
+    } 
+    // cout<<"error flag27"<<endl;
     Eigen::MatrixXd init;
     Eigen::MatrixXd end;
-    init<<msg->traj[i].start_pos_x, msg->traj[i].start_pos_y,
+    init.resize(3,2);
+    end.resize(3,2);
+    //    cout<<"error flag666"<<endl;    
+  
+    //  double start_x = msg->traj[i].start_pos_x;    
+    //   cout<<"start1:"<< msg->traj[i].start_vel_x<<"  "<<"end"<<msg->traj[i].start_vel_y<<endl;
+    //     cout<<"acc1:"<< msg->traj[i].start_acc_x<<"  "<<"acc end"<< msg->traj[i].start_acc_y<<endl;
+       init<<msg->traj[i].start_pos_x, msg->traj[i].start_pos_y,
                msg->traj[i].start_vel_x, msg->traj[i].start_vel_y,
                msg->traj[i].start_acc_x,   msg->traj[i].start_acc_y;
-    end<<msg->traj[i].end_pos_x, msg->traj[i].end_pos_y,
+        cout<<"error flag28"<<endl;
+        end<<msg->traj[i].end_pos_x, msg->traj[i].end_pos_y,
                0.0, 0.0,
                0.0,   0.0;
+
     UniformBspline pos_traj(p_order_,msg->traj[i].cps_num_,beta, Dim_, init, end);
     pos_traj.setControlPoints(pos_pts);
     pos_traj.getT(TrajSampleRate);
@@ -1554,18 +1581,7 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
        swarm_trajs_buf_[i].start_pos_ = start;
 
        swarm_trajs_buf_[i].start_time_ = msg->traj[i].start_time;
-    //   Eigen::MatrixXd pos_pts(3, msg->traj[i].pos_pts.size());
-    //   Eigen::VectorXd knots(msg->traj[i].knots.size());
-    //   for (size_t j = 0; j < msg->traj[i].knots.size(); ++j)
-    //   {
-    //     knots(j) = msg->traj[i].knots[j];
-    //   }
-    //   for (size_t j = 0; j < msg->traj[i].pos_pts.size(); ++j)
-    //   {
-    //     pos_pts(0, j) = msg->traj[i].pos_pts[j].x;
-    //     pos_pts(1, j) = msg->traj[i].pos_pts[j].y;
-    //     pos_pts(2, j) = msg->traj[i].pos_pts[j].z;
-    //   }
+
     }
    
     have_recv_pre_agent_ = true;

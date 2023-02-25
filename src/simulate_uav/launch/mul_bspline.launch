@@ -12,11 +12,11 @@
 
   <arg name="goal_x" 			value="9.0" />
   <arg name="goal_y" 			value="-10.0" />
-  <arg name="lambda1" 			value="5.0" />
-  <arg name="lambda2" 			value="1.0" />
+  <arg name="lambda1" 			value="10.0" />
+  <arg name="lambda2" 			value="5.0" />
   <arg name="lambda3" 			value="15.0" />    <!-- 光滑 可行 避障权重 -->
     <arg name="lambda4" 			value="10.0" />   <!-- swarm 避障权重 -->
-  <arg name="lambda5" 			value="10.0" />
+  <arg name="lambda5" 			value="0.0" />
   <arg name="lambda6" 			value="0.0" />
   <arg name="esdf_collision" 		value="1.8" /> <!-- 小于此值则认为轨迹有碰撞 -->
   <arg name="frame" 			value="world" />     <!-- 参考系 -->
@@ -26,8 +26,9 @@
   <arg name="safe_distance" 		value="6.0" /> <!-- 安全距离 -->
     <arg name="swarm_clearance" 		value="4.0" />
   <arg name="dist_p" 			value="0.5" />       <!-- 均匀b样条每段长度：0.5 -->
-     <arg name="planning_horizen_" 		value="10.0" />
+     <arg name="planning_horizen_" 		value="7.5" />
  </include>
+ 
   <include file="$(find multi_bspline_opt)/launch/multi_bspline.launch">
     <arg name="uav_id_" value="1"/>
   <arg name="traj_order" 		value="3" /><!-- 轨迹阶数 -->
@@ -56,4 +57,5 @@
   <arg name="dist_p" 			value="0.5" />       <!-- 均匀b样条每段长度：0.5 -->
      <arg name="planning_horizen_" 		value="10.0" />
  </include>
+
 </launch>
