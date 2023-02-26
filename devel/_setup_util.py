@@ -268,7 +268,7 @@ if __name__ == '__main__':
 
         if not args.local:
             # environment at generation time
-            CMAKE_PREFIX_PATH = r'/home/wenjing/ros/catkin_overlay_ws/devel;/home/wenjing/catkin_ws/devel;/opt/ros/melodic;/home/wenjing/ros/controller/flag_planner/devel;/home/wenjing/ros/ascup_ws_simulation/devel'.split(';')
+            CMAKE_PREFIX_PATH = r'/home/wenjing/ros/catkin_overlay_ws/devel;/home/wenjing/ros/my_planner_rviz/devel;/home/wenjing/catkin_ws/devel;/opt/ros/melodic;/home/wenjing/ros/controller/flag_planner/devel;/home/wenjing/ros/ascup_ws_simulation/devel'.split(';')
         else:
             # don't consider any other prefix path than this one
             CMAKE_PREFIX_PATH = []

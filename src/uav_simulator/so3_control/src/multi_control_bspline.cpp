@@ -12,7 +12,7 @@ bool first_bs = true;
 #define PI acos(-1)
 #define INF 999.9
 bool arrived = false;
-#define T_RATE 40.0
+#define T_RATE 50.0
 double set_height;
 double roll, pitch, yaw;//定义存储r\p\y的容器
 double last_yaw;
@@ -142,7 +142,7 @@ void run()
         }
         else
         {
-            cout <<"[cmd] Arrived!"<< endl;
+            // cout <<"[cmd] Arrived!"<< endl;
         }
         /*   PUB_CONTROL   */
         // TIME
@@ -177,14 +177,15 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
   else
   {
     // 轨迹拼接
+    int  remain_last_seq = 0;
     int new_traj_start_seq = msg->current_seq ;
-    int delta_seq = new_traj_start_seq - BTraj[0].seq_;
+    int delta_seq = new_traj_start_seq - BTraj[0].seq_;  //当前点和发过来轨迹点起点的差
     cout << "delta_seq: " << delta_seq <<endl;
     if(delta_seq<0)// 如果当前发过来的轨迹太旧
     {
       ROS_WARN("The delay is too large < %i > points away, < %f > ms ago, check the parameter Settings."
                 ,-delta_seq, -delta_seq*delta_T*1000);
-        ROS_ERROR("USLESS.");
+      ROS_ERROR("USLESS.");
     }
     else if(delta_seq>BTraj.size())// 如果这个新轨迹的起点超过了当前剩余曲线的终点
     {
@@ -193,40 +194,80 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     }
     else// 终于没事了
     {
-      std::vector<bs_traj> BTraj_remain;
-      auto start_ptr_ = BTraj.begin();
-      // auto end_ptr_   = BTraj.begin() + delta_seq;// BUG ?悬垂指针？
-      int add_seq_;
-      if(delta_seq < (BTraj.size()-1))  
-      {         
-          add_seq_  = delta_seq-1;
-        //   cout << "delta_seq\n"<<delta_seq<<endl;
-      }
-      else
-      {
-        cout << "啊？"<<endl;
-        add_seq_ = (BTraj.size()-1);
-      }
-      auto end_ptr_   = BTraj.begin() + add_seq_;
-      if(add_seq_ > 0)
-      BTraj_remain.assign(start_ptr_,end_ptr_);// 存储剩余的可用路径
-      int old_traj_end_seq = end_ptr_->seq_;
-      (*(BTraj_remain.end()-1)).seq_;
-      for (size_t i = 0; i < msg->position.size(); i++)
-      {    
-          bs_traj BT_ptr;
-          BT_ptr.pos_ << msg->position[i].pose.position.x, 
-                         msg->position[i].pose.position.y;
-          BT_ptr.vel_ << msg->velocity[i].pose.position.x, 
-                         msg->velocity[i].pose.position.y;
-          BT_ptr.acc_ << msg->acceleration[i].pose.position.x, 
-                         msg->acceleration[i].pose.position.y;
-          BT_ptr.seq_ = i + new_traj_start_seq;
-          BTraj_remain.push_back(BT_ptr);
-      }
-      BTraj = BTraj_remain;
-      cout << "Successfully connect the trajectory at < "<<old_traj_end_seq
-                                           <<" > ++++ < "<<new_traj_start_seq<<" >."<<endl;
+       std::vector<bs_traj> BTraj_saved = BTraj;
+      bool affine_traj = true;
+       while ((*(BTraj.end()-1)).seq_ >= new_traj_start_seq)
+        {
+            BTraj.erase(BTraj.end()-1);
+            if(BTraj.size() == 0)
+            {
+                ROS_ERROR("STOP BECAUSE OF NEW TRAJ IS USELESS!!!");
+                affine_traj = false;
+                break;
+            }
+        }
+          int  remain_last_seq = new_traj_start_seq;
+        
+        if(affine_traj) 
+        {
+          connect_seq = (*(BTraj.end()-1)).seq_;
+          ROS_INFO("Successfully connect the trajectory at < %i > ++++ < %i >. With vel: %f, %f acc: %f, %f",
+                  (*(BTraj.end()-1)).seq_,remain_last_seq,
+                  (*(BTraj.end()-1)).vel_[0],(*(BTraj.end()-1)).vel_[1],
+                  (*(BTraj.end()-1)).acc_[0],(*(BTraj.end()-1)).acc_[1]);
+        }
+        // cout <<(*(BTraj.end()-1)).pos_<<endl;
+        // cout<<"--------------"<<endl;
+        // cout <<msg->position[0].pose.position.x<<"\n"<< msg->position[0].pose.position.y <<endl;
+    if(!affine_traj)
+    {
+      BTraj = BTraj_saved;
+      ROS_WARN("Use saved traj. Seq begin at: < %i >, end at: < %i >.",(*(BTraj.begin())).seq_,(*(BTraj.end()-1)).seq_);
+      return;
+    }
+    for (size_t i = 0; i < msg->position.size(); i++)
+    {    
+        bs_traj BT_ptr;
+        BT_ptr.pos_ << msg->position[i].pose.position.x    , msg->position[i].pose.position.y;
+        BT_ptr.vel_ << msg->velocity[i].pose.position.x    , msg->velocity[i].pose.position.y;
+        BT_ptr.acc_ << msg->acceleration[i].pose.position.x, msg->acceleration[i].pose.position.y;
+        BT_ptr.seq_ = i + remain_last_seq;
+        BTraj.push_back(BT_ptr);
+    } 
+      // std::vector<bs_traj> BTraj_remain;
+      // auto start_ptr_ = BTraj.begin();
+      // // auto end_ptr_   = BTraj.begin() + delta_seq;// BUG ?悬垂指针？
+      // int add_seq_;
+      // if(delta_seq < (BTraj.size()-1))  
+      // {         
+      //     add_seq_  = delta_seq-1;
+      //   //   cout << "delta_seq\n"<<delta_seq<<endl;
+      // }
+      // else
+      // {
+      //   cout << "啊？"<<endl;
+      //   add_seq_ = (BTraj.size()-1);
+      // }
+      // auto end_ptr_   = BTraj.begin() + add_seq_;
+      // if(add_seq_ > 0)
+      // BTraj_remain.assign(start_ptr_,end_ptr_);// 存储剩余的可用路径
+      // int old_traj_end_seq = end_ptr_->seq_;
+      // (*(BTraj_remain.end()-1)).seq_;
+      // for (size_t i = 0; i < msg->position.size(); i++)
+      // {    
+      //     bs_traj BT_ptr;
+      //     BT_ptr.pos_ << msg->position[i].pose.position.x, 
+      //                    msg->position[i].pose.position.y;
+      //     BT_ptr.vel_ << msg->velocity[i].pose.position.x, 
+      //                    msg->velocity[i].pose.position.y;
+      //     BT_ptr.acc_ << msg->acceleration[i].pose.position.x, 
+      //                    msg->acceleration[i].pose.position.y;
+      //     BT_ptr.seq_ = i + new_traj_start_seq;
+      //     BTraj_remain.push_back(BT_ptr);
+      // }
+      // BTraj = BTraj_remain;
+      // cout << "Successfully connect the trajectory at < "<<old_traj_end_seq
+      //                                      <<" > ++++ < "<<new_traj_start_seq<<" >."<<endl;
                 
     }
   }
@@ -423,8 +464,9 @@ int main(int argc, char **argv)
     ros::Rate rate(T_RATE);
 while(ros::ok())
     {
+
+      ros::spinOnce();     
       run();
-      ros::spinOnce();
       rate.sleep();
     }
     return 0;

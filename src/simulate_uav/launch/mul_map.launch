@@ -30,7 +30,7 @@
   <include file="$(find multi_mapping)/launch/multi_mapping.launch">
   <arg name="uav_id_" value="1"/>
  </include>
-   <!-- <include file="$(find multi_mapping)/launch/multi_mapping.launch">
+   <include file="$(find multi_mapping)/launch/multi_mapping.launch">
   <arg name="uav_id_" value="2"/>
- </include> -->
+ </include>
  </launch>

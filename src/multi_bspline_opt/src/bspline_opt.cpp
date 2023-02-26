@@ -1390,7 +1390,7 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
       return;
     //如果轨迹和现在时间差太大，返回
     // cout<<"start_time_msg:"<<msg->start_time.toSec()<<endl;
-    if (abs((ros::Time::now() - msg->start_time).toSec()) > 3.0)
+    if (abs((ros::Time::now() - msg->start_time).toSec()) > 2.0)
     {
       ROS_ERROR("Time difference is too large! Local - Remote Agent %d = %fs",
      msg->drone_id, (ros::Time::now() - msg->start_time).toSec());

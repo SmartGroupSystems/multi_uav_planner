@@ -6,29 +6,42 @@
    <!-- <arg name="odom_topic" value="global_odom" /> -->
  <include file="$(find multi_grid_path_searcher)/launch/path_search.launch">
     <arg name="uav_id_" value="0"/>
-    <arg name="target_x_" value="10.0"/>
-    <arg name="target_y_" value="10.0"/>
+    <arg name="target_x_" value="6.0"/>
+    <arg name="target_y_" value="8.0"/>
      <arg name="resolution" value="0.1"/>
      <arg name="map_size_x"  value="map_size_x_" />
       <arg name="map_size_y"  value="map_size_y_" />
       <!-- <arg name="map_size_z"  value="map_size_z_" />  -->
      <arg name="sight_radius" value=" 5.0"/>
      <arg name = "interval" value=" 0.5"/>
-      <arg name="init_x_" value="-20.0"/>
-      <arg name="init_y_" value="-9.0"/>
+      <arg name="init_x_" value="-10.0"/>
+      <arg name="init_y_" value="-5.0"/>
  </include>
   <include file="$(find multi_grid_path_searcher)/launch/path_search.launch">
     <arg name="uav_id_" value="1"/>
     <arg name="target_x_" value="10.0"/>
-    <arg name="target_y_" value="-10.0"/>
+    <arg name="target_y_" value="2.0"/>
      <arg name="resolution" value="0.1"/>
      <arg name="map_size_x"  value="map_size_x_" />
       <arg name="map_size_y"  value="map_size_y_" />
       <!-- <arg name="map_size_z"  value="map_size_z_" />  -->
      <arg name="sight_radius" value=" 5.0"/>
      <arg name = "interval" value=" 0.5"/>
-      <arg name="init_x_" value="-20.0"/>
-      <arg name="init_y_" value="-7.0"/>
+      <arg name="init_x_" value="-10.0"/>
+      <arg name="init_y_" value="-2.0"/>
+ </include>
+   <include file="$(find multi_grid_path_searcher)/launch/path_search.launch">
+    <arg name="uav_id_" value="2"/>
+    <arg name="target_x_" value="10.0"/>
+    <arg name="target_y_" value="-5.0"/>
+     <arg name="resolution" value="0.1"/>
+     <arg name="map_size_x"  value="map_size_x_" />
+      <arg name="map_size_y"  value="map_size_y_" />
+      <!-- <arg name="map_size_z"  value="map_size_z_" />  -->
+     <arg name="sight_radius" value=" 5.0"/>
+     <arg name = "interval" value=" 0.5"/>
+      <arg name="init_x_" value="-10.0"/>
+      <arg name="init_y_" value="5.0"/>
  </include>
 
  </launch>
