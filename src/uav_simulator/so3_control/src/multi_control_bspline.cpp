@@ -451,12 +451,11 @@ int main(int argc, char **argv)
 while(ros::ok())
     {
      ros::spinOnce();      
-     rate.sleep();
-     run();
+      run();
+      rate.sleep();
+    
  
       
     }
     return 0;
 }
-
-
