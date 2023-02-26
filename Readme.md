@@ -32,7 +32,7 @@
 3. 可以在launch文件里修改起点和终点
    
 ### 运行效果（主要展示多机）
-
+p.s.如果看不到图可以看pics里的multi.gif
 ![Alt Text](/pics/multi.gif) 
 
 
