@@ -450,7 +450,7 @@ int main(int argc, char **argv)
     ros::Rate rate(T_RATE);
 while(ros::ok())
     {
-     ros::spinOnce();      
+      ros::spinOnce();      
       run();
       rate.sleep();
     
