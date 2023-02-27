@@ -80,16 +80,16 @@
   "multi_bspline_opt/MultiBsplines")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<MultiBsplines>)))
   "Returns md5sum for a message object of type '<MultiBsplines>"
-  "0a9ce0a6a663879c244f8d58ac09d0d8")
+  "cdca54030719384ffd1c921d966beb6e")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'MultiBsplines)))
   "Returns md5sum for a message object of type 'MultiBsplines"
-  "0a9ce0a6a663879c244f8d58ac09d0d8")
+  "cdca54030719384ffd1c921d966beb6e")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<MultiBsplines>)))
   "Returns full string definition for message of type '<MultiBsplines>"
-  (cl:format cl:nil "int32 drone_id_from~%~%SendTraj[] traj~%================================================================================~%MSG: multi_bspline_opt/SendTraj~%int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
+  (cl:format cl:nil "int32 drone_id_from~%~%SendTraj[] traj~%================================================================================~%MSG: multi_bspline_opt/SendTraj~%int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 start_acc_x~%float64 start_acc_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'MultiBsplines)))
   "Returns full string definition for message of type 'MultiBsplines"
-  (cl:format cl:nil "int32 drone_id_from~%~%SendTraj[] traj~%================================================================================~%MSG: multi_bspline_opt/SendTraj~%int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
+  (cl:format cl:nil "int32 drone_id_from~%~%SendTraj[] traj~%================================================================================~%MSG: multi_bspline_opt/SendTraj~%int32 drone_id~%int64 traj_id~%int32 order~%int32 cps_num_~%# int32 Dim_~%# int32 TrajSampleRate~%# float64 beta~%time start_time~%~%~%float64 start_pos_x~%float64 start_pos_y~%float64 start_vel_x~%float64 start_vel_y~%float64 start_acc_x~%float64 start_acc_y~%float64 end_pos_x~%float64 end_pos_y~%# float64 yaw_rate~%~%geometry_msgs/Point[] control_pts~%float64[] knots~%================================================================================~%MSG: geometry_msgs/Point~%# This contains the position of a point in free space~%float64 x~%float64 y~%float64 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <MultiBsplines>))
   (cl:+ 0
      4

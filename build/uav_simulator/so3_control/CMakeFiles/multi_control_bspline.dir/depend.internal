@@ -3,8 +3,6 @@
 
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o
  /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/BsplineTraj.h
- /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/MultiBsplines.h
- /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/SendTraj.h
  /home/wenjing/ros/my_planner_rviz/devel/include/quadrotor_msgs/PositionCommand.h
  /home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_control/src/multi_control_bspline.cpp
  /opt/ros/melodic/include/geometry_msgs/Point.h

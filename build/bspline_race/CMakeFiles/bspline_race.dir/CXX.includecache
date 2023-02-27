@@ -6,6 +6,30 @@
 
 #IncludeRegexTransform: 
 
+/home/wenjing/ros/my_planner_rviz/devel/include/bspline_race/BsplineTraj.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/PoseStamped.h
+-
+geometry_msgs/PoseStamped.h
+-
+geometry_msgs/PoseStamped.h
+-
+
 /home/wenjing/ros/my_planner_rviz/src/bspline_race/include/bspline_race/EdtTransform.hpp
 iostream
 -

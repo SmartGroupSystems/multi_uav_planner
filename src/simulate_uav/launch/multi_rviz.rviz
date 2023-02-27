@@ -6,14 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Grid1
-        - /UAV1
-        - /Marker1
-        - /Map1
-        - /Path
         - /Odometry1
         - /Odometry1/Shape1
+        - /Marker1
       Splitter Ratio: 0.5
-    Tree Height: 332
+    Tree Height: 363
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -21,7 +18,6 @@ Panels:
       - /2D Pose Estimate1
       - /2D Nav Goal1
       - /Publish Point1
-      - /3D Nav Goal1
     Name: Tool Properties
     Splitter Ratio: 0.5886790156364441
   - Class: rviz/Views
@@ -34,7 +30,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: UAV0_local_map
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -75,7 +71,7 @@ Visualization Manager:
       Namespaces:
         mesh: true
       Queue Size: 100
-      Value: true 
+      Value: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /uav_2_odom_visualization/robot
@@ -83,33 +79,33 @@ Visualization Manager:
       Namespaces:
         mesh: true
       Queue Size: 100
-      Value: true  
+      Value: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /uav_3_odom_visualization/robot
       Name: UAV2
       Namespaces:
-        mesh: true
+        {}
       Queue Size: 100
-      Value: true         
+      Value: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /uav_4_odom_visualization/robot
       Name: UAV2
       Namespaces:
-        mesh: true
+        {}
       Queue Size: 100
-      Value: true                              
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color:  252; 175; 62
+      Color: 252; 175; 62
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width:  0.20000000298023224
+      Line Width: 0.20000000298023224
       Name: UAV0_Astar_Path
       Offset:
         X: 0
@@ -126,7 +122,7 @@ Visualization Manager:
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color:  252; 175; 62
+      Color: 252; 175; 62
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
@@ -149,7 +145,7 @@ Visualization Manager:
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color:  252; 175; 62
+      Color: 252; 175; 62
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
@@ -168,11 +164,11 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_2_astar_node/grid_path
       Unreliable: false
-      Value: true     
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color:  252; 175; 62
+      Color: 252; 175; 62
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
@@ -191,11 +187,11 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_3_astar_node/grid_path
       Unreliable: false
-      Value: true    
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color:  252; 175; 62
+      Color: 252; 175; 62
       Enabled: true
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
@@ -214,7 +210,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_4_astar_node/grid_path
       Unreliable: false
-      Value: true         
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -237,7 +233,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_0_pubed_path
       Unreliable: false
-      Value: true  
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -260,7 +256,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_1_pubed_path
       Unreliable: false
-      Value: true          
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -283,7 +279,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_2_pubed_path
       Unreliable: false
-      Value: true  
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -306,7 +302,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_3_pubed_path
       Unreliable: false
-      Value: true         
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -329,7 +325,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_4_pubed_path
       Unreliable: false
-      Value: true                 
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -352,7 +348,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_0_traj_vis
       Unreliable: false
-      Value: true       
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -375,7 +371,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_1_traj_vis
       Unreliable: false
-      Value: true        
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -398,7 +394,7 @@ Visualization Manager:
       Shaft Length: 0.10000000149011612
       Topic: /uav_2_traj_vis
       Unreliable: false
-      Value: true                            
+      Value: true
     - Class: rviz/Axes
       Enabled: true
       Length: 1
@@ -409,8 +405,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: -9999
-        Min Value: 9999
+        Max Value: 1.840000033378601
+        Min Value: 0.03999999910593033
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -463,12 +459,12 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: -9999
-        Min Value: 9999
+        Max Value: 1.7400000095367432
+        Min Value: 0.03999999910593033
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -547,7 +543,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true     
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -575,7 +571,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true             
+      Value: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /uav_0_ESDF_msgs
@@ -589,7 +585,7 @@ Visualization Manager:
       Marker Topic: /uav_1_ESDF_msgs
       Name: UAV1_ESDF
       Namespaces:
-      {}
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -597,15 +593,15 @@ Visualization Manager:
       Marker Topic: /uav_2_ESDF_msgs
       Name: UAV2_ESDF
       Namespaces:
-      {}
+        {}
       Queue Size: 100
-      Value: true  
+      Value: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /uav_3_ESDF_msgs
       Name: UAV3_ESDF
       Namespaces:
-      {}
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -613,9 +609,9 @@ Visualization Manager:
       Marker Topic: /uav_4_ESDF_msgs
       Name: UAV2_ESDF
       Namespaces:
-      {}
+        {}
       Queue Size: 100
-      Value: true                    
+      Value: true
     - Angle Tolerance: 0.10000000149011612
       Class: rviz/Odometry
       Covariance:
@@ -722,5 +718,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1267
-  X: -12
-  Y: 558
+  X: 67
+  Y: 426

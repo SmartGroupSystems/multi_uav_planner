@@ -1,15 +1,9 @@
-# std_msgs/Header header
+std_msgs/Header header
 
-int32 drone_id
-int64 traj_id
-time start_time
-float64 duration
+geometry_msgs/PoseStamped[] position
+geometry_msgs/PoseStamped[] velocity
+geometry_msgs/PoseStamped[] acceleration
 
-float64 yaw
-float64 yaw_rate
-
-geometry_msgs/Point[] position
-geometry_msgs/Point[] velocity
-geometry_msgs/Point[] acceleration
-
+float32 yaw
+float32 yaw_rate
 uint32 current_seq

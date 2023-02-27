@@ -5,4 +5,4 @@ Description: Description of multi_bspline_opt
 Version: 0.0.0
 Cflags: -I${prefix}/include
 Libs: -L${prefix}/lib -lmulti_bspline_opt
-Requires: message_runtime
+Requires: roscpp rospy std_msgs visualization_msgs message_runtime

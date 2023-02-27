@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 set -e
-      
+
 RUN_AFTER_BASHRC="roslaunch so3_quadrotor_simulator simulator_example.launch" gnome-terminal --title="Simulator" --tab &
 sleep 1 ;
 RUN_AFTER_BASHRC="roslaunch mockamap post2d.launch" gnome-terminal --title="Simulator" --tab &

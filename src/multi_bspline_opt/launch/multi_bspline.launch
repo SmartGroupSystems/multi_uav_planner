@@ -27,6 +27,7 @@
    <arg name="uav_id_" />
   <!-- <arg name ="planning_horizen_time"/> -->
     <arg name ="planning_horizen_"/>
+
   <node pkg="multi_bspline_opt" type="multi_flag_planner" name="uav$(arg uav_id_)_flag_planner" output="screen" required = "true">
 
       <remap from="/ESDFmsgs"       to="/uav_$(arg uav_id_)_ESDFmsgs"/>
@@ -68,7 +69,7 @@
     <param name="planning/esdf_collision" value="$(arg esdf_collision)" />
     <param name="planning/dist_p" value="$(arg dist_p)" />
 	 <param name="planning/drone_id" value="$(arg uav_id_)" />
-    <param name="planning/planning_horizen_" value="$(arg planning_horizen_)" />
+    <param name="planning/planning_horizon" value="$(arg planning_horizen_)" />
   </node>
 
 </launch>

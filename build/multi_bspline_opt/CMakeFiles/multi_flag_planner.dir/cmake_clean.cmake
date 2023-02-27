@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/multi_flag_planner.dir/src/main.cpp.o"
+  "CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o"
   "/home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner.pdb"
   "/home/wenjing/ros/my_planner_rviz/devel/lib/multi_bspline_opt/multi_flag_planner"
 )

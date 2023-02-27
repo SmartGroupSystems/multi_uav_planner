@@ -1,6 +1,6 @@
   <launch>
-      <arg name="_map_size_x" value="42.0"/>
-    <arg name="_map_size_y" value="30.0"/>
+      <arg name="_map_size_x" value="20.0"/>
+    <arg name="_map_size_y" value="20.0"/>
     <arg name="_map_size_z" value=" 5.0"/>
    <arg name="odom_topic" value="global_odom" />
 
@@ -27,6 +27,6 @@
         <param name="type" type="int" value="2"/>
        <param name="width_min"         type="double" value="0.6"/>
       <param name="width_max"         type="double" value="1.0"/>
-     <param name="obstacle_number"   type="int"    value="150"/>
+     <param name="obstacle_number"   type="int"    value="50"/>
   </node>
   </launch>

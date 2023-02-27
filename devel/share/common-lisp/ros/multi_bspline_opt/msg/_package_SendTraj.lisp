@@ -17,6 +17,10 @@
           START_VEL_X
           START_VEL_Y-VAL
           START_VEL_Y
+          START_ACC_X-VAL
+          START_ACC_X
+          START_ACC_Y-VAL
+          START_ACC_Y
           END_POS_X-VAL
           END_POS_X
           END_POS_Y-VAL

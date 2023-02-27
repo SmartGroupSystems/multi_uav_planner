@@ -1,54 +1,55 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "${default}",
-        "limitSymbolsToIncludedHeaders": false
-      },
-      "includePath": [
-        "/home/wenjing/ros/my_planner_rviz/devel/include/**",
-        "/home/wenjing/ros/my_planner/devel/include/**",
-        "/home/wenjing/catkin_ws/devel/include/**",
-        "/opt/ros/melodic/include/**",
-        "/home/wenjing/ros/controller/flag_planner/devel/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/devel/include/**",
-        "/home/wenjing/ros/my_planner/src/bspline_opt/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/bspline_race/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/src/bt/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/dynamic_env_generator/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/src/fsm/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/grid_path_searcher/include/**",
-        "/home/wenjing/catkin_ws/src/mavros/libmavconn/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/mapping/include/**",
-        "/home/wenjing/catkin_ws/src/mavros/mavros/include/**",
-        "/home/wenjing/catkin_ws/src/mavros/mavros_msgs/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/mockamap/include/**",
-        "/home/wenjing/ros/my_planner/src/multi_bspline_opt/include/**",
-        "/home/wenjing/ros/my_planner/src/multi_grid_path_searcher/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/multi_map_server/include/**",
-        "/home/wenjing/ros/my_planner/src/multi_mapping/include/**",
-        "/home/wenjing/ros/my_planner/src/multi_offboard/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/src/my_fsm/include/**",
-        "/home/wenjing/ros/my_planner/src/offboard/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/src/perception_pkg/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/pose_utils/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/quadrotor_msgs/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/src/realsense_ros_gazebo/include/**",
-        "/home/wenjing/ros/ascup_ws_simulation/src/ring_detection_pkg/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/simulate_uav/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_control/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_quadrotor_simulator/include/**",
-        "/home/wenjing/catkin_ws/src/mavros/test_mavros/include/**",
-        "/home/wenjing/ros/my_planner/src/uav_detect/include/**",
-        "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/uav_utils/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS",
-      "intelliSenseMode": "gcc-x64",
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "gnu11",
-      "cppStandard": "c++14"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/wenjing/ros/my_planner_rviz/devel/include/**",
+                "/home/wenjing/ros/my_planner/devel/include/**",
+                "/home/wenjing/catkin_ws/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/wenjing/ros/controller/flag_planner/devel/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/devel/include/**",
+                "/home/wenjing/ros/my_planner/src/bspline_opt/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/bspline_race/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/src/bt/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/dynamic_env_generator/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/src/fsm/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/grid_path_searcher/include/**",
+                "/home/wenjing/catkin_ws/src/mavros/libmavconn/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/mapping/include/**",
+                "/home/wenjing/catkin_ws/src/mavros/mavros/include/**",
+                "/home/wenjing/catkin_ws/src/mavros/mavros_msgs/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/mockamap/include/**",
+                "/home/wenjing/ros/my_planner/src/multi_bspline_opt/include/**",
+                "/home/wenjing/ros/my_planner/src/multi_grid_path_searcher/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/multi_map_server/include/**",
+                "/home/wenjing/ros/my_planner/src/multi_mapping/include/**",
+                "/home/wenjing/ros/my_planner/src/multi_offboard/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/src/my_fsm/include/**",
+                "/home/wenjing/ros/my_planner/src/offboard/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/src/perception_pkg/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/pose_utils/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/quadrotor_msgs/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/src/realsense_ros_gazebo/include/**",
+                "/home/wenjing/ros/ascup_ws_simulation/src/ring_detection_pkg/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/simulate_uav/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_control/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_quadrotor_simulator/include/**",
+                "/home/wenjing/catkin_ws/src/mavros/test_mavros/include/**",
+                "/home/wenjing/ros/my_planner/src/uav_detect/include/**",
+                "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/Utils/uav_utils/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
 }

@@ -13,6 +13,5 @@ rendered_pcl
 如果要使用pcl_render.cpp需要在CmakeList里把ENABLE CUDA设为TRUE
 需要接受global_cloud/local_cloud作为相机的输入（可以将mock_map的输出作为相机的输入）
 ·相机点云信息可以通过pclcloud的cpp文件获得
-##其它流程
-·在so3_control的control_bspline.cpp里接受B样条轨迹，并通过把位置、速度、加速度信息发布到/position_cmd, nodelet接受命令，并将力等信息发送给so3_quadroator发布无人机现在位置给odom_visulization
-·odom_visulizetio 可视化无人机
+## 其它流程
+·在so3_control的control_bspline.cpp里接受B样条轨迹，并通过把位置、速度、加速度信息发布到/position_cmd, nodelet接受命令,将命令解算成力和orientation以及yaw等信息通过so3_coomand发送，发送给so3_quadroator。so3_quadroator将无人机位置、imu信息等发送给odom_visulization。odom_visulization可视化无人机

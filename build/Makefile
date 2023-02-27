@@ -1442,123 +1442,6 @@ mapping/fast:
 .PHONY : mapping/fast
 
 #=============================================================================
-# Target rules for targets named multi_mapping
-
-# Build rule for target.
-multi_mapping: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 multi_mapping
-.PHONY : multi_mapping
-
-# fast build rule for target.
-multi_mapping/fast:
-	$(MAKE) -f multi_mapping/CMakeFiles/multi_mapping.dir/build.make multi_mapping/CMakeFiles/multi_mapping.dir/build
-.PHONY : multi_mapping/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_py
-
-# Build rule for target.
-std_srvs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_py
-.PHONY : std_srvs_generate_messages_py
-
-# fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_py.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_nodejs
-
-# Build rule for target.
-std_srvs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_nodejs
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_lisp
-
-# Build rule for target.
-std_srvs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_lisp
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_eus
-
-# Build rule for target.
-std_srvs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_eus
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named multi_model_state
-
-# Build rule for target.
-multi_model_state: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 multi_model_state
-.PHONY : multi_model_state
-
-# fast build rule for target.
-multi_model_state/fast:
-	$(MAKE) -f multi_model_state/CMakeFiles/multi_model_state.dir/build.make multi_model_state/CMakeFiles/multi_model_state.dir/build
-.PHONY : multi_model_state/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_cpp
-
-# Build rule for target.
-std_srvs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_cpp
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named poscmd_2_odom
-
-# Build rule for target.
-poscmd_2_odom: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 poscmd_2_odom
-.PHONY : poscmd_2_odom
-
-# fast build rule for target.
-poscmd_2_odom/fast:
-	$(MAKE) -f uav_simulator/fake_drone/CMakeFiles/poscmd_2_odom.dir/build.make uav_simulator/fake_drone/CMakeFiles/poscmd_2_odom.dir/build
-.PHONY : poscmd_2_odom/fast
-
-#=============================================================================
-# Target rules for targets named pose_utils
-
-# Build rule for target.
-pose_utils: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pose_utils
-.PHONY : pose_utils
-
-# fast build rule for target.
-pose_utils/fast:
-	$(MAKE) -f uav_simulator/Utils/pose_utils/CMakeFiles/pose_utils.dir/build.make uav_simulator/Utils/pose_utils/CMakeFiles/pose_utils.dir/build
-.PHONY : pose_utils/fast
-
-#=============================================================================
 # Target rules for targets named multi_bspline_opt
 
 # Build rule for target.
@@ -1765,6 +1648,123 @@ multi_bspline_opt_generate_messages_nodejs: cmake_check_build_system
 multi_bspline_opt_generate_messages_nodejs/fast:
 	$(MAKE) -f multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_nodejs.dir/build.make multi_bspline_opt/CMakeFiles/multi_bspline_opt_generate_messages_nodejs.dir/build
 .PHONY : multi_bspline_opt_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named multi_mapping
+
+# Build rule for target.
+multi_mapping: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 multi_mapping
+.PHONY : multi_mapping
+
+# fast build rule for target.
+multi_mapping/fast:
+	$(MAKE) -f multi_mapping/CMakeFiles/multi_mapping.dir/build.make multi_mapping/CMakeFiles/multi_mapping.dir/build
+.PHONY : multi_mapping/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_py
+
+# Build rule for target.
+std_srvs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_py
+.PHONY : std_srvs_generate_messages_py
+
+# fast build rule for target.
+std_srvs_generate_messages_py/fast:
+	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_py.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_py.dir/build
+.PHONY : std_srvs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_nodejs
+
+# Build rule for target.
+std_srvs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_nodejs
+.PHONY : std_srvs_generate_messages_nodejs
+
+# fast build rule for target.
+std_srvs_generate_messages_nodejs/fast:
+	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_lisp
+
+# Build rule for target.
+std_srvs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_lisp
+.PHONY : std_srvs_generate_messages_lisp
+
+# fast build rule for target.
+std_srvs_generate_messages_lisp/fast:
+	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_eus
+
+# Build rule for target.
+std_srvs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_eus
+.PHONY : std_srvs_generate_messages_eus
+
+# fast build rule for target.
+std_srvs_generate_messages_eus/fast:
+	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_eus.dir/build
+.PHONY : std_srvs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named multi_model_state
+
+# Build rule for target.
+multi_model_state: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 multi_model_state
+.PHONY : multi_model_state
+
+# fast build rule for target.
+multi_model_state/fast:
+	$(MAKE) -f multi_model_state/CMakeFiles/multi_model_state.dir/build.make multi_model_state/CMakeFiles/multi_model_state.dir/build
+.PHONY : multi_model_state/fast
+
+#=============================================================================
+# Target rules for targets named std_srvs_generate_messages_cpp
+
+# Build rule for target.
+std_srvs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_cpp
+.PHONY : std_srvs_generate_messages_cpp
+
+# fast build rule for target.
+std_srvs_generate_messages_cpp/fast:
+	$(MAKE) -f multi_model_state/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make multi_model_state/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
+.PHONY : std_srvs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named poscmd_2_odom
+
+# Build rule for target.
+poscmd_2_odom: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 poscmd_2_odom
+.PHONY : poscmd_2_odom
+
+# fast build rule for target.
+poscmd_2_odom/fast:
+	$(MAKE) -f uav_simulator/fake_drone/CMakeFiles/poscmd_2_odom.dir/build.make uav_simulator/fake_drone/CMakeFiles/poscmd_2_odom.dir/build
+.PHONY : poscmd_2_odom/fast
+
+#=============================================================================
+# Target rules for targets named pose_utils
+
+# Build rule for target.
+pose_utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pose_utils
+.PHONY : pose_utils
+
+# fast build rule for target.
+pose_utils/fast:
+	$(MAKE) -f uav_simulator/Utils/pose_utils/CMakeFiles/pose_utils.dir/build.make uav_simulator/Utils/pose_utils/CMakeFiles/pose_utils.dir/build
+.PHONY : pose_utils/fast
 
 #=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_py
@@ -2350,19 +2350,6 @@ mockamap_node: cmake_check_build_system
 mockamap_node/fast:
 	$(MAKE) -f uav_simulator/mockamap/CMakeFiles/mockamap_node.dir/build.make uav_simulator/mockamap/CMakeFiles/mockamap_node.dir/build
 .PHONY : mockamap_node/fast
-
-#=============================================================================
-# Target rules for targets named multi_control_bspline_global
-
-# Build rule for target.
-multi_control_bspline_global: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 multi_control_bspline_global
-.PHONY : multi_control_bspline_global
-
-# fast build rule for target.
-multi_control_bspline_global/fast:
-	$(MAKE) -f uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build.make uav_simulator/so3_control/CMakeFiles/multi_control_bspline_global.dir/build
-.PHONY : multi_control_bspline_global/fast
 
 #=============================================================================
 # Target rules for targets named control_bspline
@@ -3047,15 +3034,6 @@ help:
 	@echo "... pcl_msgs_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... mapping"
-	@echo "... multi_mapping"
-	@echo "... std_srvs_generate_messages_py"
-	@echo "... std_srvs_generate_messages_nodejs"
-	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... std_srvs_generate_messages_eus"
-	@echo "... multi_model_state"
-	@echo "... std_srvs_generate_messages_cpp"
-	@echo "... poscmd_2_odom"
-	@echo "... pose_utils"
 	@echo "... multi_bspline_opt"
 	@echo "... multi_bspline_opt_genpy"
 	@echo "... multi_bspline_opt_generate_messages"
@@ -3072,6 +3050,15 @@ help:
 	@echo "... multi_bspline_opt_generate_messages_py"
 	@echo "... multi_bspline_opt_generate_messages_eus"
 	@echo "... multi_bspline_opt_generate_messages_nodejs"
+	@echo "... multi_mapping"
+	@echo "... std_srvs_generate_messages_py"
+	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... multi_model_state"
+	@echo "... std_srvs_generate_messages_cpp"
+	@echo "... poscmd_2_odom"
+	@echo "... pose_utils"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... astar_node"
 	@echo "... tf2_msgs_generate_messages_nodejs"
@@ -3117,7 +3104,6 @@ help:
 	@echo "... local_sensing_node_gencfg"
 	@echo "... pcl_render_node"
 	@echo "... mockamap_node"
-	@echo "... multi_control_bspline_global"
 	@echo "... control_bspline"
 	@echo "... multi_control_bspline"
 	@echo "... control_example"

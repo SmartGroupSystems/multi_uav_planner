@@ -187,8 +187,8 @@ add_executable(control_bspline
  add_executable(multi_control_bspline 
                src/multi_control_bspline.cpp)
 
- add_executable(multi_control_bspline_global 
-               src/multi_global.cpp)
+#  add_executable(multi_control_bspline_global 
+#                src/multi_global.cpp)
 
 target_link_libraries(control_example 
 ${catkin_LIBRARIES}
@@ -199,9 +199,9 @@ ${catkin_LIBRARIES}
 target_link_libraries(multi_control_bspline 
 ${catkin_LIBRARIES}
 )
-target_link_libraries(multi_control_bspline_global 
-${catkin_LIBRARIES}
-)
+# target_link_libraries(multi_control_bspline_global 
+# ${catkin_LIBRARIES}
+# )
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(multi_map_visualization multi_map_server_messages_cpp)

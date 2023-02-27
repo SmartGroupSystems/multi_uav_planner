@@ -6,9 +6,7 @@ multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/wenjing/ros/my_planner_rviz/devel/include/multi_bspline_opt/SendTraj.h
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include/multi_bspline_opt/EdtTransform.hpp
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include/multi_bspline_opt/bspline_opt.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include/multi_bspline_opt/obj_predict.h
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/bspline_opt.cpp
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/src/obj_predict.cpp
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/ros/melodic/include/geometry_msgs/PointStamped.h
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/ros/melodic/include/geometry_msgs/Pose.h
@@ -121,17 +119,4 @@ multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/r
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /opt/ros/melodic/share/nlopt/cmake/../../../include/nlopt/nlopt.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/select.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/select2.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/types.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/types/time_t.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/typesizes.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/bits/wordsize.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/sys/select.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/sys/time.h
-multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.o: /usr/include/x86_64-linux-gnu/sys/timeb.h
 

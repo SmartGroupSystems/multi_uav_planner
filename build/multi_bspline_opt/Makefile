@@ -434,32 +434,32 @@ src/bspline_opt.cpp.s:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/build.make multi_bspline_opt/CMakeFiles/multi_bspline_opt.dir/src/bspline_opt.cpp.s
 .PHONY : src/bspline_opt.cpp.s
 
-src/main.o: src/main.cpp.o
+src/test_planning.o: src/test_planning.cpp.o
 
-.PHONY : src/main.o
+.PHONY : src/test_planning.o
 
 # target to build an object file
-src/main.cpp.o:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/test_planning.cpp.o:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.o
+.PHONY : src/test_planning.cpp.o
 
-src/main.i: src/main.cpp.i
+src/test_planning.i: src/test_planning.cpp.i
 
-.PHONY : src/main.i
+.PHONY : src/test_planning.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/test_planning.cpp.i:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.i
+.PHONY : src/test_planning.cpp.i
 
-src/main.s: src/main.cpp.s
+src/test_planning.s: src/test_planning.cpp.s
 
-.PHONY : src/main.s
+.PHONY : src/test_planning.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/test_planning.cpp.s:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/build.make multi_bspline_opt/CMakeFiles/multi_flag_planner.dir/src/test_planning.cpp.s
+.PHONY : src/test_planning.cpp.s
 
 # Help Target
 help:
@@ -493,9 +493,9 @@ help:
 	@echo "... src/bspline_opt.o"
 	@echo "... src/bspline_opt.i"
 	@echo "... src/bspline_opt.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/test_planning.o"
+	@echo "... src/test_planning.i"
+	@echo "... src/test_planning.s"
 .PHONY : help
 
 

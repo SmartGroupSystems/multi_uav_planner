@@ -3,6 +3,7 @@
 
 (defsystem "multi_bspline_opt-msg"
   :depends-on (:roslisp-msg-protocol :roslisp-utils :geometry_msgs-msg
+               :std_msgs-msg
 )
   :components ((:file "_package")
     (:file "BsplineTraj" :depends-on ("_package_BsplineTraj"))

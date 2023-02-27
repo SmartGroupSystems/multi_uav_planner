@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/wenjing/ros/my_planner_rviz/build
 include multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_BsplineTraj.dir/progress.make
 
 multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_BsplineTraj:
-	cd /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py multi_bspline_opt /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg geometry_msgs/Point
+	cd /home/wenjing/ros/my_planner_rviz/build/multi_bspline_opt && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py multi_bspline_opt /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg geometry_msgs/Pose:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:std_msgs/Header
 
 _multi_bspline_opt_generate_messages_check_deps_BsplineTraj: multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_BsplineTraj
 _multi_bspline_opt_generate_messages_check_deps_BsplineTraj: multi_bspline_opt/CMakeFiles/_multi_bspline_opt_generate_messages_check_deps_BsplineTraj.dir/build.make
