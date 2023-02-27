@@ -969,7 +969,7 @@ namespace my_planner
         string pub_topic_name = string("/uav") + std::to_string(drone_id_) + string("_planning_swarm_trajs");
         swarm_trajs_pub_ = nh.advertise<multi_bspline_opt::MultiBsplines>(pub_topic_name.c_str(), 10);
 
-        //   traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
+        // traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
     }
 void plan_manager::arrive_callback(const std_msgs::Int64::ConstPtr & msg)
 {
