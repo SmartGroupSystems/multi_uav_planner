@@ -7,6 +7,7 @@
 #include <multi_bspline_opt/BsplineTraj.h>
 #include <multi_bspline_opt/SendTraj.h>
 #include <multi_bspline_opt/MultiBsplines.h>
+#include <nav_msgs/Odometry.h>
 #include <ros/ros.h>
 using namespace std;
 // bspline
@@ -21,6 +22,7 @@ double last_yaw;
 double last_yaw_dot;
 int connect_seq = 0;
 Eigen::Vector3d vel_drone_fcu;
+Eigen::Vector2d drone_pose_world;
 static geometry_msgs::PoseStamped aim;
 quadrotor_msgs::PositionCommand pva_msg;
 nav_msgs::Path vis_path;
@@ -49,6 +51,7 @@ ros::Publisher cmd_pub,
                vis_path_pub;
 ros::Subscriber pts_sub,
                 cmd_sub,
+                odom_sub,
                 pos_sub;
 
 void run()
@@ -149,6 +152,70 @@ void run()
         }
         else
         {
+           if (first_bs)
+                 return;
+          if (!first_bs)
+          {
+              // CAL_YAW
+            double arg_    = atan2(0.0,0.0) + (PI/2.0f);
+            double vel_len = sqrt(pow(0.0,2)+pow(0.0,2));
+            if(vel_len<=0.1) arg_ = last_yaw;
+            std::pair<double, double> yaw_all = calculate_yaw(last_yaw,arg_);
+            geometry_msgs::Quaternion geo_q = tf::createQuaternionMsgFromYaw(yaw_all.first);
+
+        /*   AIM   */
+            geometry_msgs::PoseStamped pos_ptr;
+            // POSE
+            pos_ptr.pose.position.x =drone_pose_world(0);
+            pos_ptr.pose.position.y = drone_pose_world(1);
+            pos_ptr.pose.position.z = set_height;
+            aim.pose.position = pos_ptr.pose.position;
+            // YAW
+            aim.pose.orientation = geo_q;
+            
+
+        /*   PVA   */
+        /*
+        Bitmask toindicate which dimensions should be ignored (1 means ignore,0 means not ignore; Bit 10 must set to 0)
+        Bit 1:x, bit 2:y, bit 3:z, bit 4:vx, bit 5:vy, bit 6:vz, bit 7:ax, bit 8:ay, bit 9:az, bit 10:is_force_sp, bit 11:yaw, bit 12:yaw_rate
+        Bit 10 should set to 0, means is not force sp
+        */
+            // POSE
+            pva_msg.position.x = drone_pose_world(0);
+            pva_msg.position.y = drone_pose_world(1);
+            pva_msg.position.z = set_height;
+            // VEL
+            pva_msg.velocity.x =0.0;
+            pva_msg.velocity.y = 0.0;
+            pva_msg.velocity.z = 0;
+            // ACC
+            pva_msg.acceleration.x = 0.0;
+            pva_msg.acceleration.y = 0.0;
+            pva_msg.acceleration.z = 0;
+            // YAW
+            pva_msg.yaw      = yaw_all.first;
+            pva_msg.yaw_dot  = yaw_all.second;
+
+
+        /*   BS   */ 
+            mavros_msgs::PositionTarget bs_msg;
+            // POSE
+            bs_msg.position.x = drone_pose_world(0);
+            bs_msg.position.y = drone_pose_world(1);
+            bs_msg.position.z = set_height;
+            // VEL
+            bs_msg.velocity.x = 0.0;
+            bs_msg.velocity.y =0.0;
+            bs_msg.velocity.z = 0;
+            // ACC
+            bs_msg.acceleration_or_force.x =0.0;
+            bs_msg.acceleration_or_force.y =0.0;
+            bs_msg.acceleration_or_force.z = 0;
+            bs_msg.yaw = 0.0;
+            bs_pub.publish(bs_msg);      
+             pva_msg.header.stamp = ros::Time::now();
+            cmd_pub.publish(pva_msg);        
+            debug_pub.publish(debug_msg);
 
             // cout <<"[cmd] Arrived! or  not start!"<< endl;
         }
@@ -159,10 +226,15 @@ void run()
 
 
 }
-
+}
 void pose_subCallback(const geometry_msgs::PoseStamped::ConstPtr & msg)
 {
 
+}
+void odomCallback(const nav_msgs::OdometryConstPtr &odom)
+{
+    drone_pose_world(0) = odom->pose.pose.position.x;
+    drone_pose_world(1) = odom->pose.pose.position.y;
 }
 void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
 {
@@ -197,12 +269,14 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
       // ROS_WARN("The delay is too large < %i > points away, < %f > ms ago, check the parameter Settings."
       //           ,-delta_seq, -delta_seq*delta_T*1000);
         ROS_ERROR("USLESS.");
+        BTraj.clear();
         return;
     }
     else if(delta_seq>BTraj.size())// 如果这个新轨迹的起点超过了当前剩余曲线的终点
     {
       // ROS_WARN("The scope of replanning is too large, check the parameter Settings.");
       ROS_ERROR("Wait, something really big has happened...");
+      BTraj.clear();
       return;
     }
     else// 终于没事了
@@ -444,7 +518,7 @@ int main(int argc, char **argv)
     bs_pub       = nh.advertise<mavros_msgs::PositionTarget>("/mavbs/setpoint_raw/local" , 1);
     debug_pub    = nh.advertise<geometry_msgs::PoseStamped>("/debug",1);
     vis_path_pub = nh.advertise<nav_msgs::Path>("/pubed_path",1);
-    
+    odom_sub = nh.subscribe("odom", 1, &odomCallback);
 
     // pos_sub   = nh.subscribe<geometry_msgs::PoseStamped>("/odom_visualization/pose",1,&pose_subCallback);
     ros::Rate rate(T_RATE);
