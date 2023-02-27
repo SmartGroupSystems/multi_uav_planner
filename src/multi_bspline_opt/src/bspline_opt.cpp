@@ -1002,7 +1002,7 @@ void plan_manager::fsm_subCallback(const std_msgs::Int64::ConstPtr & msg)
  }
   void plan_manager::stateFSMCallback()
   {
-    // traj_timer_.stop(); // To avoid blockage
+    traj_timer_.stop(); // To avoid blockage
     // cout<<"--------------drone_id_:"<<drone_id_<<endl;
     static int fsm_num = 0;
     fsm_num++;
@@ -1073,7 +1073,7 @@ void plan_manager::fsm_subCallback(const std_msgs::Int64::ConstPtr & msg)
     }
 
   } 
-    //  traj_timer_.start();
+     traj_timer_.start();
   }
 // void plan_manager::fullaim_callback(const mavros_msgs::PositionTarget::ConstPtr & aim_msg)
 // {

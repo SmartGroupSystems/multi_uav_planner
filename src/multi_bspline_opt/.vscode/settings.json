@@ -60,6 +60,14 @@
         "unordered_set": "cpp",
         "hash_map": "cpp",
         "hash_set": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "strstream": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp"
     }
 }
