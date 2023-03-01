@@ -25,7 +25,7 @@
 
 namespace detect {
 
-const int max_drone_num_ = 1;
+const int max_drone_num_ = 3;
 
 /*!
  * Main class for the node to handle the ROS interfacing.

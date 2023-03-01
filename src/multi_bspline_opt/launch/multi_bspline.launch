@@ -38,8 +38,9 @@
       <remap from="/back_time"            to="/uav_$(arg uav_id_)_back_time"/> 
      <remap from="/traj_vis"             to="/uav_$(arg uav_id_)_traj_vis"/> 
       <remap from="/traj_smooth"            to="/uav_$(arg uav_id_)_traj_smooth"/> 
-    <remap from="/esdfmap_slice"             to="/uav_$(arg uav_id_)_esdfmap_slice"/> 
+     <remap from="/esdfmap_slice"             to="/uav_$(arg uav_id_)_esdfmap_slice"/> 
         <remap from="~others_odom"             to="/others_odom"/> 
+        <remap from = "~state"    to="/uav_$(arg uav_id_)_state"/>
       <!-- <remap from="bspline_smooth"            to="/uav$(arga_star/target_arrived"/>  -->
     <remap from="/col_check"            to="/uav_$(arg uav_id_)_col_check"/> 
     <remap from="~odom"             to="/uav_$(arg uav_id_)_global_odom"/> 

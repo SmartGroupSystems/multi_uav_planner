@@ -55,6 +55,7 @@ bool enable_flag = true;
 double current_seq = 0, sight_radius, interval;
 Vector2d _start_pt,current_vel,current_acc;
 Vector2d _target_pt;
+Vector2d drone_pos_world;
 double actual_height = 0.8;
 
 double target_x, target_y;
@@ -291,11 +292,12 @@ void rcvWaypointsCallback(const geometry_msgs::PoseStamped::ConstPtr & wp)
 
 void OdomCallback(const nav_msgs::OdometryConstPtr  &odom)
 {
-    // if (has_start == true)
-    //     return;
-    //  _start_pt[0]  = odom->pose.pose.position.x;
-    // _start_pt[1]  = odom->pose.pose.position.y;
-    // has_start = true;
+//     // if (has_start == true)
+//     //     return;
+     drone_pos_world[0]  = odom->pose.pose.position.x;
+    drone_pos_world[1]  = odom->pose.pose.position.y;
+    has_start = true;
+// }
 }
 void simPoseCallback(const mavros_msgs::PositionTarget & aim_msg)
 {
@@ -307,6 +309,12 @@ void simPoseCallback(const mavros_msgs::PositionTarget & aim_msg)
     current_acc[1] = aim_msg.acceleration_or_force.y;
     current_seq = (int)aim_msg.yaw;
     actual_height = aim_msg.position.z; // BUG
+    // if (has_start == true)
+    // {
+    //     if ((_start_pt - drone_pos_world).norm()>=0.2)  
+               
+
+    // }
     _astar_path_finder->start_pt_real = _start_pt;
 
 }

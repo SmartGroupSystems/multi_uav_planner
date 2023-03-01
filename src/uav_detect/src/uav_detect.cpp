@@ -313,7 +313,7 @@ bool DroneDetector::countPixel(int drone_id, Eigen::Vector2i &true_pixel, Eigen:
       tmp_pixel(1) = drone_ref_pixel_[drone_id](1)+j;
       if(tmp_pixel(0) < 0 || tmp_pixel(0) >= img_width_ || tmp_pixel(1) < 0 || tmp_pixel(1) >= img_height_)
         continue;
-      depth = depth_img_.at<float>(tmp_pixel(1), tmp_pixel(0));
+      depth = depth_img_.at<float>(tmp_pixel(1), tmp_pixel(0))/1000.0;
       // float *row_ptr;
       //  row_ptr = depth_img_.ptr<float>(tmp_pixel(1));
       //  depth = (*(row_ptr+tmp_pixel(0))) / 1000.0;
@@ -350,7 +350,7 @@ bool DroneDetector::countPixel(int drone_id, Eigen::Vector2i &true_pixel, Eigen:
     // uint16_t *row_ptr;
     // row_ptr = depth_img_.ptr<uint16_t>(tmp_pixel(1));
     // depth = (*(row_ptr+tmp_pixel(0))) / 1000.0;
-     depth = depth_img_.at<float>(init_y,init_x);
+     depth = depth_img_.at<float>(init_y,init_x)/1000.0;
     tmp_pose_cam = depth2Pos(init_x, init_y, depth);
     if (getDist2(tmp_pose_cam, drone_pose_cam_[drone_id]) <max_pose_error2_){
       true_pixel(0) = init_x;
@@ -364,7 +364,7 @@ bool DroneDetector::countPixel(int drone_id, Eigen::Vector2i &true_pixel, Eigen:
             // uint16_t *row_ptr;
             // row_ptr = depth_img_.ptr<uint16_t>(tmp_pixel(1));
             // depth = (*(row_ptr+tmp_pixel(0))) / 1000.0;
-             depth = depth_img_.at<float>( init_y,  init_x);
+             depth = depth_img_.at<float>( init_y,  init_x)/1000.0;
             tmp_pose_cam = depth2Pos(init_x, init_y, depth);
             if (getDist2(tmp_pose_cam, drone_pose_cam_[drone_id]) <max_pose_error2_) {
               true_pixel(0) = init_x;
@@ -381,7 +381,7 @@ bool DroneDetector::countPixel(int drone_id, Eigen::Vector2i &true_pixel, Eigen:
             // uint16_t *row_ptr;
             // row_ptr = depth_img_.ptr<uint16_t>(tmp_pixel(1));
             // depth = (*(row_ptr+tmp_pixel(0))) / 1000.0;
-             depth = depth_img_.at<float>( init_y,  init_x);
+             depth = depth_img_.at<float>( init_y,  init_x)/1000.0;
             tmp_pose_cam = depth2Pos(init_x, init_y, depth);
             if (getDist2(tmp_pose_cam, drone_pose_cam_[drone_id]) < max_pose_error2_){
               true_pixel(0) = init_x;
@@ -400,7 +400,7 @@ bool DroneDetector::countPixel(int drone_id, Eigen::Vector2i &true_pixel, Eigen:
         // uint16_t *row_ptr;
         // row_ptr = depth_img_.ptr<uint16_t>(tmp_pixel(1));
         // depth = (*(row_ptr+tmp_pixel(0))) / 1000.0;
-         depth = depth_img_.at<float>(tmp_pixel(1), tmp_pixel(0));
+         depth = depth_img_.at<float>(tmp_pixel(1), tmp_pixel(0))/1000.0;
         tmp_pose_cam = depth2Pos(init_x, init_y, depth);
         if (getDist2(tmp_pose_cam, drone_pose_cam_[drone_id]) < 0.1){
           true_pixel(0) = init_x;

@@ -300,6 +300,7 @@ struct OneTrajDataOfSwarm
             ros::Publisher Map_puber;//发布esdf地图可视化
             ros::Publisher col_check;// JS change
             ros::Publisher traj_smooth;
+            ros::Publisher state_pub;//状态发布器
             ros::ServiceServer fsm_call;
             ros::Subscriber state_suber;
             ros::Subscriber aim_suber;
@@ -314,7 +315,7 @@ struct OneTrajDataOfSwarm
             // ros::Subscriber   droneX_odom_sub_;
             ros::Publisher swarm_trajs_pub_;
             ros::Publisher  broadcast_bspline_pub_ ;
-            ros::Timer traj_timer_ ;
+            ros::Timer traj_timer_, safety_timer_ ;
             Eigen::Vector2d drone_pos_world; //无人机位置
             //ros msg
             nav_msgs::Path traj_vis;//轨迹可视化
@@ -364,7 +365,7 @@ struct OneTrajDataOfSwarm
             bool  astar_subCallback(const std::vector<Eigen::Vector2d> &astar_path_);
              void stateFSMCallback(const ros::TimerEvent &e); 
              void StateChange( PLANNER_STATE new_state, string pos_call);
-
+            void   checkCollisionCallback(const ros::TimerEvent &e);
             void smooth_subCallback(const nav_msgs::Path::ConstPtr & msg);
             void fsm_subCallback(const std_msgs::Int64::ConstPtr & msg);
             void arrive_callback(const std_msgs::Int64::ConstPtr & msg);

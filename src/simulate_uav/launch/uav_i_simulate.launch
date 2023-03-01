@@ -76,7 +76,8 @@
         <remap from="/pubed_path"   to="/uav_$(arg uav_id_)_pubed_path"/>
         <remap from="/bspline_traj"   to="/uav_$(arg uav_id_)_bspline_traj"/> -->
        <remap from="~odom"   to="/uav_$(arg uav_id_)_$(arg odometry_topic)"/>
-         <remap from="/odom_visualization/pose"   to="/uav_$(arg uav_id_)_odom_visualization/pose"/> 
+         <remap from="/odom_visualization/pose"   to="/uav_$(arg uav_id_)_odom_visualization/pose"/>
+         <remap from="~state"   to="/uav_$(arg uav_id_)_state"/> 
   </node>
   <!-- <node pkg="poscmd_2_odom" name="uav_$(arg  uav_id_)_poscmd_2_odom" type="poscmd_2_odom" output="screen">
         <param name="init_x" value="$(arg init_x_)"/>

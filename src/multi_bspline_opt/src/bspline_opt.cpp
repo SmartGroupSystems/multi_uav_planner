@@ -958,6 +958,7 @@ namespace my_planner
         broadcast_bspline_sub_ = nh.subscribe("/broadcast_bspline", 100, &plan_manager::BroadcastBsplineCallback, this, ros::TransportHints().tcpNoDelay());
         //发布自己的轨迹
         broadcast_bspline_pub_ = nh.advertise<multi_bspline_opt::SendTraj>("/broadcast_bspline", 10);   //发布大广播
+        state_pub = nh.advertise<std_msgs::Int64>("state",10);
         //用于启动
         if (drone_id_  >= 1 )
         {
@@ -969,8 +970,54 @@ namespace my_planner
         string pub_topic_name = string("/uav") + std::to_string(drone_id_) + string("_planning_swarm_trajs");
         swarm_trajs_pub_ = nh.advertise<multi_bspline_opt::MultiBsplines>(pub_topic_name.c_str(), 10);
 
+//发布状态
+
          traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
+         safety_timer_ = nh.createTimer(ros::Duration(0.02), &plan_manager::checkCollisionCallback, this);
     }
+//如果轨迹要撞上障碍物，则停下重规划
+void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
+{
+    if( !get_map || !get_path||first_rifine==true)
+        return;
+    std_msgs::Int64 arr_msg;
+      //只检查前面2/3的点   
+     int number =   p_.rows()* 2.0 /3.0;
+     cout<<"number"<<number<<endl;
+    traj_state state;//判断算出来的轨迹是否安全
+    state = SAFE;
+    Eigen::Vector2i tmp_index;//
+    Eigen::Vector2i drone_index;
+    // Eigen::MatrixXd drone_position;
+    // drone_position.resize(1,2);
+    // drone_position(0,0) = drone_pos_world(0);
+    // drone_position(0,1) = drone_pos_world(1);
+    // drone_index = posToIndex(drone_position);
+    // double dist = esdf_map_(drone_index(0),drone_index(1));
+    // cout << dist<<endl;
+    // if (dist <= esdf_collision)
+    //      state = COLLIDE;
+    for (size_t i = 0; i < number; i++)
+    {
+        tmp_index = posToIndex(p_.row(i));
+        // cout<<"tmp_index："<<tmp_index<<endl;
+        if(esdf_map_(tmp_index(0),tmp_index(1))<=esdf_collision)
+        {
+            cout << "colision!"<<endl;
+            state = COLLIDE;
+            break;
+        }
+    }
+    if(state == COLLIDE)
+    {
+        arr_msg.data = 1; //相撞则为1
+    } 
+    else
+     {
+        arr_msg.data = 0; //不相撞则为0
+    }
+        state_pub.publish(arr_msg); 
+}
 void plan_manager::arrive_callback(const std_msgs::Int64::ConstPtr & msg)
 {
     if(msg->data>0)
@@ -1093,6 +1140,8 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
     {
         //读取首末位置
         Eigen::Vector2d start_point,end_point;
+        if (astar_path_.size() == 0)
+            return false;
         start_point = *astar_path_.begin();
         end_point = *(astar_path_.end()-1);
         initial_state.resize(3,2);
@@ -1109,7 +1158,7 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
         double now_time_  = ros::Time::now().toSec() ;
         // double duration_time;
         double delta_time = now_time_ - last_time_;//|| last_endpoint != end_point
-        if( first_rifine == true || delta_time > 0.2 || checkTrajCollision() == true )// 
+        if( true )// 
         {
             last_time_ = now_time_;
             first_rifine = false;

@@ -77,7 +77,12 @@ uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
+uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/std_msgs/Float64.h
+uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/std_msgs/Float64MultiArray.h
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
+uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/std_msgs/Int64.h
+uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/tf/LinearMath/Matrix3x3.h
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/tf/LinearMath/MinMax.h
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/src/multi_control_bspline.cpp.o: /opt/ros/melodic/include/tf/LinearMath/QuadWord.h
