@@ -397,7 +397,7 @@ int main(int argc, char** argv)
     _astar_path_finder  -> initGridMap(_resolution, _map_lower, _map_upper, _max_x_id, _max_y_id, interval);
     
 //ROS
-    ros::Rate rate(50.0); 
+    ros::Rate rate(90.0); 
     while(ros::ok()) 
     {
         // ROS_INFO("test");

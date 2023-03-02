@@ -12,7 +12,7 @@
 #include <ros/ros.h>
 using namespace std;
 // bspline
-bool first_bs = true;
+bool first_bs = true,first_check_yaw=false, collision_flag = false; 
 #define PI acos(-1)
 #define INF 999.9
 bool arrived = false;
@@ -27,7 +27,9 @@ Eigen::Vector3d vel_drone_fcu;
 Eigen::Vector2d drone_pose_world;
 static geometry_msgs::PoseStamped aim;
 quadrotor_msgs::PositionCommand pva_msg;
+mavros_msgs::PositionTarget bs_msg;
 nav_msgs::Path vis_path;
+int last_seq_ = 0;
 class bs_traj
 {
     public:
@@ -61,16 +63,10 @@ void stateCallback(const std_msgs::Int64::ConstPtr & msg);
 void run()
 {
 
-    // bs_traj BT1_ptr = *(BTraj.begin());
-    // double dist = ( BT1_ptr.pos_-drone_pose_world).norm();
-    // if ( dist >= 0.2)
-    //   {
-    //   ROS_WARN("BTraj ERROR!");
-    //   BTraj.clear(); //重新规划
-    //   return;
-    // }
+
   if(BTraj.size() != 0)
         {
+            last_seq_ = (*(BTraj.end()-1)).seq_;
             bs_traj BT_ptr = *(BTraj.begin());
             if(BT_ptr.seq_ == connect_seq || BT_ptr.seq_ == (connect_seq+1))
             {
@@ -85,7 +81,7 @@ void run()
             // CAL_YAW
             double arg_    = atan2(-BT_ptr.vel_[0],BT_ptr.vel_[1]) + (PI/2.0f);
             double vel_len = sqrt(pow(BT_ptr.vel_[0],2)+pow(BT_ptr.vel_[1],2));
-            if(vel_len<=0.1) arg_ = last_yaw;
+           // if(vel_len<=0.1) arg_ = last_yaw;
             std::pair<double, double> yaw_all = calculate_yaw(last_yaw,arg_);
             geometry_msgs::Quaternion geo_q = tf::createQuaternionMsgFromYaw(yaw_all.first);
 
@@ -125,7 +121,7 @@ void run()
 
         /*   BS   */ 
             mavros_msgs::PositionTarget bs_msg;
-            int seq_interval = T_RATE*4/5;
+            int seq_interval = T_RATE*1/2;
             int last_traj_seq      = (*(BTraj.end()-1)).seq_;
             int first_traj_seq     = (*(BTraj.begin())).seq_;
             int remain_traj_length = last_traj_seq- first_traj_seq;
@@ -160,11 +156,23 @@ void run()
         }
         else 
         {
+
           if (first_bs)
                  return;
-          if (!first_bs)
-          {
-              // CAL_YAW
+        if(!first_bs && collision_flag == false)
+        {
+            bs_msg.position = pva_msg.position;
+            // VEL
+            bs_msg.velocity = pva_msg.velocity;
+            // ACC
+            bs_msg.acceleration_or_force = pva_msg.acceleration;
+            bs_pub.publish(bs_msg);
+             pva_msg.header.stamp = ros::Time::now();
+            cmd_pub.publish(pva_msg);
+           debug_pub.publish(debug_msg);
+        }
+          if (!first_bs && collision_flag == true)
+          {           
             double arg_    = atan2(0.0,0.0) + (PI/2.0f);
             double vel_len = sqrt(pow(0.0,2)+pow(0.0,2));
             if(vel_len<=0.1) arg_ = last_yaw;
@@ -224,34 +232,31 @@ void run()
              pva_msg.header.stamp = ros::Time::now();
             cmd_pub.publish(pva_msg);        
             debug_pub.publish(debug_msg);
+          }
 
           }
+
         }
         /*   PUB_CONTROL   */
         // TIME
  
 
-}
+
 
 void pose_subCallback(const geometry_msgs::PoseStamped::ConstPtr & msg)
 {
 
 }
 
-//检验轨迹会不会碰撞
-// bool checkCollision()
-// {
-
-// }
 void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
 {
-
-//  if(state_info == 0)
-//       BTraj.clear();
-  // 收到新轨迹
+  
   if(first_bs || BTraj.empty())
   {
-    // 直接放到BTraj里
+  //如果新的轨迹的起点在轨迹之后，就会倒退
+    if (!first_bs && (msg->current_seq != 0&&  (msg->current_seq != last_seq_)))
+          return;
+     // 直接放到BTraj里       
     for (size_t i = 0; i < msg->position.size(); i++)
     {    
         bs_traj BT_ptr;
@@ -265,6 +270,7 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
         BTraj.push_back(BT_ptr);
     }
     first_bs = false;
+    first_check_yaw = true;
   }
   else
   {
@@ -272,36 +278,41 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     int  remain_last_seq = 0;
     int new_traj_start_seq = msg->current_seq ;
     int delta_seq = new_traj_start_seq - BTraj[0].seq_;  //当前点和发过来轨迹点起点的差
-    // cout << "delta_seq: " << delta_seq <<endl;
+    cout << "delta_seq: " << delta_seq <<" "<<"new_traj_start_seq:"<<new_traj_start_seq<<" "<<"BTraj[0].seq_:"<<BTraj[0].seq_<<endl;
     bs_traj BT_ptr1 = *(BTraj.begin());
     double dist = ( BT_ptr1.pos_-drone_pose_world).norm();
     cout<<"dist:"<<dist<<endl;
      if (state_info == 1)
      {
       ROS_WARN("collision!");
+      collision_flag = true;
       BTraj.clear(); //重新规划
       return;
     }
-     if ( dist >= 0.25)
-      {
-      ROS_WARN("BTraj ERROR!");
-      BTraj.clear(); //重新规划
-      return;
+    if(state_info == 0)
+    {
+      collision_flag = false;
     }
+    //  if ( dist >= 0.25)
+    //   {
+    //   ROS_WARN("BTraj ERROR!");
+    //   BTraj.clear(); //重新规划
+    //   return;
+    // }
     if(delta_seq<0)// 如果当前发过来的轨迹太旧
     {
       // ROS_WARN("The delay is too large < %i > points away, < %f > ms ago, check the parameter Settings."
       //           ,-delta_seq, -delta_seq*delta_T*1000);
       ROS_ERROR("USLESS.");
       // BTraj.clear();
-      return;
+      // return;
     }
     else if(delta_seq>BTraj.size())// 如果这个新轨迹的起点超过了当前剩余曲线的终点
     {
     //   ROS_WARN("The scope of replanning is too large, check the parameter Settings.");
       ROS_ERROR("Wait, something really big has happened...");
-      BTraj.clear(); //重新规划
-      return;
+      // BTraj.clear(); //重新规划
+      // return;
     }
     else// 终于没事了
     {
@@ -386,6 +397,12 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
   }
   ROS_INFO("New seq begin at: < %i >, end at: < %i >.",(*(BTraj.begin())).seq_,(*(BTraj.end()-1)).seq_);
 }
+
+// void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
+// {
+//   //
+
+// }
 void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
 {
   bool affine_traj = true;
@@ -582,16 +599,17 @@ int main(int argc, char **argv)
 
     odom_sub = nh.subscribe("odom", 1, &odomCallback);
     state_sub  = nh.subscribe("state", 1, &stateCallback);    
-    pts_sub   = nh.subscribe<geometry_msgs::PoseStamped>( "/move_base_simple/goal", 10, &rcvWaypointsCallback );
-    cmd_sub   = nh.subscribe<multi_bspline_opt::BsplineTraj>("/bspline_traj",1, &traj_cb);
+     cmd_sub   = nh.subscribe<multi_bspline_opt::BsplineTraj>("/bspline_traj",1, &traj_cb);
+     pts_sub   = nh.subscribe<geometry_msgs::PoseStamped>( "/move_base_simple/goal", 10, &rcvWaypointsCallback );
+   
     pos_sub   = nh.subscribe<geometry_msgs::PoseStamped>("/odom_visualization/pose",1,&pose_subCallback);
 
     ros::Rate rate(T_RATE);
 while(ros::ok())
     {
-
-      ros::spinOnce();     
       run();
+      ros::spinOnce();     
+
       rate.sleep();
     }
     return 0;

@@ -39,7 +39,7 @@
          <arg name="init_z" value="0.1"/>
 
         <arg name="_target_x" value="6.0"/>
-        <arg name="_target_y" value="8.0"/>
+        <arg name="_target_y" value="5.0"/>
         <arg name="_target_z" value="0.1"/>
 
         <arg name="map_size_x_" value="$(arg _map_size_x)"/>

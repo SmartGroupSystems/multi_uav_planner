@@ -15,7 +15,7 @@
   <arg name="lambda1" 			value="10.0" />
   <arg name="lambda2" 			value="5.0" />
   <arg name="lambda3" 			value="15.0" />   
-    <arg name="lambda4" 			value="15.0" />   
+    <arg name="lambda4" 			value="0.0" />   
   <arg name="lambda5" 			value="0.0" />
   <arg name="lambda6" 			value="0.0" />
   <arg name="esdf_collision" 		value="2.0" />
@@ -29,7 +29,7 @@
      <arg name="planning_horizen_" 		value="7.5" />
  </include>
  
-  <include file="$(find multi_bspline_opt)/launch/multi_bspline.launch">
+  <!-- <include file="$(find multi_bspline_opt)/launch/multi_bspline.launch">
     <arg name="uav_id_" value="1"/>
   <arg name="traj_order" 		value="3" />
    <arg name="dimension" 		value="2" />
@@ -54,7 +54,7 @@
     <arg name="swarm_clearance" 		value="4.0" />
   <arg name="dist_p" 			value="0.5" />    
      <arg name="planning_horizen_" 		value="10.0" />
- </include>
+ </include> -->
    <!-- <include file="$(find multi_bspline_opt)/launch/multi_bspline.launch">
     <arg name="uav_id_" value="2"/>
   <arg name="traj_order" 		value="3" />

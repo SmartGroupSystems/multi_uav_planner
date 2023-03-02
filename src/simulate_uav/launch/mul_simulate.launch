@@ -20,7 +20,7 @@
     <arg name="odometry_topic" value="$(arg odom_topic)" />
   </include>
 
-    <include file="$(find simulate_uav)/launch/uav_i_simulate.launch">
+<!--     <include file="$(find simulate_uav)/launch/uav_i_simulate.launch">
 
     <arg name="uav_id_" value="1"/>
 
@@ -33,9 +33,9 @@
     <arg name="init_z_" value="0.1"/>
 
     <arg name="odometry_topic" value="$(arg odom_topic)" />
-  </include>
-<!-- 
-      <include file="$(find simulate_uav)/launch/uav_i_simulate.launch">
+  </include> -->
+
+      <!-- <include file="$(find simulate_uav)/launch/uav_i_simulate.launch">
 
     <arg name="uav_id_" value="2"/>
 

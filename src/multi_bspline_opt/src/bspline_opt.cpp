@@ -922,7 +922,10 @@ namespace my_planner
         
         //订阅路径
         path_suber = nh.subscribe<nav_msgs::Path>("/astar_node/grid_twist",1, &plan_manager::astar_getCallback,this);
+//发布状态
 
+         traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
+         safety_timer_ = nh.createTimer(ros::Duration(0.02), &plan_manager::checkCollisionCallback, this);
         //订阅起止点
         waypoint_suber = nh.subscribe<nav_msgs::Path>("/waypoint",1, &plan_manager::smooth_subCallback,this);
 
@@ -948,6 +951,7 @@ namespace my_planner
         sync = new message_filters::Synchronizer<syncPolicy>(syncPolicy(10), *subscriber_vel, *subscriber_pos, *subscriber_acc);  
         sync->registerCallback(boost::bind(&plan_manager::current_state_callback,this, _1, _2, _3));
 
+
 //获取当前无人机位置
         odom_suber = nh.subscribe("odom",10, &plan_manager::OdomCallback, this);
         //获取当前aim
@@ -970,10 +974,7 @@ namespace my_planner
         string pub_topic_name = string("/uav") + std::to_string(drone_id_) + string("_planning_swarm_trajs");
         swarm_trajs_pub_ = nh.advertise<multi_bspline_opt::MultiBsplines>(pub_topic_name.c_str(), 10);
 
-//发布状态
 
-         traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
-         safety_timer_ = nh.createTimer(ros::Duration(0.02), &plan_manager::checkCollisionCallback, this);
     }
 //如果轨迹要撞上障碍物，则停下重规划
 void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
@@ -982,26 +983,26 @@ void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
         return;
     std_msgs::Int64 arr_msg;
       //只检查前面2/3的点   
-     int number =   p_.rows()* 2.0 /3.0;
+     int number =   p_.rows()*1.0 /2.0;
      cout<<"number"<<number<<endl;
     traj_state state;//判断算出来的轨迹是否安全
     state = SAFE;
     Eigen::Vector2i tmp_index;//
     Eigen::Vector2i drone_index;
-    // Eigen::MatrixXd drone_position;
-    // drone_position.resize(1,2);
-    // drone_position(0,0) = drone_pos_world(0);
-    // drone_position(0,1) = drone_pos_world(1);
-    // drone_index = posToIndex(drone_position);
-    // double dist = esdf_map_(drone_index(0),drone_index(1));
-    // cout << dist<<endl;
-    // if (dist <= esdf_collision)
-    //      state = COLLIDE;
+    Eigen::MatrixXd drone_position;
+    drone_position.resize(1,2);
+    drone_position(0,0) = drone_pos_world(0);
+    drone_position(0,1) = drone_pos_world(1);
+    drone_index = posToIndex(drone_position);
+    double dist = esdf_map_(drone_index(0),drone_index(1));
+    cout << dist<<endl;
+    if (dist <= esdf_collision/2.0)
+         state = COLLIDE;
     for (size_t i = 0; i < number; i++)
     {
         tmp_index = posToIndex(p_.row(i));
         // cout<<"tmp_index："<<tmp_index<<endl;
-        if(esdf_map_(tmp_index(0),tmp_index(1))<=esdf_collision)
+        if(esdf_map_(tmp_index(0),tmp_index(1))<=esdf_collision*1.0/4.0)
         {
             cout << "colision!"<<endl;
             state = COLLIDE;
@@ -1158,7 +1159,7 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
         double now_time_  = ros::Time::now().toSec() ;
         // double duration_time;
         double delta_time = now_time_ - last_time_;//|| last_endpoint != end_point
-        if( true )// 
+        if(  first_rifine|| delta_time>= 0.01||checkTrajCollision() )// 
         {
             last_time_ = now_time_;
             first_rifine = false;
@@ -1284,9 +1285,9 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
             traj_pub.traj_id =  drone_id_;
             // traj_pub.cps_num_ = cps_num_
             Traj_puber.publish(traj);
-            return true;
+       
         }
-            
+           return true;      
     }
 
 void plan_manager::PublishSwarm(bool startup_pub)
