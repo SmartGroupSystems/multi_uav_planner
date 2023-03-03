@@ -1109,7 +1109,7 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
         double now_time_  = ros::Time::now().toSec() ;
         // double duration_time;
         double delta_time = now_time_ - last_time_;//|| last_endpoint != end_point
-        if( first_rifine == true || delta_time > 0.2 || checkTrajCollision() == true )// 
+        if( first_rifine == true || delta_time > 0.01 || checkTrajCollision() == true )// 
         {
             last_time_ = now_time_;
             first_rifine = false;

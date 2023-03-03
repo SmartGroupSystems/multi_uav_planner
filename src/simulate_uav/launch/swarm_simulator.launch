@@ -66,7 +66,7 @@
     </include>
 
 
-     <include file="$(find simulate_uav)/launch/one_simulate.launch">
+<include file="$(find simulate_uav)/launch/one_simulate.launch">
         <arg name="uav_id" value="2"/>
 
         <arg name="init_x" value="-10.0"/>
@@ -81,7 +81,7 @@
         <arg name="map_size_y_" value="$(arg _map_size_y)"/>
         <arg name="map_size_z_" value="$(arg _map_size_z)"/>
         <arg name="odom_topic" value="$(arg odom_topic)"/>
-    </include>
+    </include> 
 
      <!-- <include file="$(find simulate_uav)/launch/one_simulate.launch">
         <arg name="uav_id" value="3"/>
