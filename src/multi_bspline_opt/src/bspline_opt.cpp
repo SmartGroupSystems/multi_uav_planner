@@ -170,15 +170,15 @@ namespace my_planner
 /*********************************************************************************/
 
 
-    bspline_optimizer::bspline_optimizer(const std::vector<Eigen::Vector2d> &path, const int&Dim,  const int&p)
+    bspline_optimizer::bspline_optimizer(const std::vector<Eigen::Vector2d> &path, const int&Dim,  const int&p,const Eigen::Vector2d drone_pos_world_, const Eigen::Vector4d other_drone_pose_)
     {
         path_.clear();
         path_ = path;
         Dim_  = Dim;
         p_order_ = p;
         cps_num_ = path.size() + 2*p_order_ -2;
-        // drone_pos_world=drone_pos_world_;
-        // planning_horizen_ = planning_horizen;
+        drone_pos_world=drone_pos_world_;
+        other_drone_pose = other_drone_pose_;
     }
     bspline_optimizer::bspline_optimizer(const int&Dim,  const int&p, const double &dist)
     {
@@ -188,17 +188,18 @@ namespace my_planner
     }
     bspline_optimizer::~bspline_optimizer(){}
     
-    void bspline_optimizer::setOptParam(const double lambda1,const double lambda2,const double lambda3,const double lambda4,
+    void bspline_optimizer::setOptParam(const double lambda1,const double lambda2,const double lambda3,const double lambda4,const double lambda5,
                                                                                     const double safe_dist, const double swarm_clearance)
     {
             lambda1_ = lambda1;
             lambda2_ = lambda2;
             lambda3_ = lambda3;
             lambda4_ = lambda4;
+            lambda5_ = lambda5;
             safe_distance_ = safe_dist;
             swarm_clearance_ = swarm_clearance;
     }
-        void bspline_optimizer::setSwarmTrajs(SwarmTrajData *swarm_trajs_ptr)
+    void bspline_optimizer::setSwarmTrajs(SwarmTrajData *swarm_trajs_ptr)
      { 
         swarm_trajs_ = swarm_trajs_ptr;
          }
@@ -353,7 +354,7 @@ namespace my_planner
         //  cout<<"traj_i_satrt_time:"<<traj_i_satrt_time<<endl;
         //  cout<<"duration:"<<swarm_trajs_->at(id).duration_<<endl;
         //  cout<<"glb_time:"<<glb_time<<endl;
-        if (glb_time < traj_i_satrt_time + swarm_trajs_->at(id).duration_ )
+        if (glb_time < traj_i_satrt_time + swarm_trajs_->at(id).duration_-0.02 )
         {
           // int number;
           // number =floor(( glb_time - traj_i_satrt_time) ) * 50;
@@ -394,6 +395,51 @@ namespace my_planner
       }
     }
   }
+  
+  void  bspline_optimizer::calcDroneCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient)
+{
+     cost = 0.0;
+    // ROS_ERROR(" RECIEVED ODOM!");
+     if (other_drone_pose.size() == 0 )
+     {
+        ROS_ERROR("NOT RECIEVED ODOM!");
+      return;
+     }
+    const double CLEARANCE = swarm_clearance_ * 2;
+    double t_now = ros::Time::now().toSec();
+    constexpr double a = 2.0, b = 1.0, inv_a2 = 1 / a / a, inv_b2 = 1 / b / b;
+        
+    double pose_time =other_drone_pose(3);
+    // cout<<q.cols()<<endl;
+    for (int i =p_order_; i <  q.cols() - p_order_; i++)
+    { 
+        if ( std::abs(t_now -pose_time) <= 1.0 )
+        {
+          Eigen::Vector2d dist_vec =other_drone_pose.head(2)-  drone_pos_world;
+          double ellip_dist = sqrt( (dist_vec(0) * dist_vec(0) + dist_vec(1) * dist_vec(1)) * inv_b2);
+          double dist_err = CLEARANCE - ellip_dist;
+          Eigen::Vector2d uav_control_vec =  control_points_.row(i);
+          Eigen::Vector2d dist_grad =uav_control_vec - other_drone_pose.head(2);
+          Eigen::Vector2d Coeff;
+          Coeff(0) = -2 * (CLEARANCE / ellip_dist - 1) * inv_b2;
+          Coeff(1) = Coeff(0);
+
+          if (dist_err < 0)
+          {
+          }
+          else
+          {
+            cost += pow(dist_err, 2);
+            gradient.col(i) += (Coeff.array() * dist_grad.array()).matrix();
+          }
+
+          if (min_ellip_dist_ > dist_err)
+          {
+            min_ellip_dist_ = dist_err;
+          }
+        }
+      }
+    }
   void bspline_optimizer::calcFeasibilityCost(const Eigen::MatrixXd &q, double &cost,
                                                         Eigen::MatrixXd &gradient)
    {
@@ -494,7 +540,7 @@ namespace my_planner
     double bspline_optimizer::calcDistance(const Eigen::MatrixXd &q)
     {
         double dist;
-        Eigen::Vector2d p(q(0,0),q(1,0));//存入两个控制点
+        Eigen::Vector2d p(q(0,0),q(1,0));//存入控制点
         Eigen::Vector2d diff;
         Eigen::Vector2d sur_pts[2][2];//4个邻居点
         getSurroundPts(p,sur_pts, diff);
@@ -601,12 +647,13 @@ namespace my_planner
         grad2D.resize(Dim_,cps_num_);
         grad2D.setZero(Dim_,cps_num_);//初始化梯度矩阵
 
-        double f_smoothness, f_length, f_distance, f_feasibility, f_swarm ;
+        double f_smoothness, f_length, f_distance, f_feasibility, f_swarm ,f_drone;
         Eigen::MatrixXd g_smoothness_ = Eigen::MatrixXd::Zero(Dim_, cps_num_);
         Eigen::MatrixXd g_feasibility_ = Eigen::MatrixXd::Zero(Dim_, cps_num_);
         Eigen::MatrixXd g_distance_ = Eigen::MatrixXd::Zero(Dim_, cps_num_);
          Eigen::MatrixXd g_swarm_ = Eigen::MatrixXd::Zero(Dim_, cps_num_);
-        f_smoothness  = f_feasibility =  f_distance = f_swarm = 0.0;
+          Eigen::MatrixXd g_drone_ = Eigen::MatrixXd::Zero(Dim_, cps_num_);
+        f_smoothness  = f_feasibility =  f_distance = f_swarm = f_drone = 0.0;
         // cout<< control_points.transpose()<<endl;
         calcSmoothnessCost(control_points, f_smoothness, g_smoothness_);
     // cout<<"====================calcSmoothnessCost"<<endl;
@@ -615,9 +662,10 @@ namespace my_planner
         calcEsdfCost(control_points,f_distance,g_distance_);
     // cout<<"====================calcEsdfCost"<<endl;
        calcSwarmCost(control_points,f_swarm,g_swarm_);
-        f_combine = lambda1_ * f_smoothness + lambda2_*f_feasibility + lambda3_*f_distance + lambda4_*f_swarm;
-        ROS_ERROR("f_swarm: %f",f_swarm);
-        grad2D = lambda1_*g_smoothness_ + lambda2_ * g_feasibility_ +lambda3_ * g_distance_+lambda4_ * g_swarm_ ;
+       calcDroneCost(control_points,f_drone,g_drone_);
+        f_combine = lambda1_ * f_smoothness + lambda2_*f_feasibility + lambda3_*f_distance + lambda4_*f_swarm + lambda5_*f_drone;
+        ROS_ERROR("f_drone: %f",f_drone);
+        grad2D = lambda1_*g_smoothness_ + lambda2_ * g_feasibility_ +lambda3_ * g_distance_+lambda4_ * g_swarm_+lambda5_*g_drone_ ;
         grad = grad2D.block(0,p_order_,Dim_,cps_num_-2*p_order_);//起点  块大小
     }
     void bspline_optimizer::combineCostSmooth( const std::vector<double>& x,Eigen::MatrixXd &grad,double &f_combine)
@@ -877,7 +925,7 @@ namespace my_planner
         nh.param("planning/lambda2",lambda2_,-1.0);
         nh.param("planning/lambda3",lambda3_,-1.0);
         nh.param("planning/lambda4",lambda4_,-1.0);
-        // nh.param("planning/lambda5",lambda5_,-1.0);
+        nh.param("planning/lambda5",lambda5_,-1.0);
         // nh.param("planning/lambda6",lambda6_,-1.0);
         nh.param("planning/frame",frame_,std::string("odom"));
         nh.param("planning/map_resolution",map_resolution_,-1.0);
@@ -897,7 +945,7 @@ namespace my_planner
         // cout<< "beta is "<<beta<<endl;
 
         have_odom_ = false;
-        have_recv_pre_agent_ = false;
+        have_recv_pre_agent_ =false;
         lambda3_saved = lambda3_;
         get_path = false;
         // current_aim = Eigen::Vector2d::Zero();
@@ -924,8 +972,8 @@ namespace my_planner
         path_suber = nh.subscribe<nav_msgs::Path>("/astar_node/grid_twist",1, &plan_manager::astar_getCallback,this);
 //发布状态
 
-         traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
-         safety_timer_ = nh.createTimer(ros::Duration(0.02), &plan_manager::checkCollisionCallback, this);
+        //  traj_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::stateFSMCallback, this);
+         safety_timer_ = nh.createTimer(ros::Duration(0.01), &plan_manager::checkCollisionCallback, this);
         //订阅起止点
         waypoint_suber = nh.subscribe<nav_msgs::Path>("/waypoint",1, &plan_manager::smooth_subCallback,this);
 
@@ -959,7 +1007,7 @@ namespace my_planner
         arrived_suber = nh.subscribe<std_msgs::Int64>("/astar_node/target_arrived",10,&plan_manager::arrive_callback,this);
 
       //多机
-        broadcast_bspline_sub_ = nh.subscribe("/broadcast_bspline", 100, &plan_manager::BroadcastBsplineCallback, this, ros::TransportHints().tcpNoDelay());
+        broadcast_bspline_sub_ = nh.subscribe("/broadcast_bspline", 100, &plan_manager::BroadcastBsplineCallback, this/*, ros::TransportHints().tcpNoDelay()*/);
         //发布自己的轨迹
         broadcast_bspline_pub_ = nh.advertise<multi_bspline_opt::SendTraj>("/broadcast_bspline", 10);   //发布大广播
         state_pub = nh.advertise<std_msgs::Int64>("state",10);
@@ -968,14 +1016,63 @@ namespace my_planner
         {
            //订阅优先级更高一级的无人机的轨迹   
            string sub_topic_name = string("/uav") + std::to_string(drone_id_ - 1) + string("_planning_swarm_trajs");
-           swarm_trajs_sub_ = nh.subscribe(sub_topic_name.c_str(), 10, &plan_manager::swarmTrajsCallback, this, ros::TransportHints().tcpNoDelay());
+           swarm_trajs_sub_ = nh.subscribe(sub_topic_name.c_str(), 10, &plan_manager::swarmTrajsCallback, this/*, ros::TransportHints().tcpNoDelay()*/);
         }
 //发布swarm轨迹(绝对里程计坐标)
         string pub_topic_name = string("/uav") + std::to_string(drone_id_) + string("_planning_swarm_trajs");
         swarm_trajs_pub_ = nh.advertise<multi_bspline_opt::MultiBsplines>(pub_topic_name.c_str(), 10);
-
+    //获取其它无人机的位置    
+        droneX_odom_sub_ = nh.subscribe("others_odom", 100, &plan_manager::rcvDroneXOdomCallback, this/*, ros::TransportHints().tcpNoDelay()*/);
 
     }
+
+    //订阅其它无人机位置
+    void plan_manager::rcvDroneXOdomCallback(const nav_msgs::Odometry& odom)
+{
+  std::string numstr = odom.child_frame_id.substr(8,1);
+  // cout<<numstr<<endl;
+// ROS_INFO("GET ODOM!");
+  try
+  {
+    int other_drone_id = std::stoi(numstr);  
+    // ROS_WARN("drone_id:%d", other_drone_id);
+    rcvDroneOdomCallbackBase(odom, other_drone_id);
+  }
+  catch(const std::exception& e)
+  {
+    std::cout << e.what() << '\n';
+  }
+}
+
+void plan_manager::rcvDroneOdomCallbackBase(const nav_msgs::Odometry& odom, int other_drone_id)
+{
+  if (other_drone_id == drone_id_)
+   {
+    return;
+  }
+  Eigen::Vector4d drone_world;
+  drone_world(0) = odom.pose.pose.position.x ;
+  drone_world(1) = odom.pose.pose.position.y ;
+  drone_world(2) = odom.pose.pose.position.z ;
+  drone_world(3) = odom.header.stamp.toSec();
+  Eigen::Vector2d dist_vec = drone_world.head(2)- drone_pos_world.head(2);
+  if (dist_vec.norm() >planning_horizen_ * 4.0f / 3.0f)
+{
+    ROS_INFO("TOO FAR!");
+    return; 
+ }
+  double t_now = ros::Time::now().toSec();
+  double pos_time = drone_world(3);
+  if (std::abs(pos_time-t_now)>1.0)
+  {
+    ROS_INFO("TOO LATE OR EARLY!");
+    return;
+  }
+  other_drone_pose=drone_world;
+  //ROS_WARN("drone_pose_world_%d:%f, %f, %f,   ",drone_id, drone_pose_world_[drone_id](0), drone_pose_world_[drone_id](1), drone_pose_world_[drone_id](2));
+  
+  // if the drone is in sensor range
+}
 //如果轨迹要撞上障碍物，则停下重规划
 void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
 {
@@ -984,7 +1081,7 @@ void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
     std_msgs::Int64 arr_msg;
       //只检查前面2/3的点   
      int number =   p_.rows()*1.0 /2.0;
-     cout<<"number"<<number<<endl;
+    //  cout<<"number"<<number<<endl;
     traj_state state;//判断算出来的轨迹是否安全
     state = SAFE;
     Eigen::Vector2i tmp_index;//
@@ -995,7 +1092,7 @@ void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
     drone_position(0,1) = drone_pos_world(1);
     drone_index = posToIndex(drone_position);
     double dist = esdf_map_(drone_index(0),drone_index(1));
-    cout << dist<<endl;
+    // cout << dist<<endl;
     if (dist <= esdf_collision/2.0)
          state = COLLIDE;
     for (size_t i = 0; i < number; i++)
@@ -1004,7 +1101,7 @@ void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
         // cout<<"tmp_index："<<tmp_index<<endl;
         if(esdf_map_(tmp_index(0),tmp_index(1))<=esdf_collision*1.0/4.0)
         {
-            cout << "colision!"<<endl;
+            // cout << "colision!"<<endl;
             state = COLLIDE;
             break;
         }
@@ -1046,9 +1143,9 @@ void plan_manager::fsm_subCallback(const std_msgs::Int64::ConstPtr & msg)
     static string state_str[3] = { "FLYING", "SEQUENTIAL_START"};
     int pre_s = int(now_state_);
     now_state_ = new_state;
-    cout << "[" + pos_call + "]: from " + state_str[pre_s] + " to " + state_str[int(now_state_)] << endl;
+    // cout << "[" + pos_call + "]: from " + state_str[pre_s] + " to " + state_str[int(now_state_)] << endl;
  }
-  void plan_manager::stateFSMCallback(const ros::TimerEvent &e)
+  void plan_manager::stateFSMCallback(/*const ros::TimerEvent &e*/)
   {
     traj_timer_.stop(); // To avoid blockage
     // cout<<"--------------drone_id_:"<<drone_id_<<endl;
@@ -1159,18 +1256,18 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
         double now_time_  = ros::Time::now().toSec() ;
         // double duration_time;
         double delta_time = now_time_ - last_time_;//|| last_endpoint != end_point
-        if(  first_rifine|| delta_time>= 0.01||checkTrajCollision() )// 
+        if(  first_rifine|| delta_time>= 0.05||checkTrajCollision() )// 
         {
             last_time_ = now_time_;
             first_rifine = false;
             last_endpoint = end_point;
             //初始化优化类和 b样条轨迹类
-            opt.reset(new bspline_optimizer(astar_path_,Dim_,p_order_));
+            opt.reset(new bspline_optimizer(astar_path_,Dim_,p_order_,drone_pos_world, other_drone_pose));
             u.reset(new UniformBspline(p_order_,opt->cps_num_,beta,Dim_,initial_state,terminal_state));
             UniformBspline spline = *u;
             opt->setEsdfMap(esdf_map_) ;
             opt->setSwarmTrajs(&swarm_trajs_buf_);
-            opt->setOptParam(lambda1_,lambda2_,lambda3_,lambda4_,safe_distance_,swarm_clearance_);
+            opt->setOptParam(lambda1_,lambda2_,lambda3_,lambda4_,lambda5_,safe_distance_,swarm_clearance_);
             opt->setMapParam(origin_x_,origin_y_,map_resolution_,start_x_,start_y_);
             opt->setVelAcc(max_vel_,max_acc_);
             opt->setSplineParam(spline);
@@ -1388,10 +1485,7 @@ void plan_manager::OdomCallback(const nav_msgs::Odometry &pos_msg)
         free(src);
         dst = NULL;
         src = NULL;
-
     }
-
-
 
     void plan_manager::astar_getCallback(const nav_msgs::PathConstPtr &path)
     {
@@ -1428,7 +1522,7 @@ void plan_manager::OdomCallback(const nav_msgs::Odometry &pos_msg)
         
       fsm_num = 0;
     }    
-    //  stateFSMCallback();
+     stateFSMCallback();
             
     }
 
@@ -1505,7 +1599,7 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
       swarm_trajs_buf_[id].duration_ = (msg->knots[msg->knots.size() - floor(cutback)] + msg->knots[msg->knots.size() - ceil(cutback)]) / 2;
     }
     // cout<<"swarm_trajs_buf_[id].duration_"<<swarm_trajs_buf_[id].duration_<<endl;
-   cout<<"error flag777"<<endl; 
+//    cout<<"error flag777"<<endl; 
    Eigen::MatrixXd init;
     Eigen::MatrixXd end;
     init.resize(3,2);
@@ -1516,7 +1610,7 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
     end<<msg->end_pos_x, msg->end_pos_y,
                0.0, 0.0,
                0.0,   0.0;
-    cout<<"error flag6661"<<endl;    
+    // cout<<"error flag6661"<<endl;    
     UniformBspline pos_traj(p_order_,msg->cps_num_,beta, Dim_, init, end);
     pos_traj.setControlPoints(pos_pts);
     pos_traj.getT(TrajSampleRate);
@@ -1530,13 +1624,13 @@ void plan_manager::BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::C
        swarm_trajs_buf_[id].start_time_ = msg->start_time;
 
 }
-/*****************************************
- * smooth_path
- * 输入 :nav_msgs::Path
- * 输出:同astar
- * 
- * *************************************/
-//接受轨迹
+// /*****************************************
+//  * smooth_path
+//  * 输入 :nav_msgs::Path
+//  * 输出:同astar
+//  * 
+//  * *************************************/
+// //接受轨迹
 void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr &msg)
 {
     ROS_ERROR("have_rec, %d", have_recv_pre_agent_);
@@ -1549,7 +1643,7 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
             //  ROS_ERROR("swarmTrajsCallback(): no odom!, return.");
               return;
           }
-     cout<<"traj"<<(int)msg->traj.size()<<"id from"<< msg->drone_id_from<<endl; 
+    //  cout<<"traj"<<(int)msg->traj.size()<<"id from"<< msg->drone_id_from<<endl; 
 
     if ((int)msg->traj.size() != msg->drone_id_from + 1) // drone_id must start from 0
     {
@@ -1615,7 +1709,7 @@ void plan_manager::swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr 
        init<<msg->traj[i].start_pos_x, msg->traj[i].start_pos_y,
                msg->traj[i].start_vel_x, msg->traj[i].start_vel_y,
                msg->traj[i].start_acc_x,   msg->traj[i].start_acc_y;
-        cout<<"error flag28"<<endl;
+        // cout<<"error flag28"<<endl;
         end<<msg->traj[i].end_pos_x, msg->traj[i].end_pos_y,
                0.0, 0.0,
                0.0,   0.0;
@@ -1688,16 +1782,16 @@ void plan_manager::map_slice_output(const Eigen::MatrixXd &esdf_matrix)
     }
     Map_puber.publish(marker_result);
     }
-/*************************************************
- * 计算渐变色
- *  输入：
- *      ESDF值；
- *      最大距离阈值；
- *      最小距离阈值；
- *      RGB色表；
- *  输出：
- *      R、G、B值；
- *************************************************/
+// /*************************************************
+//  * 计算渐变色
+//  *  输入：
+//  *      ESDF值；
+//  *      最大距离阈值；
+//  *      最小距离阈值；
+//  *      RGB色表；
+//  *  输出：
+//  *      R、G、B值；
+//  *************************************************/
 std::vector<float>  plan_manager::calculate_color(double esdf_value, double max_dist, double min_dist, std::vector<int> R_values, std::vector<int> G_values, std::vector<int> B_values)
 {
     std::vector<float> color_result;
@@ -1725,7 +1819,7 @@ bool plan_manager::checkTrajCollision()
         tmp_index = posToIndex(p_.row(i));
         if(esdf_map_(tmp_index(0),tmp_index(1))<=esdf_collision)
         {
-            cout << "colision!"<<endl;
+            // cout << "colision!"<<endl;
             state = COLLIDE;
             break;
         }
@@ -1780,4 +1874,4 @@ Eigen::MatrixXd plan_manager::getSmoothTraj(const geometry_msgs::PoseStamped &st
     }   
     return traj;
 }
-}
+ }

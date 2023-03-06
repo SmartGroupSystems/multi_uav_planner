@@ -119,7 +119,7 @@ struct OneTrajDataOfSwarm
             UniformBspline u_;
 
             //从状态机读入的参数
-            double lambda1_,lambda2_,lambda3_,lambda4_;// smooth cost, ESDF cost, feasibility cost
+            double lambda1_,lambda2_,lambda3_,lambda4_, lambda5_ ;// smooth cost, ESDF cost, feasibility cost
             double max_vel_;//最大速度
             double max_acc_;//最大加速度
 
@@ -146,20 +146,22 @@ struct OneTrajDataOfSwarm
             int    algorithm1_ = 15;             // optimization algorithms for quadratic cost
             int    algorithm2_ = 11;             // optimization algorithms for general cost
         
+            Eigen::Vector2d drone_pos_world; //无人机位置
+            Eigen::Vector4d  other_drone_pose;//其它无人机位置
         //多机
         private:
             SwarmTrajData *swarm_trajs_{NULL};
             int drone_id_;
         public://函数
             bspline_optimizer() {}
-            bspline_optimizer(const std::vector<Eigen::Vector2d> &path, const int&Dim,  const int&p);
+            bspline_optimizer(const std::vector<Eigen::Vector2d> &path, const int&Dim,  const int&p,const Eigen::Vector2d drone_pos_world_, const Eigen::Vector4d other_drone_pose_);
             bspline_optimizer(const int&Dim,const int &p,const double &dist);
             ~bspline_optimizer();
 
       
             void setSwarmTrajs(SwarmTrajData *swarm_trajs_ptr);
             void setDroneId(const int drone_id) { drone_id_ = drone_id; }  
-            void setOptParam(const double lambda1,const double lambda2,const double lambda3,const double lambda4,
+            void setOptParam(const double lambda1,const double lambda2,const double lambda3,const double lambda4,const double lambda5,
                                                     const double safe_dist,const double swarm_clearance_);
             void setMapParam(const double &origin_x,const double &origin_y, const double &map_resolution,
                                                     const double &start_x, const double &start_y);
@@ -180,6 +182,7 @@ struct OneTrajDataOfSwarm
                                                         Eigen::MatrixXd &gradient);   
             double calcDistance(const Eigen::MatrixXd &q);
             void  calcSwarmCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient);
+             void  calcDroneCost(const Eigen::MatrixXd &q, double &cost, Eigen::MatrixXd &gradient);
             Eigen::Vector2d calcGrad(const Eigen::MatrixXd &q);   
             void getSurroundPts(const Eigen::Vector2d& pos, Eigen::Vector2d pts[2][2], Eigen::Vector2d& diff);
             void getSurroundDistance(Eigen::Vector2d pts[2][2], double dists[2][2]);
@@ -280,7 +283,7 @@ struct OneTrajDataOfSwarm
             std::shared_ptr<bspline_optimizer> opt;
             std::shared_ptr<bspline_optimizer> opt1;
             //nlopt 相关
-            double lambda1_,lambda2_,lambda3_,lambda4_,lambda3_saved;
+            double lambda1_,lambda2_,lambda3_,lambda4_,lambda5_ ,lambda3_saved;
 
             //多无人机
              double planning_horizen_, planning_horizen_time_;
@@ -312,11 +315,12 @@ struct OneTrajDataOfSwarm
             //多无人机
             ros::Subscriber  swarm_trajs_sub_;  //订阅上一个无人机的轨迹集合
             ros::Subscriber  broadcast_bspline_sub_;
-            // ros::Subscriber   droneX_odom_sub_;
+            ros::Subscriber   droneX_odom_sub_;
             ros::Publisher swarm_trajs_pub_;
             ros::Publisher  broadcast_bspline_pub_ ;
             ros::Timer traj_timer_, safety_timer_ ;
             Eigen::Vector2d drone_pos_world; //无人机位置
+            Eigen::Vector4d  other_drone_pose;//其它无人机位置
             //ros msg
             nav_msgs::Path traj_vis;//轨迹可视化
             nav_msgs::Path traj_vis_;//轨迹可视化
@@ -363,7 +367,7 @@ struct OneTrajDataOfSwarm
             void aim_callback(const geometry_msgs::PoseStamped::ConstPtr & aim_msg);
             void fullaim_callback(const mavros_msgs::PositionTarget::ConstPtr & aim_msg);
             bool  astar_subCallback(const std::vector<Eigen::Vector2d> &astar_path_);
-             void stateFSMCallback(const ros::TimerEvent &e); 
+             void stateFSMCallback(/*const ros::TimerEvent &e*/); 
              void StateChange( PLANNER_STATE new_state, string pos_call);
             void   checkCollisionCallback(const ros::TimerEvent &e);
             void smooth_subCallback(const nav_msgs::Path::ConstPtr & msg);
@@ -372,6 +376,8 @@ struct OneTrajDataOfSwarm
            void BroadcastBsplineCallback(const multi_bspline_opt::SendTraj::ConstPtr &msg) ;
            void PublishSwarm(bool startup_pub);
            void swarmTrajsCallback(const multi_bspline_opt::MultiBsplinesPtr &msg);
+           void rcvDroneXOdomCallback(const nav_msgs::Odometry& odom);
+           void rcvDroneOdomCallbackBase(const nav_msgs::Odometry& odom, int other_drone_id);
             Eigen::MatrixXd getSmoothTraj(const geometry_msgs::PoseStamped &start,
                                                                             const geometry_msgs::PoseStamped &end);
             Eigen::Vector2i posToIndex(const Eigen::MatrixXd &pos)

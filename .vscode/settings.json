@@ -5,5 +5,6 @@
         "/opt/ros/melodic/lib/python2.7/dist-packages",
         "/home/wenjing/ros/controller/flag_planner/devel/lib/python2.7/dist-packages",
         "/home/wenjing/ros/ascup_ws_simulation/devel/lib/python2.7/dist-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "${workspaceFolder}/src/bspline_race"
 }

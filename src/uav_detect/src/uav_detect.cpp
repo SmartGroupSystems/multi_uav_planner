@@ -264,7 +264,7 @@ void DroneDetector::rcvDrone2OdomCallback(const nav_msgs::Odometry& odom)
 
 void DroneDetector::rcvDroneXOdomCallback(const nav_msgs::Odometry& odom)
 {
-  std::string numstr = odom.child_frame_id.substr(7);
+  std::string numstr = odom.child_frame_id.substr(8,1);
 
   try
   {

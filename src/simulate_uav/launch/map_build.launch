@@ -27,6 +27,6 @@
         <param name="type" type="int" value="2"/>
        <param name="width_min"         type="double" value="0.6"/>
       <param name="width_max"         type="double" value="1.0"/>
-     <param name="obstacle_number"   type="int"    value="50"/>
+     <param name="obstacle_number"   type="int"    value="60"/>
   </node>
   </launch>

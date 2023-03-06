@@ -15,7 +15,7 @@ using namespace std;
 bool first_bs = true,first_check_yaw=false, collision_flag = false; 
 #define PI acos(-1)
 #define INF 999.9
-bool arrived = false;
+bool arrived = true;
 int state_info = 0;
 #define T_RATE 50.0
 double set_height;
@@ -171,7 +171,7 @@ void run()
             cmd_pub.publish(pva_msg);
            debug_pub.publish(debug_msg);
         }
-          if (!first_bs && collision_flag == true)
+          if (!first_bs  && collision_flag == true)
           {           
             double arg_    = atan2(0.0,0.0) + (PI/2.0f);
             double vel_len = sqrt(pow(0.0,2)+pow(0.0,2));
@@ -278,10 +278,10 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     int  remain_last_seq = 0;
     int new_traj_start_seq = msg->current_seq ;
     int delta_seq = new_traj_start_seq - BTraj[0].seq_;  //当前点和发过来轨迹点起点的差
-    cout << "delta_seq: " << delta_seq <<" "<<"new_traj_start_seq:"<<new_traj_start_seq<<" "<<"BTraj[0].seq_:"<<BTraj[0].seq_<<endl;
+    // cout << "delta_seq: " << delta_seq <<" "<<"new_traj_start_seq:"<<new_traj_start_seq<<" "<<"BTraj[0].seq_:"<<BTraj[0].seq_<<endl;
     bs_traj BT_ptr1 = *(BTraj.begin());
     double dist = ( BT_ptr1.pos_-drone_pose_world).norm();
-    cout<<"dist:"<<dist<<endl;
+    // cout<<"dist:"<<dist<<endl;
      if (state_info == 1)
      {
       ROS_WARN("collision!");
@@ -293,6 +293,7 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     {
       collision_flag = false;
     }
+    //如果距离相差太大
     //  if ( dist >= 0.25)
     //   {
     //   ROS_WARN("BTraj ERROR!");
@@ -316,47 +317,7 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     }
     else// 终于没事了
     {
-      ROS_WARN("connected!");
-    //    std::vector<bs_traj> BTraj_saved = BTraj;
-    //   bool affine_traj = true;
-    //    while ((*(BTraj.end()-1)).seq_ >= new_traj_start_seq)
-    //     {
-    //         BTraj.erase(BTraj.end()-1);
-    //         if(BTraj.size() == 0)
-    //         {
-    //             ROS_ERROR("STOP BECAUSE OF NEW TRAJ IS USELESS!!!");
-    //             affine_traj = false;
-    //             break;
-    //         }
-    //     }
-    //       int  remain_last_seq = new_traj_start_seq;
-        
-    //     if(affine_traj) 
-    //     {
-    //       connect_seq = (*(BTraj.end()-1)).seq_;
-    //       ROS_INFO("Successfully connect the trajectory at < %i > ++++ < %i >. With vel: %f, %f acc: %f, %f",
-    //               (*(BTraj.end()-1)).seq_,remain_last_seq,
-    //               (*(BTraj.end()-1)).vel_[0],(*(BTraj.end()-1)).vel_[1],
-    //               (*(BTraj.end()-1)).acc_[0],(*(BTraj.end()-1)).acc_[1]);
-    //     }
-    //     // cout <<(*(BTraj.end()-1)).pos_<<endl;
-    //     // cout<<"--------------"<<endl;
-    //     // cout <<msg->position[0].pose.position.x<<"\n"<< msg->position[0].pose.position.y <<endl;
-    // if(!affine_traj)
-    // {
-    //   BTraj = BTraj_saved;
-    //   ROS_WARN("Use saved traj. Seq begin at: < %i >, end at: < %i >.",(*(BTraj.begin())).seq_,(*(BTraj.end()-1)).seq_);
-    //   return;
-    // }
-    // for (size_t i = 0; i < msg->position.size(); i++)
-    // {    
-    //     bs_traj BT_ptr;
-    //     BT_ptr.pos_ << msg->position[i].pose.position.x    , msg->position[i].pose.position.y;
-    //     BT_ptr.vel_ << msg->velocity[i].pose.position.x    , msg->velocity[i].pose.position.y;
-    //     BT_ptr.acc_ << msg->acceleration[i].pose.position.x, msg->acceleration[i].pose.position.y;
-    //     BT_ptr.seq_ = i + remain_last_seq;
-    //     BTraj.push_back(BT_ptr);
-    // } 
+      // ROS_WARN("connected!");
       std::vector<bs_traj> BTraj_remain;
       auto start_ptr_ = BTraj.begin();
       // auto end_ptr_   = BTraj.begin() + delta_seq;// BUG ?悬垂指针？
@@ -398,11 +359,7 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
   ROS_INFO("New seq begin at: < %i >, end at: < %i >.",(*(BTraj.begin())).seq_,(*(BTraj.end()-1)).seq_);
 }
 
-// void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
-// {
-//   //
 
-// }
 void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
 {
   bool affine_traj = true;
