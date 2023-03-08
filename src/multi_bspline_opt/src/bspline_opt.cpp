@@ -162,6 +162,88 @@ namespace my_planner
         return b;   
     }
 
+  void UniformBspline::setPhysicalLimits(const double &vel, const double &acc, const double &tolerance)
+  {
+    limit_vel_ = vel;
+    limit_acc_ = acc;
+    limit_ratio_ = 1.1;
+    feasibility_tolerance_ = tolerance;
+  }
+    bool UniformBspline::checkFeasibility( bool show)
+  {
+    bool fea = true;
+   
+    Eigen::MatrixXd P = control_points_.transpose();
+    int dimension = control_points_.rows();
+  //  cout<<dimension<<endl;
+    /* check vel feasibility and insert points */
+    double max_vel = -1.0;
+    double enlarged_vel_lim = limit_vel_ * (1.0 + feasibility_tolerance_) + 1e-4;
+    //获得最大速度
+    // cout<<"row:"<<control_points_.rows()<<endl;
+           
+    for (int i = 0; i < P.cols() - 1; ++i)
+    {
+      Eigen::VectorXd vel = p_ * (P.col(i+1) - P.col(i)) / (u_(i + p_ + 1) - u_(i + 1));
+// cout<<"col:"<<P.cols()<<endl;  
+  //  cout<<"6661"<<endl;
+      if (fabs(vel(0)) > enlarged_vel_lim || fabs(vel(1)) > enlarged_vel_lim )
+      {
+
+        if (show)
+          cout << "[Check]: Infeasible vel " << i << " :" << vel.transpose() << endl;
+        fea = false;
+        for (int j = 0; j < dimension; ++j)
+        {
+          max_vel = max(max_vel, fabs(vel(j)));
+        }
+      }
+    
+     }
+
+    /* acc feasibility */
+    //获得最大加速度
+    double max_acc = -1.0;
+    double enlarged_acc_lim = limit_acc_ * (1.0 + feasibility_tolerance_) + 1e-4;
+    for (int i = 0; i < P.cols() - 2; ++i)
+    {
+
+      Eigen::VectorXd acc = p_ * (p_ - 1) *
+                            ((P.col(i + 2) - P.col(i + 1)) / (u_(i + p_ + 2) - u_(i + 2)) -
+                             (P.col(i + 1) - P.col(i)) / (u_(i + p_ + 1) - u_(i + 1))) /
+                            (u_(i + p_ + 1) - u_(i + 2));
+
+      if (fabs(acc(0)) > enlarged_acc_lim || fabs(acc(1)) > enlarged_acc_lim )
+      {
+
+        if (show)
+          cout << "[Check]: Infeasible acc " << i << " :" << acc.transpose() << endl;
+        fea = false;
+
+        for (int j = 0; j < dimension; ++j)
+        {
+          max_acc = max(max_acc, fabs(acc(j)));
+        }
+      }
+    }
+   //获得比例
+     limit_ratio_  = max(max_vel / limit_vel_, sqrt(fabs(max_acc) / limit_acc_));
+
+    return fea;
+  }
+
+  void UniformBspline::lengthenTime()
+  {
+    int num1 = 5;
+    int num2 = getKnot().rows() - 1 - 5;
+
+    double delta_t = ( limit_ratio_  - 1.0) * (u_(num2) - u_(num1));
+    double t_inc = delta_t / double(num2 - num1);
+    for (int i = num1 + 1; i <= num2; ++i)
+      u_(i) += double(i - num1) * t_inc;
+    for (int i = num2 + 1; i < u_.rows(); ++i)
+      u_(i) += delta_t;
+  }
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************************************************************************/
@@ -664,7 +746,7 @@ namespace my_planner
        calcSwarmCost(control_points,f_swarm,g_swarm_);
        calcDroneCost(control_points,f_drone,g_drone_);
         f_combine = lambda1_ * f_smoothness + lambda2_*f_feasibility + lambda3_*f_distance + lambda4_*f_swarm + lambda5_*f_drone;
-        ROS_ERROR("f_drone: %f",f_drone);
+        // ROS_ERROR("f_drone: %f",f_drone);
         grad2D = lambda1_*g_smoothness_ + lambda2_ * g_feasibility_ +lambda3_ * g_distance_+lambda4_ * g_swarm_+lambda5_*g_drone_ ;
         grad = grad2D.block(0,p_order_,Dim_,cps_num_-2*p_order_);//起点  块大小
     }
@@ -763,8 +845,8 @@ namespace my_planner
                     q[j*Dim_+i] = control_points_(j+p_order_,i);
                 }
             }
-
-            const double  bound = 10.0;
+//优化的上下界
+            const double  bound = 15.0;
             for (size_t i = 0; i <variable_num; i++)
             {
                     lb[i]  = q[i]-bound;
@@ -938,6 +1020,7 @@ namespace my_planner
         nh.param("planning/esdf_collision",esdf_collision,2.0);
         nh.param("planning/dist_p",dist_p,-1.0);
         nh.param("planning/drone_id", drone_id_,-1);
+        nh.param("planning/tolerance", tolerance_,1.05);
         // nh.param("planning/planning_horizen_time", planning_horizen_time_, -1.0);
         nh.param("planning/planning_horizon", planning_horizen_, -1.0);
         
@@ -1058,7 +1141,7 @@ void plan_manager::rcvDroneOdomCallbackBase(const nav_msgs::Odometry& odom, int 
   Eigen::Vector2d dist_vec = drone_world.head(2)- drone_pos_world.head(2);
   if (dist_vec.norm() >planning_horizen_ * 4.0f / 3.0f)
 {
-    ROS_INFO("TOO FAR!");
+    // ROS_INFO("TOO FAR!");
     return; 
  }
   double t_now = ros::Time::now().toSec();
@@ -1093,7 +1176,7 @@ void  plan_manager::checkCollisionCallback(const ros::TimerEvent &e)
     drone_index = posToIndex(drone_position);
     double dist = esdf_map_(drone_index(0),drone_index(1));
     // cout << dist<<endl;
-    if (dist <= esdf_collision/2.0)
+    if (dist <= esdf_collision/3.0)
          state = COLLIDE;
     for (size_t i = 0; i < number; i++)
     {
@@ -1264,6 +1347,7 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
             //初始化优化类和 b样条轨迹类
             opt.reset(new bspline_optimizer(astar_path_,Dim_,p_order_,drone_pos_world, other_drone_pose));
             u.reset(new UniformBspline(p_order_,opt->cps_num_,beta,Dim_,initial_state,terminal_state));
+            u->setPhysicalLimits(max_vel_,max_acc_,tolerance_);
             UniformBspline spline = *u;
             opt->setEsdfMap(esdf_map_) ;
             opt->setSwarmTrajs(&swarm_trajs_buf_);
@@ -1303,6 +1387,12 @@ bool  plan_manager::astar_subCallback(const std::vector<Eigen::Vector2d> &astar_
             // cout <<"----------------------------------------\033[0m"<<endl;
             u->setControlPoints(opt->control_points_);
             u->getT(TrajSampleRate);
+            bool fea;
+            fea =u->checkFeasibility(false);
+            if(!fea)
+            {
+              u->lengthenTime();
+            }
             UniformBspline p = *u;
             UniformBspline v = p.getDerivative();
             UniformBspline a = v.getDerivative();

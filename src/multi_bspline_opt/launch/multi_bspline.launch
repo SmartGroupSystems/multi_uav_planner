@@ -71,6 +71,7 @@
     <param name="planning/dist_p" value="$(arg dist_p)" />
 	 <param name="planning/drone_id" value="$(arg uav_id_)" />
     <param name="planning/planning_horizon" value="$(arg planning_horizen_)" />
+    <param name="planning/tolerance" value="1.05" />
   </node>
 
 </launch>

@@ -64,7 +64,7 @@ int main(int argc,char** argv)
 void rcvPositionCallback(const nav_msgs::Odometry &odom)
 {
             msg.header= odom.header;
-            msg.header.frame_id       = "earth";
+            msg.header.frame_id       = "world";
             msg.child_frame_id        =  map_frame_id;
             msg.pose.pose.position.x  = odom.pose.pose.position.x ;
             msg.pose.pose.position.y  =  odom.pose.pose.position.y;

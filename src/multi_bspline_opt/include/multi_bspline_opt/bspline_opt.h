@@ -63,6 +63,10 @@ namespace my_planner
            double beta_;// time scale t(real time) * beta = u
            int D_;// Dimension of control points
 
+
+    //物理限制
+           double limit_vel_,limit_acc_,limit_ratio_,feasibility_tolerance_;
+        //    double 
         public://变量
             Eigen::MatrixXd control_points_;
             Eigen::MatrixXd A_ini, A_ter; // A_ini*[cp1, cp2, cp3] = [p0, v0, a0] ,similarly A_ter; DIM: 3*3
@@ -91,6 +95,9 @@ namespace my_planner
             void getT(const int &trajSampleRate);//轨迹采样点的时间序列
             UniformBspline getDerivative();//返回b样条的导数类
             Eigen::VectorXd getBoundConstraintb();//得到边界
+            void setPhysicalLimits(const double &vel, const double &acc, const double &tolerance);
+            bool checkFeasibility(bool show);
+              void lengthenTime();
     };
 //SWARM
 //swarm
@@ -235,6 +242,7 @@ struct OneTrajDataOfSwarm
             double startPoint_x,startPoint_y;//找到地图左上角的点，x负，y正
             double safe_distance_,swarm_clearance_;//安全距离
             double esdf_collision;
+            double tolerance_;
             Eigen::MatrixXd p_,v_,a_;//轨迹buffer
 
             int current_seq = 0;

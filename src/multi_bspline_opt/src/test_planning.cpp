@@ -12,7 +12,7 @@ int main(int argc, char ** argv)
     // s.pose.position.x=0.0; s.pose.position.y=0.0;
     // e.pose.position.x=10.0; e.pose.position.y=12.0;
     // cout<<manager.getSmoothTraj(s,e)<<endl;
-    ros::Rate rate(70.0);
+    ros::Rate rate(80.0);
     ros::spin();
     return 0;
 }
