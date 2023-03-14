@@ -18,11 +18,8 @@
 
 ### 运行方法
 
-#### 运行单架无人机
 
-1. 运行static_planner.sh文件,设置2D nav goal 
-
-#### 运行多架无人机
+#### 运行多架无人机（已改为三维）
 
 1.  可以运行simulate_uav里面的swarm_simulator.launch，也可以运行multi_planner.sh。两者的区别在于一个只开了一个终端（swarm_simulator.launch），一个打开了多个终端（multi_planner.sh，打开多个终端是为了方便调试时输出信息的查看），通过2D Nav goal启动。
    
@@ -37,6 +34,6 @@
 
 ### 目前主要问题
 
-1. 轨迹衔接不流畅
+1. 轨迹衔接不流畅(已解决)
 
 2. 多机避障不太灵敏
