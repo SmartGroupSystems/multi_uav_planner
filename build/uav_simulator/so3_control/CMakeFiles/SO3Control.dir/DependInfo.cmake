@@ -20,8 +20,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
   "/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_control/include"
   "/home/wenjing/ros/my_planner_rviz/devel/include"
-  "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include"
-  "/home/wenjing/ros/my_planner_rviz/src/bspline_race/include"
+  "/home/wenjing/ros/my_planner_rviz/src/multi_control/multi_bspline_opt/include"
+  "/home/wenjing/ros/my_planner_rviz/src/single_control/bspline_race/include"
+  "/home/wenjing/ros/my_planner_rviz/src/single_control/plan_env/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

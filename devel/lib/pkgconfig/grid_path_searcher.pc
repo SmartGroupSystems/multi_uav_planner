@@ -3,6 +3,6 @@ prefix=/home/wenjing/ros/my_planner_rviz/devel
 Name: grid_path_searcher
 Description: Description of grid_path_searcher
 Version: 0.0.1
-Cflags: -I/home/wenjing/ros/my_planner_rviz/src/grid_path_searcher/include
+Cflags: -I/home/wenjing/ros/my_planner_rviz/src/single_control/grid_path_searcher/include
 Libs: -L${prefix}/lib 
 Requires: roscpp std_msgs tf

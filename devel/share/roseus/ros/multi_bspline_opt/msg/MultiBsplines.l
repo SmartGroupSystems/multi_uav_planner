@@ -72,7 +72,7 @@
    self)
   )
 
-(setf (get multi_bspline_opt::MultiBsplines :md5sum-) "cdca54030719384ffd1c921d966beb6e")
+(setf (get multi_bspline_opt::MultiBsplines :md5sum-) "d01d06767f5c913970e1304f95f5b711")
 (setf (get multi_bspline_opt::MultiBsplines :datatype-) "multi_bspline_opt/MultiBsplines")
 (setf (get multi_bspline_opt::MultiBsplines :definition-)
       "int32 drone_id_from
@@ -90,14 +90,18 @@ int32 cps_num_
 time start_time
 
 
-float64 start_pos_x
-float64 start_pos_y
-float64 start_vel_x
-float64 start_vel_y
-float64 start_acc_x
-float64 start_acc_y
-float64 end_pos_x
-float64 end_pos_y
+geometry_msgs/Point start_pos_
+geometry_msgs/Point start_vel_
+geometry_msgs/Point start_acc_
+geometry_msgs/Point end_pos_
+# float64 start_pos_x
+# float64 start_pos_y
+# float64 start_vel_x
+# float64 start_vel_y
+# float64 start_acc_x
+# float64 start_acc_y
+# float64 end_pos_x
+# float64 end_pos_y
 # float64 yaw_rate
 
 geometry_msgs/Point[] control_pts
@@ -113,6 +117,6 @@ float64 z
 
 
 
-(provide :multi_bspline_opt/MultiBsplines "cdca54030719384ffd1c921d966beb6e")
+(provide :multi_bspline_opt/MultiBsplines "d01d06767f5c913970e1304f95f5b711")
 
 

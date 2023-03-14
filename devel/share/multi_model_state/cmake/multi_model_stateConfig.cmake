@@ -67,7 +67,7 @@ set(multi_model_state_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(multi_model_state_SOURCE_PREFIX /home/wenjing/ros/my_planner_rviz/src/multi_model_state)
+  set(multi_model_state_SOURCE_PREFIX /home/wenjing/ros/my_planner_rviz/src/multi_control/multi_model_state)
   set(multi_model_state_DEVEL_PREFIX /home/wenjing/ros/my_planner_rviz/devel)
   set(multi_model_state_INSTALL_PREFIX "")
   set(multi_model_state_PREFIX ${multi_model_state_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT " " STREQUAL " ")
         message(FATAL_ERROR "Project 'multi_model_state' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'multi_model_state' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/wenjing/ros/my_planner_rviz/src/multi_model_state/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'multi_model_state' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/wenjing/ros/my_planner_rviz/src/multi_control/multi_model_state/${idir}'.  ${_report}")
     endif()
     _list_append_unique(multi_model_state_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/ros/catkin_overlay_ws/devel/lib;/home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/catkin_ws/devel/lib;/opt/ros/melodic/lib;/home/wenjing/ros/controller/flag_planner/devel/lib;/home/wenjing/ros/ascup_ws_simulation/devel/lib)
+    foreach(path /home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/ros/catkin_overlay_ws/devel/lib;/home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/catkin_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -177,8 +177,8 @@ target_link_libraries(so3_control_nodelet
 )
 
 
-add_executable(control_example 
-              src/control_example.cpp )
+# add_executable(control_example 
+#               src/control_example.cpp )
 
 add_executable(control_bspline 
                src/control_bspline.cpp)
@@ -190,9 +190,9 @@ add_executable(control_bspline
 #  add_executable(multi_control_bspline_global 
 #                src/multi_global.cpp)
 
-target_link_libraries(control_example 
-${catkin_LIBRARIES}
-)
+# target_link_libraries(control_example 
+# ${catkin_LIBRARIES}
+# )
 target_link_libraries(control_bspline 
 ${catkin_LIBRARIES}
 )

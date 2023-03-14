@@ -24,14 +24,10 @@ class SendTraj {
       this.order = null;
       this.cps_num_ = null;
       this.start_time = null;
-      this.start_pos_x = null;
-      this.start_pos_y = null;
-      this.start_vel_x = null;
-      this.start_vel_y = null;
-      this.start_acc_x = null;
-      this.start_acc_y = null;
-      this.end_pos_x = null;
-      this.end_pos_y = null;
+      this.start_pos_ = null;
+      this.start_vel_ = null;
+      this.start_acc_ = null;
+      this.end_pos_ = null;
       this.control_pts = null;
       this.knots = null;
     }
@@ -66,53 +62,29 @@ class SendTraj {
       else {
         this.start_time = {secs: 0, nsecs: 0};
       }
-      if (initObj.hasOwnProperty('start_pos_x')) {
-        this.start_pos_x = initObj.start_pos_x
+      if (initObj.hasOwnProperty('start_pos_')) {
+        this.start_pos_ = initObj.start_pos_
       }
       else {
-        this.start_pos_x = 0.0;
+        this.start_pos_ = new geometry_msgs.msg.Point();
       }
-      if (initObj.hasOwnProperty('start_pos_y')) {
-        this.start_pos_y = initObj.start_pos_y
-      }
-      else {
-        this.start_pos_y = 0.0;
-      }
-      if (initObj.hasOwnProperty('start_vel_x')) {
-        this.start_vel_x = initObj.start_vel_x
+      if (initObj.hasOwnProperty('start_vel_')) {
+        this.start_vel_ = initObj.start_vel_
       }
       else {
-        this.start_vel_x = 0.0;
+        this.start_vel_ = new geometry_msgs.msg.Point();
       }
-      if (initObj.hasOwnProperty('start_vel_y')) {
-        this.start_vel_y = initObj.start_vel_y
-      }
-      else {
-        this.start_vel_y = 0.0;
-      }
-      if (initObj.hasOwnProperty('start_acc_x')) {
-        this.start_acc_x = initObj.start_acc_x
+      if (initObj.hasOwnProperty('start_acc_')) {
+        this.start_acc_ = initObj.start_acc_
       }
       else {
-        this.start_acc_x = 0.0;
+        this.start_acc_ = new geometry_msgs.msg.Point();
       }
-      if (initObj.hasOwnProperty('start_acc_y')) {
-        this.start_acc_y = initObj.start_acc_y
-      }
-      else {
-        this.start_acc_y = 0.0;
-      }
-      if (initObj.hasOwnProperty('end_pos_x')) {
-        this.end_pos_x = initObj.end_pos_x
+      if (initObj.hasOwnProperty('end_pos_')) {
+        this.end_pos_ = initObj.end_pos_
       }
       else {
-        this.end_pos_x = 0.0;
-      }
-      if (initObj.hasOwnProperty('end_pos_y')) {
-        this.end_pos_y = initObj.end_pos_y
-      }
-      else {
-        this.end_pos_y = 0.0;
+        this.end_pos_ = new geometry_msgs.msg.Point();
       }
       if (initObj.hasOwnProperty('control_pts')) {
         this.control_pts = initObj.control_pts
@@ -141,22 +113,14 @@ class SendTraj {
     bufferOffset = _serializer.int32(obj.cps_num_, buffer, bufferOffset);
     // Serialize message field [start_time]
     bufferOffset = _serializer.time(obj.start_time, buffer, bufferOffset);
-    // Serialize message field [start_pos_x]
-    bufferOffset = _serializer.float64(obj.start_pos_x, buffer, bufferOffset);
-    // Serialize message field [start_pos_y]
-    bufferOffset = _serializer.float64(obj.start_pos_y, buffer, bufferOffset);
-    // Serialize message field [start_vel_x]
-    bufferOffset = _serializer.float64(obj.start_vel_x, buffer, bufferOffset);
-    // Serialize message field [start_vel_y]
-    bufferOffset = _serializer.float64(obj.start_vel_y, buffer, bufferOffset);
-    // Serialize message field [start_acc_x]
-    bufferOffset = _serializer.float64(obj.start_acc_x, buffer, bufferOffset);
-    // Serialize message field [start_acc_y]
-    bufferOffset = _serializer.float64(obj.start_acc_y, buffer, bufferOffset);
-    // Serialize message field [end_pos_x]
-    bufferOffset = _serializer.float64(obj.end_pos_x, buffer, bufferOffset);
-    // Serialize message field [end_pos_y]
-    bufferOffset = _serializer.float64(obj.end_pos_y, buffer, bufferOffset);
+    // Serialize message field [start_pos_]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.start_pos_, buffer, bufferOffset);
+    // Serialize message field [start_vel_]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.start_vel_, buffer, bufferOffset);
+    // Serialize message field [start_acc_]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.start_acc_, buffer, bufferOffset);
+    // Serialize message field [end_pos_]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.end_pos_, buffer, bufferOffset);
     // Serialize message field [control_pts]
     // Serialize the length for message field [control_pts]
     bufferOffset = _serializer.uint32(obj.control_pts.length, buffer, bufferOffset);
@@ -182,22 +146,14 @@ class SendTraj {
     data.cps_num_ = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [start_time]
     data.start_time = _deserializer.time(buffer, bufferOffset);
-    // Deserialize message field [start_pos_x]
-    data.start_pos_x = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [start_pos_y]
-    data.start_pos_y = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [start_vel_x]
-    data.start_vel_x = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [start_vel_y]
-    data.start_vel_y = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [start_acc_x]
-    data.start_acc_x = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [start_acc_y]
-    data.start_acc_y = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [end_pos_x]
-    data.end_pos_x = _deserializer.float64(buffer, bufferOffset);
-    // Deserialize message field [end_pos_y]
-    data.end_pos_y = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [start_pos_]
+    data.start_pos_ = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [start_vel_]
+    data.start_vel_ = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [start_acc_]
+    data.start_acc_ = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [end_pos_]
+    data.end_pos_ = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
     // Deserialize message field [control_pts]
     // Deserialize array length for message field [control_pts]
     len = _deserializer.uint32(buffer, bufferOffset);
@@ -214,7 +170,7 @@ class SendTraj {
     let length = 0;
     length += 24 * object.control_pts.length;
     length += 8 * object.knots.length;
-    return length + 100;
+    return length + 132;
   }
 
   static datatype() {
@@ -224,7 +180,7 @@ class SendTraj {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '1db39cd31304eba253abaf4c9988cb49';
+    return 'd1c07ca91141848b23c4fb9cb569a4f8';
   }
 
   static messageDefinition() {
@@ -240,14 +196,18 @@ class SendTraj {
     time start_time
     
     
-    float64 start_pos_x
-    float64 start_pos_y
-    float64 start_vel_x
-    float64 start_vel_y
-    float64 start_acc_x
-    float64 start_acc_y
-    float64 end_pos_x
-    float64 end_pos_y
+    geometry_msgs/Point start_pos_
+    geometry_msgs/Point start_vel_
+    geometry_msgs/Point start_acc_
+    geometry_msgs/Point end_pos_
+    # float64 start_pos_x
+    # float64 start_pos_y
+    # float64 start_vel_x
+    # float64 start_vel_y
+    # float64 start_acc_x
+    # float64 start_acc_y
+    # float64 end_pos_x
+    # float64 end_pos_y
     # float64 yaw_rate
     
     geometry_msgs/Point[] control_pts
@@ -303,60 +263,32 @@ class SendTraj {
       resolved.start_time = {secs: 0, nsecs: 0}
     }
 
-    if (msg.start_pos_x !== undefined) {
-      resolved.start_pos_x = msg.start_pos_x;
+    if (msg.start_pos_ !== undefined) {
+      resolved.start_pos_ = geometry_msgs.msg.Point.Resolve(msg.start_pos_)
     }
     else {
-      resolved.start_pos_x = 0.0
+      resolved.start_pos_ = new geometry_msgs.msg.Point()
     }
 
-    if (msg.start_pos_y !== undefined) {
-      resolved.start_pos_y = msg.start_pos_y;
+    if (msg.start_vel_ !== undefined) {
+      resolved.start_vel_ = geometry_msgs.msg.Point.Resolve(msg.start_vel_)
     }
     else {
-      resolved.start_pos_y = 0.0
+      resolved.start_vel_ = new geometry_msgs.msg.Point()
     }
 
-    if (msg.start_vel_x !== undefined) {
-      resolved.start_vel_x = msg.start_vel_x;
+    if (msg.start_acc_ !== undefined) {
+      resolved.start_acc_ = geometry_msgs.msg.Point.Resolve(msg.start_acc_)
     }
     else {
-      resolved.start_vel_x = 0.0
+      resolved.start_acc_ = new geometry_msgs.msg.Point()
     }
 
-    if (msg.start_vel_y !== undefined) {
-      resolved.start_vel_y = msg.start_vel_y;
+    if (msg.end_pos_ !== undefined) {
+      resolved.end_pos_ = geometry_msgs.msg.Point.Resolve(msg.end_pos_)
     }
     else {
-      resolved.start_vel_y = 0.0
-    }
-
-    if (msg.start_acc_x !== undefined) {
-      resolved.start_acc_x = msg.start_acc_x;
-    }
-    else {
-      resolved.start_acc_x = 0.0
-    }
-
-    if (msg.start_acc_y !== undefined) {
-      resolved.start_acc_y = msg.start_acc_y;
-    }
-    else {
-      resolved.start_acc_y = 0.0
-    }
-
-    if (msg.end_pos_x !== undefined) {
-      resolved.end_pos_x = msg.end_pos_x;
-    }
-    else {
-      resolved.end_pos_x = 0.0
-    }
-
-    if (msg.end_pos_y !== undefined) {
-      resolved.end_pos_y = msg.end_pos_y;
-    }
-    else {
-      resolved.end_pos_y = 0.0
+      resolved.end_pos_ = new geometry_msgs.msg.Point()
     }
 
     if (msg.control_pts !== undefined) {

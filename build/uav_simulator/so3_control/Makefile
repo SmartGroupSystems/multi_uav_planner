@@ -168,21 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f CMakeFiles/Makefile2 uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
-.PHONY : uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
-
-# Convenience name for target.
-control_bspline: uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
-
-.PHONY : control_bspline
-
-# fast build rule for target.
-control_bspline/fast:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_bspline.dir/build.make uav_simulator/so3_control/CMakeFiles/control_bspline.dir/build
-.PHONY : control_bspline/fast
-
-# Convenience name for target.
 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/rule:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f CMakeFiles/Makefile2 uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/rule
 .PHONY : uav_simulator/so3_control/CMakeFiles/multi_control_bspline.dir/rule
@@ -198,19 +183,19 @@ multi_control_bspline/fast:
 .PHONY : multi_control_bspline/fast
 
 # Convenience name for target.
-uav_simulator/so3_control/CMakeFiles/control_example.dir/rule:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f CMakeFiles/Makefile2 uav_simulator/so3_control/CMakeFiles/control_example.dir/rule
-.PHONY : uav_simulator/so3_control/CMakeFiles/control_example.dir/rule
+uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f CMakeFiles/Makefile2 uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
+.PHONY : uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
 
 # Convenience name for target.
-control_example: uav_simulator/so3_control/CMakeFiles/control_example.dir/rule
+control_bspline: uav_simulator/so3_control/CMakeFiles/control_bspline.dir/rule
 
-.PHONY : control_example
+.PHONY : control_bspline
 
 # fast build rule for target.
-control_example/fast:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_example.dir/build.make uav_simulator/so3_control/CMakeFiles/control_example.dir/build
-.PHONY : control_example/fast
+control_bspline/fast:
+	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_bspline.dir/build.make uav_simulator/so3_control/CMakeFiles/control_bspline.dir/build
+.PHONY : control_bspline/fast
 
 # Convenience name for target.
 uav_simulator/so3_control/CMakeFiles/so3_control_nodelet.dir/rule:
@@ -296,33 +281,6 @@ src/control_bspline.cpp.s:
 	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_bspline.dir/build.make uav_simulator/so3_control/CMakeFiles/control_bspline.dir/src/control_bspline.cpp.s
 .PHONY : src/control_bspline.cpp.s
 
-src/control_example.o: src/control_example.cpp.o
-
-.PHONY : src/control_example.o
-
-# target to build an object file
-src/control_example.cpp.o:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_example.dir/build.make uav_simulator/so3_control/CMakeFiles/control_example.dir/src/control_example.cpp.o
-.PHONY : src/control_example.cpp.o
-
-src/control_example.i: src/control_example.cpp.i
-
-.PHONY : src/control_example.i
-
-# target to preprocess a source file
-src/control_example.cpp.i:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_example.dir/build.make uav_simulator/so3_control/CMakeFiles/control_example.dir/src/control_example.cpp.i
-.PHONY : src/control_example.cpp.i
-
-src/control_example.s: src/control_example.cpp.s
-
-.PHONY : src/control_example.s
-
-# target to generate assembly for a file
-src/control_example.cpp.s:
-	cd /home/wenjing/ros/my_planner_rviz/build && $(MAKE) -f uav_simulator/so3_control/CMakeFiles/control_example.dir/build.make uav_simulator/so3_control/CMakeFiles/control_example.dir/src/control_example.cpp.s
-.PHONY : src/control_example.cpp.s
-
 src/multi_control_bspline.o: src/multi_control_bspline.cpp.o
 
 .PHONY : src/multi_control_bspline.o
@@ -389,9 +347,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... control_bspline"
 	@echo "... multi_control_bspline"
-	@echo "... control_example"
+	@echo "... control_bspline"
 	@echo "... install/strip"
 	@echo "... so3_control_nodelet"
 	@echo "... SO3Control"
@@ -401,9 +358,6 @@ help:
 	@echo "... src/control_bspline.o"
 	@echo "... src/control_bspline.i"
 	@echo "... src/control_bspline.s"
-	@echo "... src/control_example.o"
-	@echo "... src/control_example.i"
-	@echo "... src/control_example.s"
 	@echo "... src/multi_control_bspline.o"
 	@echo "... src/multi_control_bspline.i"
 	@echo "... src/multi_control_bspline.s"

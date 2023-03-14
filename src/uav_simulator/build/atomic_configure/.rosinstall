@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/wenjing/ros/my_planner_rviz/src/uav_simulator/build/devel/setup.sh

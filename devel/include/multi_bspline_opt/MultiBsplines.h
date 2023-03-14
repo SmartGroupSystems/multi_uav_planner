@@ -129,12 +129,12 @@ struct MD5Sum< ::multi_bspline_opt::MultiBsplines_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "cdca54030719384ffd1c921d966beb6e";
+    return "d01d06767f5c913970e1304f95f5b711";
   }
 
   static const char* value(const ::multi_bspline_opt::MultiBsplines_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xcdca54030719384fULL;
-  static const uint64_t static_value2 = 0xfd1c921d966beb6eULL;
+  static const uint64_t static_value1 = 0xd01d06767f5c9139ULL;
+  static const uint64_t static_value2 = 0x70e1304f95f5b711ULL;
 };
 
 template<class ContainerAllocator>
@@ -168,14 +168,18 @@ struct Definition< ::multi_bspline_opt::MultiBsplines_<ContainerAllocator> >
 "time start_time\n"
 "\n"
 "\n"
-"float64 start_pos_x\n"
-"float64 start_pos_y\n"
-"float64 start_vel_x\n"
-"float64 start_vel_y\n"
-"float64 start_acc_x\n"
-"float64 start_acc_y\n"
-"float64 end_pos_x\n"
-"float64 end_pos_y\n"
+"geometry_msgs/Point start_pos_\n"
+"geometry_msgs/Point start_vel_\n"
+"geometry_msgs/Point start_acc_\n"
+"geometry_msgs/Point end_pos_\n"
+"# float64 start_pos_x\n"
+"# float64 start_pos_y\n"
+"# float64 start_vel_x\n"
+"# float64 start_vel_y\n"
+"# float64 start_acc_x\n"
+"# float64 start_acc_y\n"
+"# float64 end_pos_x\n"
+"# float64 end_pos_y\n"
 "# float64 yaw_rate\n"
 "\n"
 "geometry_msgs/Point[] control_pts\n"

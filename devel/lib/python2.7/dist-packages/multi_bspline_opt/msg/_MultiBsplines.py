@@ -11,7 +11,7 @@ import geometry_msgs.msg
 import multi_bspline_opt.msg
 
 class MultiBsplines(genpy.Message):
-  _md5sum = "cdca54030719384ffd1c921d966beb6e"
+  _md5sum = "d01d06767f5c913970e1304f95f5b711"
   _type = "multi_bspline_opt/MultiBsplines"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int32 drone_id_from
@@ -29,14 +29,18 @@ int32 cps_num_
 time start_time
 
 
-float64 start_pos_x
-float64 start_pos_y
-float64 start_vel_x
-float64 start_vel_y
-float64 start_acc_x
-float64 start_acc_y
-float64 end_pos_x
-float64 end_pos_y
+geometry_msgs/Point start_pos_
+geometry_msgs/Point start_vel_
+geometry_msgs/Point start_acc_
+geometry_msgs/Point end_pos_
+# float64 start_pos_x
+# float64 start_pos_y
+# float64 start_vel_x
+# float64 start_vel_y
+# float64 start_acc_x
+# float64 start_acc_y
+# float64 end_pos_x
+# float64 end_pos_y
 # float64 yaw_rate
 
 geometry_msgs/Point[] control_pts
@@ -98,8 +102,18 @@ float64 z
         _v1 = val1.start_time
         _x = _v1
         buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-        _x = val1
-        buff.write(_get_struct_8d().pack(_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
+        _v2 = val1.start_pos_
+        _x = _v2
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v3 = val1.start_vel_
+        _x = _v3
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v4 = val1.start_acc_
+        _x = _v4
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v5 = val1.end_pos_
+        _x = _v5
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
         length = len(val1.control_pts)
         buff.write(_struct_I.pack(length))
         for val2 in val1.control_pts:
@@ -136,15 +150,31 @@ float64 z
         start = end
         end += 20
         (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_,) = _get_struct_iq2i().unpack(str[start:end])
-        _v2 = val1.start_time
-        _x = _v2
+        _v6 = val1.start_time
+        _x = _v6
         start = end
         end += 8
         (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
-        _x = val1
+        _v7 = val1.start_pos_
+        _x = _v7
         start = end
-        end += 64
-        (_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_8d().unpack(str[start:end])
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v8 = val1.start_vel_
+        _x = _v8
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v9 = val1.start_acc_
+        _x = _v9
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v10 = val1.end_pos_
+        _x = _v10
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -184,11 +214,21 @@ float64 z
       for val1 in self.traj:
         _x = val1
         buff.write(_get_struct_iq2i().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_))
-        _v3 = val1.start_time
-        _x = _v3
+        _v11 = val1.start_time
+        _x = _v11
         buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-        _x = val1
-        buff.write(_get_struct_8d().pack(_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
+        _v12 = val1.start_pos_
+        _x = _v12
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v13 = val1.start_vel_
+        _x = _v13
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v14 = val1.start_acc_
+        _x = _v14
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v15 = val1.end_pos_
+        _x = _v15
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
         length = len(val1.control_pts)
         buff.write(_struct_I.pack(length))
         for val2 in val1.control_pts:
@@ -226,15 +266,31 @@ float64 z
         start = end
         end += 20
         (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_,) = _get_struct_iq2i().unpack(str[start:end])
-        _v4 = val1.start_time
-        _x = _v4
+        _v16 = val1.start_time
+        _x = _v16
         start = end
         end += 8
         (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
-        _x = val1
+        _v17 = val1.start_pos_
+        _x = _v17
         start = end
-        end += 64
-        (_x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_8d().unpack(str[start:end])
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v18 = val1.start_vel_
+        _x = _v18
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v19 = val1.start_acc_
+        _x = _v19
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v20 = val1.end_pos_
+        _x = _v20
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -275,12 +331,6 @@ def _get_struct_3d():
     if _struct_3d is None:
         _struct_3d = struct.Struct("<3d")
     return _struct_3d
-_struct_8d = None
-def _get_struct_8d():
-    global _struct_8d
-    if _struct_8d is None:
-        _struct_8d = struct.Struct("<8d")
-    return _struct_8d
 _struct_i = None
 def _get_struct_i():
     global _struct_i

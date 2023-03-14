@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -O3 -Wall -g -fPIC
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"so3_control\" -DSO3Control_EXPORTS
 
-CXX_INCLUDES = -I/usr/include/eigen3 -I/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_control/include -I/home/wenjing/ros/my_planner_rviz/devel/include -I/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include -I/home/wenjing/ros/my_planner_rviz/src/bspline_race/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/usr/include/eigen3 -I/home/wenjing/ros/my_planner_rviz/src/uav_simulator/so3_control/include -I/home/wenjing/ros/my_planner_rviz/devel/include -I/home/wenjing/ros/my_planner_rviz/src/multi_control/multi_bspline_opt/include -I/home/wenjing/ros/my_planner_rviz/src/single_control/bspline_race/include -I/home/wenjing/ros/my_planner_rviz/src/single_control/plan_env/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

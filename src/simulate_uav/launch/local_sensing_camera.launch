@@ -7,7 +7,7 @@
   <arg name="init_z" value="1.0"/> 
   <arg name="c_num" value="200"/>
   <arg name="p_num" value="200"/>
-  <arg name="odometry_topic" value="/sim/odom" />
+  <arg name="odometry_topic" value="/odom_visualization" />
 
   <node pkg="local_sensing_node" type="pcl_render_node" name="pcl_render_node" output="screen">
         <rosparam command="load" file="$(find local_sensing_node)/params/camera.yaml" />
@@ -19,7 +19,7 @@
         <param name="map/y_size"     value="$(arg map_size_y)"/>
         <param name="map/z_size"     value="$(arg map_size_z)"/>
 
-        <remap from="~global_map" to="/mock_map"/>
+        <remap from="~global_map" to="/map_generator/global_cloud"/>
         <remap from="~odometry"   to="$(arg odometry_topic)"/>
   </node>
 </launch>

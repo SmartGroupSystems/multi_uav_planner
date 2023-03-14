@@ -1,0 +1,118 @@
+<launch>	
+  <arg name="traj_order" 		value="3" /><!-- 轨迹阶数 -->
+  <!--<arg name="control_points_number"	value="30" />-->
+  <arg name="dimension" 		value="3" /><!-- 3维 -->
+  <arg name="TrajSampleRate" 		value="50" /><!-- 10, 20, 30 , ... ,-->
+<!--  <arg name="beta" 			value="2.0" />-->
+  <arg name="max_vel" 			value="1.0" />
+  <arg name="max_acc" 			value="0.8" /><!-- 最大速度与加速度 -->
+  <arg name="goal_x" 			value="9.0" />
+  <arg name="goal_y" 			value="-10.0" />
+  <arg name="lambda1" 			value="10.0" />
+  <arg name="lambda2" 			value="0.00001" />
+  <arg name="lambda3" 			value="10.0" />    <!-- 光滑 可行 避障权重 -->
+  <arg name="esdf_collision" 		value="1.8" /> <!-- 小于此值则认为轨迹有碰撞 -->
+  <arg name="frame" 			value="world" />     <!-- 参考系 -->
+  <arg name="map_resolution" 		value="0.1" />
+  <arg name="start_x" 			value="-39.95" />
+  <arg name="start_y" 			value="39.95" />   <!-- 地图起始点 -->
+  <arg name="safe_distance" 		value="0.4" /> <!-- 安全距离 -->
+  <arg name="dist_p" 			value="0.5" />       <!-- 均匀b样条每段长度：0.5 -->
+
+
+  <arg name="map_size_x_" value="80.0"/>
+  <arg name="map_size_y_" value="80.0"/>
+  <arg name="map_size_z_" value=" 5.0"/>
+
+    <!--修改这个地方的参数，参数直接影响建图 -->
+    <arg name="odometry_topic" value="/orb_odom" />
+    <arg name="odom_topic" value="/orb_odom/pose" />
+    <arg name="cloud_topic" value="/sim_env_cloud"/>
+    <!-- sim_env_cloud  mock_map -->
+    <arg name="camera_pose_topic" value="/pcl_render_node/camera_pose"/>
+    <!-- <arg name="depth_topic" value="/image_depth_stereo_imu"/> -->
+    <arg name="depth_topic" value="/D435i/depth/image_raw"/>
+
+    <!-- intrinsic params of the depth camera -->
+    <arg name="cx" value="321.04638671875"/>
+    <arg name="cy" value="243.44969177246094"/>
+    <arg name="fx" value="387.229248046875"/>
+    <arg name="fy" value="387.229248046875"/>
+
+  <!--启动规划器，生成轨迹 -->
+  <node pkg="bspline_race" name="flag_planner" type="flag_planner" output="screen">	
+    <!--<rosparam command="load" file="$(find bspline_opt)/con0fig/initial_final_state.yaml" />-->
+    <param name="planning/traj_order" value="$(arg traj_order)"/>
+   <!-- <param name="planning/control_points_number" value="$(arg control_points_number)" />-->
+    <param name="planning/dimension" value="$(arg dimension)" />
+    <param name="planning/TrajSampleRate" value="$(arg TrajSampleRate)" />
+    <!--<param name="planning/beta" value="$(arg beta)" />-->
+    <param name="planning/max_vel" value="$(arg max_vel)" />
+    <param name="planning/max_acc" value="$(arg max_acc)" />
+    <param name="planning/goal_x" value="$(arg goal_x)" />	
+    <param name="planning/goal_y" value="$(arg goal_y)" />
+    <param name="planning/lambda1" value="$(arg lambda1)" />
+    <param name="planning/lambda2" value="$(arg lambda2)" />
+    <param name="planning/lambda3" value="$(arg lambda3)" />
+    <param name="planning/frame" value="$(arg frame)" />
+    <param name="planning/map_resolution" value="$(arg map_resolution)" />
+    <param name="planning/start_x" value="$(arg start_x)" />
+    <param name="planning/start_y" value="$(arg start_y)" />
+    <param name="planning/safe_distance" value="$(arg safe_distance)" />
+    <param name="planning/esdf_collision" value="$(arg esdf_collision)" />
+    <param name="planning/dist_p" value="$(arg dist_p)" />
+	
+    <param name="sdf_map/resolution"      value="0.1" /> 
+    <param name="sdf_map/map_size_x"   value="$(arg map_size_x_)" /> 
+    <param name="sdf_map/map_size_y"   value="$(arg map_size_y_)" /> 
+    <param name="sdf_map/map_size_z"   value="$(arg map_size_z_)" /> 
+    <param name="sdf_map/local_update_range_x"  value="5.5" /> 
+    <param name="sdf_map/local_update_range_y"  value="5.5" /> 
+    <param name="sdf_map/local_update_range_z"  value="4.5" /> 
+    <param name="sdf_map/obstacles_inflation"     value="0.0" /> 
+    <param name="sdf_map/local_bound_inflate"    value="0.0"/>
+    <param name="sdf_map/local_map_margin" value="50"/>
+    <param name="sdf_map/ground_height"        value="-0.01"/>
+    <!-- camera parameter -->
+    <param name="sdf_map/cx" value="$(arg cx)"/>
+    <param name="sdf_map/cy" value="$(arg cy)"/>
+    <param name="sdf_map/fx" value="$(arg fx)"/>
+    <param name="sdf_map/fy" value="$(arg fy)"/>
+    <!-- depth filter -->
+    <param name="sdf_map/use_depth_filter" value="true"/>
+    <param name="sdf_map/depth_filter_tolerance" value="0.15"/>
+    <param name="sdf_map/depth_filter_maxdist"   value="5.0"/>
+    <param name="sdf_map/depth_filter_mindist"   value="0.2"/>
+    <param name="sdf_map/depth_filter_margin"    value="1"/>
+    <param name="sdf_map/depth_filter_mparamin"    value="1"/>
+    <param name="sdf_map/k_depth_scaling_factor" value="1000.0"/>
+    <param name="sdf_map/skip_pixel" value="2"/>
+    <!-- local fusion -->
+    <param name="sdf_map/p_hit"  value="0.65"/>
+    <param name="sdf_map/p_miss" value="0.35"/>
+    <param name="sdf_map/p_min"  value="0.12"/>
+    <param name="sdf_map/p_max"  value="0.90"/>
+    <param name="sdf_map/p_occ"  value="0.80"/>
+    <param name="sdf_map/min_ray_length" value="0.2"/>
+    <param name="sdf_map/max_ray_length" value="4.5"/>
+
+    <param name="sdf_map/esdf_slice_height" value="1.0"/>
+    <param name="sdf_map/visualization_truncate_height"   value="2.49"/>
+    <param name="sdf_map/virtual_ceil_height"   value="2.5"/>
+    <param name="sdf_map/show_occ_time"  value="false"/>
+    <param name="sdf_map/show_esdf_time" value="false"/>
+    <param name="sdf_map/pose_type"     value="2"/>  
+    <param name="sdf_map/frame_id"      value="world"/>
+
+    <remap from="/odom_world" to="$(arg odometry_topic)"/>
+    <!-- <remap from="/sdf_map/odom" to="$(arg odometry_topic)"/> -->
+    <remap from="~odom" to="$(arg odometry_topic)"/>
+    <remap from="/sdf_map/odom" to="$(arg odom_topic)"/>
+    <!-- <remap from="/sdf_map/cloud" to="$(arg cloud_topic)"/> -->
+    <!-- <remap from = "/sdf_map/pose"   to = "$(arg camera_pose_topic)"/>  -->
+    <remap from = "/sdf_map/depth" to = "$(arg depth_topic)"/>
+	
+  </node>
+  <!--启动rviz，可视化显示 -->
+  
+</launch>

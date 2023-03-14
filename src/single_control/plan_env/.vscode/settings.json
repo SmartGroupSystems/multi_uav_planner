@@ -1,0 +1,11 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/wenjing/ros/controller/flag_planner_3d/devel/lib/python2.7/dist-packages",
+        "/home/wenjing/ros/my_planner_rviz/devel/lib/python2.7/dist-packages",
+        "/home/wenjing/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "/home/wenjing/ros/controller/flag_planner/devel/lib/python2.7/dist-packages",
+        "/home/wenjing/ros/ascup_ws_simulation/devel/lib/python2.7/dist-packages",
+        "/home/wenjing/ros/my_planner/devel/lib/python2.7/dist-packages"
+    ]
+}

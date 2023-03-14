@@ -67,7 +67,7 @@ set(multi_bspline_opt_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(multi_bspline_opt_SOURCE_PREFIX /home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt)
+  set(multi_bspline_opt_SOURCE_PREFIX /home/wenjing/ros/my_planner_rviz/src/multi_control/multi_bspline_opt)
   set(multi_bspline_opt_DEVEL_PREFIX /home/wenjing/ros/my_planner_rviz/devel)
   set(multi_bspline_opt_INSTALL_PREFIX "")
   set(multi_bspline_opt_PREFIX ${multi_bspline_opt_DEVEL_PREFIX})
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(multi_bspline_opt_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/wenjing/ros/my_planner_rviz/devel/include;/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include " STREQUAL " ")
+if(NOT "/home/wenjing/ros/my_planner_rviz/devel/include;/home/wenjing/ros/my_planner_rviz/src/multi_control/multi_bspline_opt/include " STREQUAL " ")
   set(multi_bspline_opt_INCLUDE_DIRS "")
-  set(_include_dirs "/home/wenjing/ros/my_planner_rviz/devel/include;/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/include")
+  set(_include_dirs "/home/wenjing/ros/my_planner_rviz/devel/include;/home/wenjing/ros/my_planner_rviz/src/multi_control/multi_bspline_opt/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/wenjing/ros/my_planner_rviz/devel/include;/home/wenjing/ros/my_pla
         message(FATAL_ERROR "Project 'multi_bspline_opt' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'multi_bspline_opt' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'multi_bspline_opt' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/wenjing/ros/my_planner_rviz/src/multi_control/multi_bspline_opt/${idir}'.  ${_report}")
     endif()
     _list_append_unique(multi_bspline_opt_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/ros/catkin_overlay_ws/devel/lib;/home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/catkin_ws/devel/lib;/opt/ros/melodic/lib;/home/wenjing/ros/controller/flag_planner/devel/lib;/home/wenjing/ros/ascup_ws_simulation/devel/lib)
+    foreach(path /home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/ros/catkin_overlay_ws/devel/lib;/home/wenjing/ros/my_planner_rviz/devel/lib;/home/wenjing/catkin_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

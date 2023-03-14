@@ -1,2 +1,0 @@
-set(multi_bspline_opt_MESSAGE_FILES "/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/BsplineTraj.msg;/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/MultiBsplines.msg;/home/wenjing/ros/my_planner_rviz/src/multi_bspline_opt/msg/SendTraj.msg")
-set(multi_bspline_opt_SERVICE_FILES "")

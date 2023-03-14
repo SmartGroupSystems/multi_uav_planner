@@ -1,20 +1,20 @@
 <launch>
  <include file="$(find multi_model_state)/launch/state.launch">
     <arg name="uav_id_" value="0"/>
-    <arg name="init_x_" value="-10.0"/>
+    <arg name="init_x_" value="-5.0"/>
     <arg name="init_y_" value="-5.0"/>
     <arg name="init_z_" value="0.1"/>
  </include>
 <include file="$(find multi_model_state)/launch/state.launch">
     <arg name="uav_id_" value="1"/>
-    <arg name="init_x_" value="-10.0"/>
+    <arg name="init_x_" value="-5.0"/>
     <arg name="init_y_" value="-2.0"/>
     <arg name="init_z_" value="0.1"/>
  </include>
-     <!-- <include file="$(find multi_model_state)/launch/state.launch">
+     <include file="$(find multi_model_state)/launch/state.launch">
     <arg name="uav_id_" value="2"/>
-    <arg name="init_x_" value="-10.0"/>
+    <arg name="init_x_" value="-5.0"/>
     <arg name="init_y_" value="5.0"/>
     <arg name="init_z_" value="0.1"/>
- </include> -->
+ </include>
 </launch>

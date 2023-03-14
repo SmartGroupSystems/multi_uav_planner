@@ -24,7 +24,7 @@ double last_yaw;
 double last_yaw_dot;
 int connect_seq = 0;
 Eigen::Vector3d vel_drone_fcu;
-Eigen::Vector2d drone_pose_world;
+Eigen::Vector3d drone_pose_world;
 static geometry_msgs::PoseStamped aim;
 quadrotor_msgs::PositionCommand pva_msg;
 mavros_msgs::PositionTarget bs_msg;
@@ -33,9 +33,9 @@ int last_seq_ = 0;
 class bs_traj
 {
     public:
-        Eigen::Vector2d pos_;
-        Eigen::Vector2d vel_;
-        Eigen::Vector2d acc_;
+        Eigen::Vector3d pos_;
+        Eigen::Vector3d vel_;
+        Eigen::Vector3d acc_;
         int seq_;
 };
 std::vector<bs_traj> BTraj;
@@ -72,10 +72,12 @@ void run()
             {
               debug_msg.pose.position.x = BT_ptr.vel_[0];
               debug_msg.pose.position.y = BT_ptr.vel_[1];
+              debug_msg.pose.position.z = BT_ptr.vel_[2];
               debug_msg.pose.orientation.x = BT_ptr.acc_[0];
               debug_msg.pose.orientation.y = BT_ptr.acc_[1];
+              debug_msg.pose.orientation.z = BT_ptr.acc_[2];
             }
-            debug_msg.pose.orientation.w = sqrt(pow(BT_ptr.vel_[0],2.0) +  pow(BT_ptr.vel_[1],2.0));
+            debug_msg.pose.orientation.w = sqrt(pow(BT_ptr.vel_[0],2.0) +  pow(BT_ptr.vel_[1],2.0)+  pow(BT_ptr.vel_[2],2.0));
             BTraj.erase(BTraj.begin());
 
             // CAL_YAW
@@ -90,6 +92,7 @@ void run()
             // POSE
             pos_ptr.pose.position.x = BT_ptr.pos_[0];
             pos_ptr.pose.position.y = BT_ptr.pos_[1];
+            pos_ptr.pose.position.y = BT_ptr.pos_[2];
             pos_ptr.pose.position.z = set_height;
             aim.pose.position = pos_ptr.pose.position;
             // YAW
@@ -105,15 +108,15 @@ void run()
             // POSE
             pva_msg.position.x = BT_ptr.pos_[0];
             pva_msg.position.y = BT_ptr.pos_[1];
-            pva_msg.position.z = set_height;
+            pva_msg.position.z = BT_ptr.pos_[2];
             // VEL
             pva_msg.velocity.x = BT_ptr.vel_[0];
             pva_msg.velocity.y = BT_ptr.vel_[1];
-            pva_msg.velocity.z = 0;
+            pva_msg.velocity.z =  BT_ptr.vel_[2];
             // ACC
             pva_msg.acceleration.x = BT_ptr.acc_[0];
             pva_msg.acceleration.y = BT_ptr.acc_[1];
-            pva_msg.acceleration.z = 0;
+            pva_msg.acceleration.z =  BT_ptr.acc_[2];
             // YAW
             pva_msg.yaw      = yaw_all.first;
             pva_msg.yaw_dot  = yaw_all.second;
@@ -133,15 +136,15 @@ void run()
             // POSE
             bs_msg.position.x = BT_ptr.pos_[0];
             bs_msg.position.y = BT_ptr.pos_[1];
-            bs_msg.position.z = set_height;
+            bs_msg.position.z = BT_ptr.pos_[2];
             // VEL
             bs_msg.velocity.x = BT_ptr.vel_[0];
             bs_msg.velocity.y = BT_ptr.vel_[1];
-            bs_msg.velocity.z = 0;
+            bs_msg.velocity.z =  BT_ptr.vel_[2];
             // ACC
             bs_msg.acceleration_or_force.x = BT_ptr.acc_[0];
             bs_msg.acceleration_or_force.y = BT_ptr.acc_[1];
-            bs_msg.acceleration_or_force.z = 0;
+            bs_msg.acceleration_or_force.z = BT_ptr.acc_[2];
             bs_msg.yaw = (float)(to_bs_seq);
             bs_pub.publish(bs_msg);      
              pva_msg.header.stamp = ros::Time::now();
@@ -184,7 +187,7 @@ void run()
             // POSE
             pos_ptr.pose.position.x =drone_pose_world(0);
             pos_ptr.pose.position.y = drone_pose_world(1);
-            pos_ptr.pose.position.z = set_height;
+            pos_ptr.pose.position.z =  drone_pose_world(2);
             aim.pose.position = pos_ptr.pose.position;
             // YAW
             aim.pose.orientation = geo_q;
@@ -199,7 +202,7 @@ void run()
             // POSE
             pva_msg.position.x = drone_pose_world(0);
             pva_msg.position.y = drone_pose_world(1);
-            pva_msg.position.z = set_height;
+            pva_msg.position.z =  drone_pose_world(2);
             // VEL
             pva_msg.velocity.x =0.0;
             pva_msg.velocity.y = 0.0;
@@ -218,7 +221,7 @@ void run()
             // POSE
             bs_msg.position.x = drone_pose_world(0);
             bs_msg.position.y = drone_pose_world(1);
-            bs_msg.position.z = set_height;
+            bs_msg.position.z =  drone_pose_world(2);
             // VEL
             bs_msg.velocity.x = 0.0;
             bs_msg.velocity.y =0.0;
@@ -261,11 +264,14 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     {    
         bs_traj BT_ptr;
         BT_ptr.pos_ << msg->position[i].pose.position.x, 
-                       msg->position[i].pose.position.y;
+                       msg->position[i].pose.position.y ,
+                       msg->position[i].pose.position.z;
         BT_ptr.vel_ << msg->velocity[i].pose.position.x, 
-                       msg->velocity[i].pose.position.y;
+                       msg->velocity[i].pose.position.y,
+                       msg->velocity[i].pose.position.z;
         BT_ptr.acc_ << msg->acceleration[i].pose.position.x, 
-                       msg->acceleration[i].pose.position.y;
+                       msg->acceleration[i].pose.position.y,
+                       msg->acceleration[i].pose.position.z;
         BT_ptr.seq_ = i;
         BTraj.push_back(BT_ptr);
     }
@@ -282,17 +288,17 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     bs_traj BT_ptr1 = *(BTraj.begin());
     double dist = ( BT_ptr1.pos_-drone_pose_world).norm();
     // cout<<"dist:"<<dist<<endl;
-     if (state_info == 1)
-     {
-      ROS_WARN("collision!");
-      collision_flag = true;
-      BTraj.clear(); //重新规划
-      return;
-    }
-    if(state_info == 0)
-    {
-      collision_flag = false;
-    }
+    //  if (state_info == 1)
+    //  {
+    //   ROS_WARN("collision!");
+    //   collision_flag = true;
+    //   BTraj.clear(); //重新规划
+    //   return;
+    // }
+    // if(state_info == 0)
+    // {
+    //   collision_flag = false;
+    // }
     //如果距离相差太大
     //  if ( dist >= 0.25)
     //   {
@@ -341,11 +347,14 @@ void traj_cb(const multi_bspline_opt::BsplineTrajConstPtr &msg)
       {    
           bs_traj BT_ptr;
           BT_ptr.pos_ << msg->position[i].pose.position.x, 
-                         msg->position[i].pose.position.y;
+                         msg->position[i].pose.position.y,
+                          msg->position[i].pose.position.z;
           BT_ptr.vel_ << msg->velocity[i].pose.position.x, 
-                         msg->velocity[i].pose.position.y;
+                         msg->velocity[i].pose.position.y,
+                         msg->velocity[i].pose.position.z;
           BT_ptr.acc_ << msg->acceleration[i].pose.position.x, 
-                         msg->acceleration[i].pose.position.y;
+                         msg->acceleration[i].pose.position.y,
+                         msg->acceleration[i].pose.position.z;
           BT_ptr.seq_ = i + new_traj_start_seq;
           BTraj_remain.push_back(BT_ptr);
       }
@@ -404,9 +413,9 @@ void bspline_subCallback(const multi_bspline_opt::BsplineTrajConstPtr &msg)
     for (size_t i = 0; i < msg->position.size(); i++)
     {    
         bs_traj BT_ptr;
-        BT_ptr.pos_ << msg->position[i].pose.position.x    , msg->position[i].pose.position.y;
-        BT_ptr.vel_ << msg->velocity[i].pose.position.x    , msg->velocity[i].pose.position.y;
-        BT_ptr.acc_ << msg->acceleration[i].pose.position.x, msg->acceleration[i].pose.position.y;
+        BT_ptr.pos_ << msg->position[i].pose.position.x    , msg->position[i].pose.position.y, msg->position[i].pose.position.z;
+        BT_ptr.vel_ << msg->velocity[i].pose.position.x    , msg->velocity[i].pose.position.y,msg->velocity[i].pose.position.z;
+        BT_ptr.acc_ << msg->acceleration[i].pose.position.x, msg->acceleration[i].pose.position.y,msg->acceleration[i].pose.position.z;
         BT_ptr.seq_ = i + remain_last_seq;
         BTraj.push_back(BT_ptr);
     }
@@ -436,6 +445,7 @@ void odomCallback(const nav_msgs::OdometryConstPtr &odom)
 {
     drone_pose_world(0) = odom->pose.pose.position.x;
     drone_pose_world(1) = odom->pose.pose.position.y;
+    drone_pose_world(2) = odom->pose.pose.position.z;
 }
 
 std::pair<double, double> cal_yaw( double current_yaw,double aim_yaw)
@@ -560,7 +570,7 @@ int main(int argc, char **argv)
      pts_sub   = nh.subscribe<geometry_msgs::PoseStamped>( "/move_base_simple/goal", 10, &rcvWaypointsCallback );
    
     pos_sub   = nh.subscribe<geometry_msgs::PoseStamped>("/odom_visualization/pose",1,&pose_subCallback);
-
+    pva_msg.position.z = set_height;
     ros::Rate rate(T_RATE);
 while(ros::ok())
     {

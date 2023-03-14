@@ -16,6 +16,10 @@
 #include <ros/message_operations.h>
 
 #include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
 
 namespace multi_bspline_opt
 {
@@ -30,14 +34,10 @@ struct SendTraj_
     , order(0)
     , cps_num_(0)
     , start_time()
-    , start_pos_x(0.0)
-    , start_pos_y(0.0)
-    , start_vel_x(0.0)
-    , start_vel_y(0.0)
-    , start_acc_x(0.0)
-    , start_acc_y(0.0)
-    , end_pos_x(0.0)
-    , end_pos_y(0.0)
+    , start_pos_()
+    , start_vel_()
+    , start_acc_()
+    , end_pos_()
     , control_pts()
     , knots()  {
     }
@@ -47,14 +47,10 @@ struct SendTraj_
     , order(0)
     , cps_num_(0)
     , start_time()
-    , start_pos_x(0.0)
-    , start_pos_y(0.0)
-    , start_vel_x(0.0)
-    , start_vel_y(0.0)
-    , start_acc_x(0.0)
-    , start_acc_y(0.0)
-    , end_pos_x(0.0)
-    , end_pos_y(0.0)
+    , start_pos_(_alloc)
+    , start_vel_(_alloc)
+    , start_acc_(_alloc)
+    , end_pos_(_alloc)
     , control_pts(_alloc)
     , knots(_alloc)  {
   (void)_alloc;
@@ -77,29 +73,17 @@ struct SendTraj_
    typedef ros::Time _start_time_type;
   _start_time_type start_time;
 
-   typedef double _start_pos_x_type;
-  _start_pos_x_type start_pos_x;
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _start_pos__type;
+  _start_pos__type start_pos_;
 
-   typedef double _start_pos_y_type;
-  _start_pos_y_type start_pos_y;
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _start_vel__type;
+  _start_vel__type start_vel_;
 
-   typedef double _start_vel_x_type;
-  _start_vel_x_type start_vel_x;
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _start_acc__type;
+  _start_acc__type start_acc_;
 
-   typedef double _start_vel_y_type;
-  _start_vel_y_type start_vel_y;
-
-   typedef double _start_acc_x_type;
-  _start_acc_x_type start_acc_x;
-
-   typedef double _start_acc_y_type;
-  _start_acc_y_type start_acc_y;
-
-   typedef double _end_pos_x_type;
-  _end_pos_x_type end_pos_x;
-
-   typedef double _end_pos_y_type;
-  _end_pos_y_type end_pos_y;
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _end_pos__type;
+  _end_pos__type end_pos_;
 
    typedef std::vector< ::geometry_msgs::Point_<ContainerAllocator> , typename std::allocator_traits<ContainerAllocator>::template rebind_alloc< ::geometry_msgs::Point_<ContainerAllocator> >> _control_pts_type;
   _control_pts_type control_pts;
@@ -141,14 +125,10 @@ bool operator==(const ::multi_bspline_opt::SendTraj_<ContainerAllocator1> & lhs,
     lhs.order == rhs.order &&
     lhs.cps_num_ == rhs.cps_num_ &&
     lhs.start_time == rhs.start_time &&
-    lhs.start_pos_x == rhs.start_pos_x &&
-    lhs.start_pos_y == rhs.start_pos_y &&
-    lhs.start_vel_x == rhs.start_vel_x &&
-    lhs.start_vel_y == rhs.start_vel_y &&
-    lhs.start_acc_x == rhs.start_acc_x &&
-    lhs.start_acc_y == rhs.start_acc_y &&
-    lhs.end_pos_x == rhs.end_pos_x &&
-    lhs.end_pos_y == rhs.end_pos_y &&
+    lhs.start_pos_ == rhs.start_pos_ &&
+    lhs.start_vel_ == rhs.start_vel_ &&
+    lhs.start_acc_ == rhs.start_acc_ &&
+    lhs.end_pos_ == rhs.end_pos_ &&
     lhs.control_pts == rhs.control_pts &&
     lhs.knots == rhs.knots;
 }
@@ -207,12 +187,12 @@ struct MD5Sum< ::multi_bspline_opt::SendTraj_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1db39cd31304eba253abaf4c9988cb49";
+    return "d1c07ca91141848b23c4fb9cb569a4f8";
   }
 
   static const char* value(const ::multi_bspline_opt::SendTraj_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1db39cd31304eba2ULL;
-  static const uint64_t static_value2 = 0x53abaf4c9988cb49ULL;
+  static const uint64_t static_value1 = 0xd1c07ca91141848bULL;
+  static const uint64_t static_value2 = 0x23c4fb9cb569a4f8ULL;
 };
 
 template<class ContainerAllocator>
@@ -241,14 +221,18 @@ struct Definition< ::multi_bspline_opt::SendTraj_<ContainerAllocator> >
 "time start_time\n"
 "\n"
 "\n"
-"float64 start_pos_x\n"
-"float64 start_pos_y\n"
-"float64 start_vel_x\n"
-"float64 start_vel_y\n"
-"float64 start_acc_x\n"
-"float64 start_acc_y\n"
-"float64 end_pos_x\n"
-"float64 end_pos_y\n"
+"geometry_msgs/Point start_pos_\n"
+"geometry_msgs/Point start_vel_\n"
+"geometry_msgs/Point start_acc_\n"
+"geometry_msgs/Point end_pos_\n"
+"# float64 start_pos_x\n"
+"# float64 start_pos_y\n"
+"# float64 start_vel_x\n"
+"# float64 start_vel_y\n"
+"# float64 start_acc_x\n"
+"# float64 start_acc_y\n"
+"# float64 end_pos_x\n"
+"# float64 end_pos_y\n"
 "# float64 yaw_rate\n"
 "\n"
 "geometry_msgs/Point[] control_pts\n"
@@ -282,14 +266,10 @@ namespace serialization
       stream.next(m.order);
       stream.next(m.cps_num_);
       stream.next(m.start_time);
-      stream.next(m.start_pos_x);
-      stream.next(m.start_pos_y);
-      stream.next(m.start_vel_x);
-      stream.next(m.start_vel_y);
-      stream.next(m.start_acc_x);
-      stream.next(m.start_acc_y);
-      stream.next(m.end_pos_x);
-      stream.next(m.end_pos_y);
+      stream.next(m.start_pos_);
+      stream.next(m.start_vel_);
+      stream.next(m.start_acc_);
+      stream.next(m.end_pos_);
       stream.next(m.control_pts);
       stream.next(m.knots);
     }
@@ -320,22 +300,18 @@ struct Printer< ::multi_bspline_opt::SendTraj_<ContainerAllocator> >
     Printer<int32_t>::stream(s, indent + "  ", v.cps_num_);
     s << indent << "start_time: ";
     Printer<ros::Time>::stream(s, indent + "  ", v.start_time);
-    s << indent << "start_pos_x: ";
-    Printer<double>::stream(s, indent + "  ", v.start_pos_x);
-    s << indent << "start_pos_y: ";
-    Printer<double>::stream(s, indent + "  ", v.start_pos_y);
-    s << indent << "start_vel_x: ";
-    Printer<double>::stream(s, indent + "  ", v.start_vel_x);
-    s << indent << "start_vel_y: ";
-    Printer<double>::stream(s, indent + "  ", v.start_vel_y);
-    s << indent << "start_acc_x: ";
-    Printer<double>::stream(s, indent + "  ", v.start_acc_x);
-    s << indent << "start_acc_y: ";
-    Printer<double>::stream(s, indent + "  ", v.start_acc_y);
-    s << indent << "end_pos_x: ";
-    Printer<double>::stream(s, indent + "  ", v.end_pos_x);
-    s << indent << "end_pos_y: ";
-    Printer<double>::stream(s, indent + "  ", v.end_pos_y);
+    s << indent << "start_pos_: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.start_pos_);
+    s << indent << "start_vel_: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.start_vel_);
+    s << indent << "start_acc_: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.start_acc_);
+    s << indent << "end_pos_: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.end_pos_);
     s << indent << "control_pts[]" << std::endl;
     for (size_t i = 0; i < v.control_pts.size(); ++i)
     {

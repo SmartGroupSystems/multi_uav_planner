@@ -10,7 +10,7 @@ import genpy
 import geometry_msgs.msg
 
 class SendTraj(genpy.Message):
-  _md5sum = "1db39cd31304eba253abaf4c9988cb49"
+  _md5sum = "d1c07ca91141848b23c4fb9cb569a4f8"
   _type = "multi_bspline_opt/SendTraj"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int32 drone_id
@@ -23,14 +23,18 @@ int32 cps_num_
 time start_time
 
 
-float64 start_pos_x
-float64 start_pos_y
-float64 start_vel_x
-float64 start_vel_y
-float64 start_acc_x
-float64 start_acc_y
-float64 end_pos_x
-float64 end_pos_y
+geometry_msgs/Point start_pos_
+geometry_msgs/Point start_vel_
+geometry_msgs/Point start_acc_
+geometry_msgs/Point end_pos_
+# float64 start_pos_x
+# float64 start_pos_y
+# float64 start_vel_x
+# float64 start_vel_y
+# float64 start_acc_x
+# float64 start_acc_y
+# float64 end_pos_x
+# float64 end_pos_y
 # float64 yaw_rate
 
 geometry_msgs/Point[] control_pts
@@ -42,8 +46,8 @@ float64 x
 float64 y
 float64 z
 """
-  __slots__ = ['drone_id','traj_id','order','cps_num_','start_time','start_pos_x','start_pos_y','start_vel_x','start_vel_y','start_acc_x','start_acc_y','end_pos_x','end_pos_y','control_pts','knots']
-  _slot_types = ['int32','int64','int32','int32','time','float64','float64','float64','float64','float64','float64','float64','float64','geometry_msgs/Point[]','float64[]']
+  __slots__ = ['drone_id','traj_id','order','cps_num_','start_time','start_pos_','start_vel_','start_acc_','end_pos_','control_pts','knots']
+  _slot_types = ['int32','int64','int32','int32','time','geometry_msgs/Point','geometry_msgs/Point','geometry_msgs/Point','geometry_msgs/Point','geometry_msgs/Point[]','float64[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -53,7 +57,7 @@ float64 z
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       drone_id,traj_id,order,cps_num_,start_time,start_pos_x,start_pos_y,start_vel_x,start_vel_y,start_acc_x,start_acc_y,end_pos_x,end_pos_y,control_pts,knots
+       drone_id,traj_id,order,cps_num_,start_time,start_pos_,start_vel_,start_acc_,end_pos_,control_pts,knots
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -72,22 +76,14 @@ float64 z
         self.cps_num_ = 0
       if self.start_time is None:
         self.start_time = genpy.Time()
-      if self.start_pos_x is None:
-        self.start_pos_x = 0.
-      if self.start_pos_y is None:
-        self.start_pos_y = 0.
-      if self.start_vel_x is None:
-        self.start_vel_x = 0.
-      if self.start_vel_y is None:
-        self.start_vel_y = 0.
-      if self.start_acc_x is None:
-        self.start_acc_x = 0.
-      if self.start_acc_y is None:
-        self.start_acc_y = 0.
-      if self.end_pos_x is None:
-        self.end_pos_x = 0.
-      if self.end_pos_y is None:
-        self.end_pos_y = 0.
+      if self.start_pos_ is None:
+        self.start_pos_ = geometry_msgs.msg.Point()
+      if self.start_vel_ is None:
+        self.start_vel_ = geometry_msgs.msg.Point()
+      if self.start_acc_ is None:
+        self.start_acc_ = geometry_msgs.msg.Point()
+      if self.end_pos_ is None:
+        self.end_pos_ = geometry_msgs.msg.Point()
       if self.control_pts is None:
         self.control_pts = []
       if self.knots is None:
@@ -98,14 +94,10 @@ float64 z
       self.order = 0
       self.cps_num_ = 0
       self.start_time = genpy.Time()
-      self.start_pos_x = 0.
-      self.start_pos_y = 0.
-      self.start_vel_x = 0.
-      self.start_vel_y = 0.
-      self.start_acc_x = 0.
-      self.start_acc_y = 0.
-      self.end_pos_x = 0.
-      self.end_pos_y = 0.
+      self.start_pos_ = geometry_msgs.msg.Point()
+      self.start_vel_ = geometry_msgs.msg.Point()
+      self.start_acc_ = geometry_msgs.msg.Point()
+      self.end_pos_ = geometry_msgs.msg.Point()
       self.control_pts = []
       self.knots = []
 
@@ -122,7 +114,7 @@ float64 z
     """
     try:
       _x = self
-      buff.write(_get_struct_iq2i2I8d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
+      buff.write(_get_struct_iq2i2I12d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_.x, _x.start_pos_.y, _x.start_pos_.z, _x.start_vel_.x, _x.start_vel_.y, _x.start_vel_.z, _x.start_acc_.x, _x.start_acc_.y, _x.start_acc_.z, _x.end_pos_.x, _x.end_pos_.y, _x.end_pos_.z))
       length = len(self.control_pts)
       buff.write(_struct_I.pack(length))
       for val1 in self.control_pts:
@@ -145,13 +137,21 @@ float64 z
     try:
       if self.start_time is None:
         self.start_time = genpy.Time()
+      if self.start_pos_ is None:
+        self.start_pos_ = geometry_msgs.msg.Point()
+      if self.start_vel_ is None:
+        self.start_vel_ = geometry_msgs.msg.Point()
+      if self.start_acc_ is None:
+        self.start_acc_ = geometry_msgs.msg.Point()
+      if self.end_pos_ is None:
+        self.end_pos_ = geometry_msgs.msg.Point()
       if self.control_pts is None:
         self.control_pts = None
       end = 0
       _x = self
       start = end
-      end += 92
-      (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_iq2i2I8d().unpack(str[start:end])
+      end += 124
+      (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_.x, _x.start_pos_.y, _x.start_pos_.z, _x.start_vel_.x, _x.start_vel_.y, _x.start_vel_.z, _x.start_acc_.x, _x.start_acc_.y, _x.start_acc_.z, _x.end_pos_.x, _x.end_pos_.y, _x.end_pos_.z,) = _get_struct_iq2i2I12d().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -185,7 +185,7 @@ float64 z
     """
     try:
       _x = self
-      buff.write(_get_struct_iq2i2I8d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y))
+      buff.write(_get_struct_iq2i2I12d().pack(_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_.x, _x.start_pos_.y, _x.start_pos_.z, _x.start_vel_.x, _x.start_vel_.y, _x.start_vel_.z, _x.start_acc_.x, _x.start_acc_.y, _x.start_acc_.z, _x.end_pos_.x, _x.end_pos_.y, _x.end_pos_.z))
       length = len(self.control_pts)
       buff.write(_struct_I.pack(length))
       for val1 in self.control_pts:
@@ -209,13 +209,21 @@ float64 z
     try:
       if self.start_time is None:
         self.start_time = genpy.Time()
+      if self.start_pos_ is None:
+        self.start_pos_ = geometry_msgs.msg.Point()
+      if self.start_vel_ is None:
+        self.start_vel_ = geometry_msgs.msg.Point()
+      if self.start_acc_ is None:
+        self.start_acc_ = geometry_msgs.msg.Point()
+      if self.end_pos_ is None:
+        self.end_pos_ = geometry_msgs.msg.Point()
       if self.control_pts is None:
         self.control_pts = None
       end = 0
       _x = self
       start = end
-      end += 92
-      (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_x, _x.start_pos_y, _x.start_vel_x, _x.start_vel_y, _x.start_acc_x, _x.start_acc_y, _x.end_pos_x, _x.end_pos_y,) = _get_struct_iq2i2I8d().unpack(str[start:end])
+      end += 124
+      (_x.drone_id, _x.traj_id, _x.order, _x.cps_num_, _x.start_time.secs, _x.start_time.nsecs, _x.start_pos_.x, _x.start_pos_.y, _x.start_pos_.z, _x.start_vel_.x, _x.start_vel_.y, _x.start_vel_.z, _x.start_acc_.x, _x.start_acc_.y, _x.start_acc_.z, _x.end_pos_.x, _x.end_pos_.y, _x.end_pos_.z,) = _get_struct_iq2i2I12d().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -250,9 +258,9 @@ def _get_struct_3d():
     if _struct_3d is None:
         _struct_3d = struct.Struct("<3d")
     return _struct_3d
-_struct_iq2i2I8d = None
-def _get_struct_iq2i2I8d():
-    global _struct_iq2i2I8d
-    if _struct_iq2i2I8d is None:
-        _struct_iq2i2I8d = struct.Struct("<iq2i2I8d")
-    return _struct_iq2i2I8d
+_struct_iq2i2I12d = None
+def _get_struct_iq2i2I12d():
+    global _struct_iq2i2I12d
+    if _struct_iq2i2I12d is None:
+        _struct_iq2i2I12d = struct.Struct("<iq2i2I12d")
+    return _struct_iq2i2I12d

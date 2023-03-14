@@ -1,0 +1,8 @@
+prefix=/home/wenjing/ros/my_planner_rviz/src/multi_mapping/build/devel
+
+Name: multi_mapping
+Description: Description of multi_mapping
+Version: 0.0.0
+Cflags: -I/home/wenjing/ros/my_planner_rviz/src/multi_mapping/include
+Libs: -L${prefix}/lib -lmulti_mapping
+Requires: roscpp std_msgs

@@ -16,7 +16,7 @@
 
 (defclass multi_bspline_opt::SendTraj
   :super ros::object
-  :slots (_drone_id _traj_id _order _cps_num_ _start_time _start_pos_x _start_pos_y _start_vel_x _start_vel_y _start_acc_x _start_acc_y _end_pos_x _end_pos_y _control_pts _knots ))
+  :slots (_drone_id _traj_id _order _cps_num_ _start_time _start_pos_ _start_vel_ _start_acc_ _end_pos_ _control_pts _knots ))
 
 (defmethod multi_bspline_opt::SendTraj
   (:init
@@ -26,14 +26,10 @@
     ((:order __order) 0)
     ((:cps_num_ __cps_num_) 0)
     ((:start_time __start_time) (instance ros::time :init))
-    ((:start_pos_x __start_pos_x) 0.0)
-    ((:start_pos_y __start_pos_y) 0.0)
-    ((:start_vel_x __start_vel_x) 0.0)
-    ((:start_vel_y __start_vel_y) 0.0)
-    ((:start_acc_x __start_acc_x) 0.0)
-    ((:start_acc_y __start_acc_y) 0.0)
-    ((:end_pos_x __end_pos_x) 0.0)
-    ((:end_pos_y __end_pos_y) 0.0)
+    ((:start_pos_ __start_pos_) (instance geometry_msgs::Point :init))
+    ((:start_vel_ __start_vel_) (instance geometry_msgs::Point :init))
+    ((:start_acc_ __start_acc_) (instance geometry_msgs::Point :init))
+    ((:end_pos_ __end_pos_) (instance geometry_msgs::Point :init))
     ((:control_pts __control_pts) (let (r) (dotimes (i 0) (push (instance geometry_msgs::Point :init) r)) r))
     ((:knots __knots) (make-array 0 :initial-element 0.0 :element-type :float))
     )
@@ -43,14 +39,10 @@
    (setq _order (round __order))
    (setq _cps_num_ (round __cps_num_))
    (setq _start_time __start_time)
-   (setq _start_pos_x (float __start_pos_x))
-   (setq _start_pos_y (float __start_pos_y))
-   (setq _start_vel_x (float __start_vel_x))
-   (setq _start_vel_y (float __start_vel_y))
-   (setq _start_acc_x (float __start_acc_x))
-   (setq _start_acc_y (float __start_acc_y))
-   (setq _end_pos_x (float __end_pos_x))
-   (setq _end_pos_y (float __end_pos_y))
+   (setq _start_pos_ __start_pos_)
+   (setq _start_vel_ __start_vel_)
+   (setq _start_acc_ __start_acc_)
+   (setq _end_pos_ __end_pos_)
    (setq _control_pts __control_pts)
    (setq _knots __knots)
    self)
@@ -69,30 +61,34 @@
   (:start_time
    (&optional __start_time)
    (if __start_time (setq _start_time __start_time)) _start_time)
-  (:start_pos_x
-   (&optional __start_pos_x)
-   (if __start_pos_x (setq _start_pos_x __start_pos_x)) _start_pos_x)
-  (:start_pos_y
-   (&optional __start_pos_y)
-   (if __start_pos_y (setq _start_pos_y __start_pos_y)) _start_pos_y)
-  (:start_vel_x
-   (&optional __start_vel_x)
-   (if __start_vel_x (setq _start_vel_x __start_vel_x)) _start_vel_x)
-  (:start_vel_y
-   (&optional __start_vel_y)
-   (if __start_vel_y (setq _start_vel_y __start_vel_y)) _start_vel_y)
-  (:start_acc_x
-   (&optional __start_acc_x)
-   (if __start_acc_x (setq _start_acc_x __start_acc_x)) _start_acc_x)
-  (:start_acc_y
-   (&optional __start_acc_y)
-   (if __start_acc_y (setq _start_acc_y __start_acc_y)) _start_acc_y)
-  (:end_pos_x
-   (&optional __end_pos_x)
-   (if __end_pos_x (setq _end_pos_x __end_pos_x)) _end_pos_x)
-  (:end_pos_y
-   (&optional __end_pos_y)
-   (if __end_pos_y (setq _end_pos_y __end_pos_y)) _end_pos_y)
+  (:start_pos_
+   (&rest __start_pos_)
+   (if (keywordp (car __start_pos_))
+       (send* _start_pos_ __start_pos_)
+     (progn
+       (if __start_pos_ (setq _start_pos_ (car __start_pos_)))
+       _start_pos_)))
+  (:start_vel_
+   (&rest __start_vel_)
+   (if (keywordp (car __start_vel_))
+       (send* _start_vel_ __start_vel_)
+     (progn
+       (if __start_vel_ (setq _start_vel_ (car __start_vel_)))
+       _start_vel_)))
+  (:start_acc_
+   (&rest __start_acc_)
+   (if (keywordp (car __start_acc_))
+       (send* _start_acc_ __start_acc_)
+     (progn
+       (if __start_acc_ (setq _start_acc_ (car __start_acc_)))
+       _start_acc_)))
+  (:end_pos_
+   (&rest __end_pos_)
+   (if (keywordp (car __end_pos_))
+       (send* _end_pos_ __end_pos_)
+     (progn
+       (if __end_pos_ (setq _end_pos_ (car __end_pos_)))
+       _end_pos_)))
   (:control_pts
    (&rest __control_pts)
    (if (keywordp (car __control_pts))
@@ -116,22 +112,14 @@
     4
     ;; time _start_time
     8
-    ;; float64 _start_pos_x
-    8
-    ;; float64 _start_pos_y
-    8
-    ;; float64 _start_vel_x
-    8
-    ;; float64 _start_vel_y
-    8
-    ;; float64 _start_acc_x
-    8
-    ;; float64 _start_acc_y
-    8
-    ;; float64 _end_pos_x
-    8
-    ;; float64 _end_pos_y
-    8
+    ;; geometry_msgs/Point _start_pos_
+    (send _start_pos_ :serialization-length)
+    ;; geometry_msgs/Point _start_vel_
+    (send _start_vel_ :serialization-length)
+    ;; geometry_msgs/Point _start_acc_
+    (send _start_acc_ :serialization-length)
+    ;; geometry_msgs/Point _end_pos_
+    (send _end_pos_ :serialization-length)
     ;; geometry_msgs/Point[] _control_pts
     (apply #'+ (send-all _control_pts :serialization-length)) 4
     ;; float64[] _knots
@@ -161,22 +149,14 @@
        (write-long _cps_num_ s)
      ;; time _start_time
        (write-long (send _start_time :sec) s) (write-long (send _start_time :nsec) s)
-     ;; float64 _start_pos_x
-       (sys::poke _start_pos_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _start_pos_y
-       (sys::poke _start_pos_y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _start_vel_x
-       (sys::poke _start_vel_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _start_vel_y
-       (sys::poke _start_vel_y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _start_acc_x
-       (sys::poke _start_acc_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _start_acc_y
-       (sys::poke _start_acc_y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _end_pos_x
-       (sys::poke _end_pos_x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _end_pos_y
-       (sys::poke _end_pos_y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; geometry_msgs/Point _start_pos_
+       (send _start_pos_ :serialize s)
+     ;; geometry_msgs/Point _start_vel_
+       (send _start_vel_ :serialize s)
+     ;; geometry_msgs/Point _start_acc_
+       (send _start_acc_ :serialize s)
+     ;; geometry_msgs/Point _end_pos_
+       (send _end_pos_ :serialize s)
      ;; geometry_msgs/Point[] _control_pts
      (write-long (length _control_pts) s)
      (dolist (elem _control_pts)
@@ -211,22 +191,14 @@
      (setq _cps_num_ (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;; time _start_time
      (send _start_time :sec (sys::peek buf ptr- :integer)) (incf ptr- 4)  (send _start_time :nsec (sys::peek buf ptr- :integer)) (incf ptr- 4)
-   ;; float64 _start_pos_x
-     (setq _start_pos_x (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _start_pos_y
-     (setq _start_pos_y (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _start_vel_x
-     (setq _start_vel_x (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _start_vel_y
-     (setq _start_vel_y (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _start_acc_x
-     (setq _start_acc_x (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _start_acc_y
-     (setq _start_acc_y (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _end_pos_x
-     (setq _end_pos_x (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _end_pos_y
-     (setq _end_pos_y (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; geometry_msgs/Point _start_pos_
+     (send _start_pos_ :deserialize buf ptr-) (incf ptr- (send _start_pos_ :serialization-length))
+   ;; geometry_msgs/Point _start_vel_
+     (send _start_vel_ :deserialize buf ptr-) (incf ptr- (send _start_vel_ :serialization-length))
+   ;; geometry_msgs/Point _start_acc_
+     (send _start_acc_ :deserialize buf ptr-) (incf ptr- (send _start_acc_ :serialization-length))
+   ;; geometry_msgs/Point _end_pos_
+     (send _end_pos_ :deserialize buf ptr-) (incf ptr- (send _end_pos_ :serialization-length))
    ;; geometry_msgs/Point[] _control_pts
    (let (n)
      (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4)
@@ -245,7 +217,7 @@
    self)
   )
 
-(setf (get multi_bspline_opt::SendTraj :md5sum-) "1db39cd31304eba253abaf4c9988cb49")
+(setf (get multi_bspline_opt::SendTraj :md5sum-) "d1c07ca91141848b23c4fb9cb569a4f8")
 (setf (get multi_bspline_opt::SendTraj :datatype-) "multi_bspline_opt/SendTraj")
 (setf (get multi_bspline_opt::SendTraj :definition-)
       "int32 drone_id
@@ -258,14 +230,18 @@ int32 cps_num_
 time start_time
 
 
-float64 start_pos_x
-float64 start_pos_y
-float64 start_vel_x
-float64 start_vel_y
-float64 start_acc_x
-float64 start_acc_y
-float64 end_pos_x
-float64 end_pos_y
+geometry_msgs/Point start_pos_
+geometry_msgs/Point start_vel_
+geometry_msgs/Point start_acc_
+geometry_msgs/Point end_pos_
+# float64 start_pos_x
+# float64 start_pos_y
+# float64 start_vel_x
+# float64 start_vel_y
+# float64 start_acc_x
+# float64 start_acc_y
+# float64 end_pos_x
+# float64 end_pos_y
 # float64 yaw_rate
 
 geometry_msgs/Point[] control_pts
@@ -281,6 +257,6 @@ float64 z
 
 
 
-(provide :multi_bspline_opt/SendTraj "1db39cd31304eba253abaf4c9988cb49")
+(provide :multi_bspline_opt/SendTraj "d1c07ca91141848b23c4fb9cb569a4f8")
 
 
